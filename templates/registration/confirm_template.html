@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Подтверждение регистрации{% endblock %}
+{% block META_description %}Подтверждение регистрации{% endblock %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+<section id="vhod">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+{% if success %}
+{{ user.username }} Почта успешно подтверждена
+{% else %}
+Что-то не так
+{% endif %}
+
+                 </div>
+    </div>
+    </div>
+</section>
+{% endblock content %}

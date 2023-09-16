@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Регистрация на сайте{% endblock %}
+{% block META_description %}Регистрация на сайте{% endblock %}
+
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <section id="vhod">
+    <div class="container">
+     <div class="col-md-6 offset-md-3">
+ <div class="form-container">
+ <div class="form-icon"><i class="fa fa-user-plus"></i></div>
+
+
+
+            {% if messages %}
+        	{% for message in messages %}
+          	<div class="alert alert-{{ message.tags }}">
+            	{{ message }}
+          	</div>
+        	{% endfor %}
+{% endif %}
+
+    <div class="content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Добро пожаловать </legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-danger" type="submit">Регистрация</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Уже есть аккаунт? <a class="ml-2" href="{% url 'login' %}">Вход</a>
+            </small>
+        </div>
+    </div>
+             </div>
+
+    </div>
+        </div>
+    </section>
+{% endblock content %}

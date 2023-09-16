@@ -1,0 +1,55 @@
+{% load thumbnail %}
+{% load static %}
+
+{% load filter %}
+
+ <div class="item">
+                         <div class="pred">
+                       
+                          {% if dom.best == True %}
+                             <span class="current">
+                                 лучшее 
+                             </span>
+                          {% endif %}
+
+
+
+
+
+
+ {% if request.user.is_authenticated %}
+
+
+  <span class="izbr 2">
+                              <a class="addfavorit ajax {% if dom.favorit.all|user_in:user.username %}
+{% else %}
+                                  blur
+                              {% endif %}" attr-href="{% url 'ajaxbest' dom.id %}" href="{% url 'ajaxbest' dom.id %}"><img 
+                              
+                                                                              src="{% static 'theme/img/favorite.png' %}" class="img-fluid" alt=""></a>
+                             </span>
+
+
+
+
+                              {% else %}
+
+     <span class="izbr 1">
+                                 <a  href="{% url 'register' %}"><img class="blur" src="{% static 'theme/img/favorite.png' %}" class="img-fluid" alt=""></a>
+     </span>
+      {% endif %}
+
+
+
+
+                             <img src="{{ dom.image_zast|thumbnail_url:'preview' }}" class="img-fluid trans" alt="">
+                             
+                             <div class="opis">
+                                 <span class="cat"> {{ dom.get_category_display}}     </span>
+                                 <h3 class="hrty">{{ dom.h1 }}  </h3>
+                             
+                                 <span class="price12">{%if dom.priceot %} <small>от</small> {% endif %} {{ dom.price|floatformat:"2g" }} ₽</span>
+                                 <a href="{{ dom.get_absolute_url }}" class="knop">Подробнее →</a>
+                             </div>
+                         </div>
+                     </div>

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Авторизация на сайте{% endblock %}
+{% block META_description %}Авторизация на сайте{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<section id="vhod">
+    <div class="container">
+      <div class="row">
+ <div class="col-md-6 offset-md-3">
+ <div class="form-container">
+ <div class="form-icon"><i class="fa fa-user"></i></div>
+
+            {% if form.errors %}
+  <p>Ваше имя пользователя и пароль не совпали. Пожалуйста, попробуйте снова.</p>
+{% endif %}
+
+{% if next %}
+  {% if user.is_authenticated %}
+    <p>
+У вашей учетной записи нет доступа к этой странице. Чтобы продолжить,
+пожалуйста, войдите в систему с учетной записью, у которой есть доступ.</p>
+  {% else %}
+    <p>Пожалуйста, войдите в систему, чтобы увидеть эту страницу.</p>
+  {% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+
+  {{ form|crispy }}
+
+<input type="submit" class="btn btn-danger" value="Войти" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+{# Assumes you setup the password_reset view in your URLconf #}
+<p><a class="pdt10" href="{% url 'password_reset' %}">Забыли пароль?</a></p>
+
+        </div>
+    </div>
+    </div>
+      </div>
+</section>
+
+{% endblock %}

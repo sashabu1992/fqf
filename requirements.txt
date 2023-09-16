@@ -1,0 +1,10 @@
+Django~=3.2.10
+python-slugify
+pillow
+easy-thumbnails
+django-filter
+django-ckeditor-5
+mysqlclient
+django-crispy-forms
+crispy_bootstrap4
+django-email-verification

@@ -1,0 +1,209 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+Контакты
+{% endblock %}
+
+{% block META_description %}
+Контакты
+{% endblock %}
+
+{% block bread %}
+<section id="bread">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+  <ol class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList"><li><span itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+ <a title="Главная" itemprop="item" href="/"><span itemprop="name">Главная</span><meta itemprop="position" content="0"></a>
+ </span></li><li><span class="sep">-</span></li><li><span itemprop="item" itemscope="" itemtype="http://schema.org/ListItem">
+ <span itemprop="name">Контакты</span><meta itemprop="position" content="2">
+ </span></li></ol>
+ </div>
+ </div>
+ </div>
+    </section>
+
+{% endblock bread %}
+
+{% block content %}
+
+<style>
+    #sp-main-body {
+    padding: 100px 0;
+    padding-bottom:0;
+}
+.sp-pagebuilder-row, .row{
+    margin-bottom:0;
+}
+#section-id-1480939475{
+    padding-bottom:60px;
+}
+.media-content{
+    text-align:center;
+}
+@media(max-width:768px){
+     #sp-main-body {
+    padding: 20px 0;
+    padding-bottom:0;
+}
+.col-sm-4{
+    margin-bottom:60px;
+}
+}
+.addon-feature .addon-content {
+  background: #ffffff none repeat scroll 0 0;
+  padding: 38px 30px 53px;
+  -webkit-transition: .4s;
+  -o-transition: .4s;
+  transition: .4s;
+  position: relative;
+  border-radius:30px;
+}
+.addon-feature .addon-content .icon {
+  background: #e6007e none repeat scroll 0 0;
+  border: 12px solid #fff;
+  border-radius: 50%;
+  height: 88px;
+  left: 0;
+  margin: 0 auto;
+  padding-top: 10px;
+  position: absolute;
+  right: 0;
+  top: -44px;
+  width: 88px;
+}
+.addon-feature .addon-content .icon span {
+  font-size: 30px;
+}
+.addon-feature .addon-content h3 {
+  font-weight: 700;
+  line-height: 1.3;
+  color: #000;
+}
+.addon-feature .addon-content h3 span {
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.addon-feature .addon-content .addon-text {
+  color: #7c7c7c;
+  font-size: 16px;
+  margin-top: 25px;
+}
+.addon-feature .addon-content:hover {
+  background: #f2f2f2;
+}
+.empire-contact-feature .addon-feature .addon-content .icon {
+  left: calc(50% - 44px);
+  right: auto;
+  text-align: center;
+}
+.empire-contact-feature .addon-feature .addon-content .icon span {
+  color: #fff;
+}
+.empire-contact-feature .addon-feature .addon-content .addon-text {
+  font-size: 18px;
+  color: #000;
+}
+.empire-contact-feature .addon-feature .addon-content .addon-text a {
+  color: #000;
+}
+</style>
+
+<section id="sp-main-body">
+    <div class="container">
+    <div class="row">
+        <div class="col-lg-12 ">
+            <div class="sp-column ">
+                <div id="system-message-container">
+                </div>
+
+                <div id="sp-page-builder" class="sp-page-builder  page-8">
+
+
+                    <div class="page-content">
+                        <section id="section-id-1480939475" class="section  empire-contact-feature">
+                            <div class="row-container">
+                                <div class="row">
+                                    <div class="col-sm-4" id="column-wrap-id-1480939476">
+                                        <div id="column-id-1480939476" class="column ">
+                                            <div class="column-addons">
+                                                <div id="addon-1480939477" class="clearfix">
+                                                    <div class="addon addon-feature  ">
+                                                        <div class="addon-content text-left">
+                                                            <div class="icon"><span class="icon-container"><i aria-hidden="true" aria-label="Адрес:" class="fa fa-map-signs"></i></span></div>
+                                                            <div class="media-content">
+                                                                <h3 class="addon-title feature-box-title">Адрес:</h3>
+                                                                <div class="addon-text">
+                                                                    <p>{{ web_settings.addr }}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4" id="column-wrap-id-1480939478">
+                                        <div id="column-id-1480939478" class="column">
+                                            <div class="column-addons">
+                                                <div id="addon-1480939479" class="clearfix">
+                                                    <div class="addon addon-feature  ">
+                                                        <div class="addon-content text-left">
+                                                            <div class="icon"><span class="icon-container"><i aria-hidden="true" aria-label="Звоните нам:" class="fa fa-phone"></i></span></div>
+                                                            <div class="media-content">
+                                                                <h3 class="addon-title feature-box-title">Звоните нам:</h3>
+                                                                <div class="addon-text">
+                                                                    <p>{{ web_settings.phone1 }}<br>{{ web_settings.phone2 }}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4" id="column-wrap-id-1480939480">
+                                        <div id="column-id-1480939480" class="column">
+                                            <div class="column-addons">
+                                                <div id="addon-1480939481" class="clearfix">
+                                                    <div class="addon addon-feature  ">
+                                                        <div class="addon-content text-left">
+                                                            <div class="icon"><span class="icon-container"><i aria-hidden="true" aria-label="Пишите нам:" class="fa fa-envelope"></i></span></div>
+                                                            <div class="media-content">
+                                                                <h3 class="addon-title feature-box-title">Пишите нам:</h3>
+                                                                <div class="addon-text">
+                                                                    <p><a href="mailto:{{ web_settings.email }}"> {{ web_settings.email }}</a><br>&nbsp;</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+
+<div id="section-id-1480939482" class="section ">
+                         {% autoescape off %}
+    {{ web_settings.maps }}
+{% endautoescape %}
+                                                  
+
+
+                        </div>
+
+
+{% endblock content %}
