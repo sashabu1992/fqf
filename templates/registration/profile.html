@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% block title %}Личный кабинет{% endblock %}
+{% block META_description %}Личный кабинет{% endblock %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+<section id="vhod">
+    <div class="container">
+
+
+
+<style>
+
+#real-estates-detail #author img {
+ -webkit-border-radius: 100%;
+ -moz-border-radius: 100%;
+ -ms-border-radius: 100%;
+ -o-border-radius: 100%;
+ border-radius: 100%;
+ border: 5px solid #ecf0f1;
+ margin-bottom: 10px;
+    max-width:200px
+}
+#real-estates-detail .sosmed-author i.fa {
+ width: 30px;
+ height: 30px;
+ border: 2px solid #e8188a;
+ color: #e8188a;
+ padding-top: 6px;
+ margin-top: 10px;
+}
+.panel-default .panel-heading {
+ background-color: #fff;
+}
+#real-estates-detail .slides li img {
+ height: 450px;
+}
+</style>
+
+<div class="container">
+
+
+
+ <div class="row" id="real-estates-detail">
+ <div class="col-lg-4 col-md-4 col-xs-12">
+ <div class="panel panel-default">
+ <div class="panel-body">
+ <div class="text-center" id="author">
+
+     {% if user.profile.avatar %}
+
+          <img src="{{ user.profile.avatar|thumbnail_url:'user' }}" alt="">
+
+     {% else %}
+
+         <img src="https://yt3.googleusercontent.com/Khx8qvqjrG56W-EqzhHpp4zh46Qvz1oCL1bAO_u4AWdtMJbpULc8P4lihcRZptgl60f-I2dpyQ=s900-c-k-c0x00ffffff-no-rj">
+
+     {% endif %}
+
+  <h3>{{ user.first_name }} {{ user.last_name }}</h3>
+ <small class="label label-warning">{{ user.username }}</small>
+
+ </div>
+ </div>
+ </div>
+ </div>
+ <div class="col-lg-8 col-md-8 col-xs-12">
+
+ <h4>Информация профиля</h4>
+ <table class="table table-th-block">
+ <tbody>
+ <tr><td class="active">Зарегистрирован:</td><td>{{ user.date_joined }}</td></tr>
+ <tr><td class="active">Email:</td><td>{{ user.email }}</td></tr>
+ <tr><td class="active">Телефон:</td><td>{{ user.profile.phone }}</td></tr>
+ <tr><td class="active">Информация о себе:</td><td>{{ user.profile.bio }}</td></tr>
+ <tr><td class="active">Дата рождения:</td><td>{{ user.profile.date_birthday }}</td></tr>
+
+</tbody>
+ </table>
+<a href="{% url 'profile-edit' %}" class="btn btn-dark">Изменение профиля</a>
+
+ </div>
+ </div>
+
+ </div>
+</div>
+
+
+
+
+    </div>
+</section>
+{% endblock content %}

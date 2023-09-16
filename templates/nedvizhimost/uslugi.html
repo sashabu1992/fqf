@@ -1,0 +1,160 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Услуги{% endblock %}
+
+{% block META_description %}Услуги{% endblock %}
+
+
+{% block bread %}
+<section id="bread">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+  <ol class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList"><li><span itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+ <a title="Главная" itemprop="item" href="/"><span itemprop="name">Главная</span><meta itemprop="position" content="0"></a>
+ </span></li><li><span class="sep">-</span></li><li><span itemprop="item" itemscope="" itemtype="http://schema.org/ListItem">
+ <span itemprop="name">Услуги</span><meta itemprop="position" content="2">
+ </span></li></ol>
+ </div>
+ </div>
+ </div>
+    </section>
+
+{% endblock bread %}
+
+
+{% block content %}
+
+<style type="text/css">
+table {
+    width: 100%;
+}
+body {
+    background-color: #f2f4f7;
+
+}
+    .technology div{font-size: 20px; color: #e6007e; font-style: normal;border: 0px #fff none; font-weight: bold;
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        -khtml-border-radius: 0px;
+        border-radius: 0px;
+        background-color: #ffffff;
+        width: 100%;
+    }
+
+  .thetextinter{font-size: 14px; font-weight: normal; background: #ffffff; border: 0px #fff none; 
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -khtml-border-radius: 0px;
+  border-radius: 0px;
+  width: 100%;
+  font-style: normal;
+  padding: 0px} 
+  
+
+@media(max-width:768px){
+    #sp-main-body {
+   padding: 20px 0;
+}
+}
+#sp-bottom{ background-color:#ffffff;padding:90px 0px 70px 0; }
+  </style>
+<section id="sp-main-body">
+    <div class="container">
+        <div class="row">
+            <div id="sp-component" class="col-lg-12 ">
+                <div class="sp-column ">
+                    <div id="system-message-container">
+                    </div>
+                    <article class="item item-page" itemscope="" itemtype="http://schema.org/Article">
+                        <meta itemprop="inLanguage" content="ru-RU">
+
+
+
+
+
+
+
+                        <div itemprop="articleBody">
+                           <p>Центр оформления недвижимости «<span>FQF Территория Недвижимости</span>» - это агентство недвижимости полного цикла, связанное с продажей, покупкой, арендой городской, загородной и коммерческой недвижимости, а также с юридической поддержкой населения – ведением нашими&nbsp;юристами гражданских дел в суде.</p>
+<p>Мы гарантируем, обратившись к нам, вы получите качественный уровень сервиса, полную информацию по необходимым вам объектам или услугам, экспертную оценку вашей недвижимости, а также профессиональное юридическое сопровождение вашей сделки.</p>
+<h2 style="text-align: center;" align="center">Прайс на услуги ТЕРРИТОРИЯ НЕДВИЖИМОСТИ FQF</h2>
+                           <br>
+                           
+                           
+    
+       <div class="accordion accordion-flush" id="accordionFlushExample">
+ 
+ 
+         {% for i in usl %}
+
+  
+                            
+   <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-heading1">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{ i.id }}" aria-expanded="false" aria-controls="flush-collapse1">
+  {{ i }}
+      </button>
+    </h2>
+    <div id="flush-collapse{{ i.id }}" class="accordion-collapse collapse" aria-labelledby="flush-heading1" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+          
+          
+                                  <div id="content">
+                                        {{ i.post|safe }}
+                                  </div>
+          
+      </div>
+    </div>
+  </div>
+            
+
+            {% endfor %}               
+                    
+                  
+ 
+
+ 
+</div>
+                           
+              
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <!--ul class="pager pagenav">
+                            <li class="previous">
+                                <a class="hasTooltip" title="Ценности АН «КапиталЪ»" aria-label="Предыдущий: Ценности АН «КапиталЪ»" href="/about-us/cennosti.html" rel="prev">
+            <span class="icon-chevron-left" aria-hidden="true"></span> <span aria-hidden="true">Назад</span>        </a>
+                            </li>
+                        </ul -->
+
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}

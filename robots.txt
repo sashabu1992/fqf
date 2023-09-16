@@ -1,0 +1,14 @@
+User-Agent: *
+Disallow: /core/
+Disallow: /crm/
+Disallow: /myvenv/
+Disallow: /nedvizhimost/
+Disallow: /static/
+Disallow: /templates/
+Disallow: /uslugi/
+Disallow: /websitesetting/
+Disallow: *?
+
+Host: https://fqf-nedvizhimost.ru/
+
+Sitemap: https://fqf-nedvizhimost.ru/sitemap.xml

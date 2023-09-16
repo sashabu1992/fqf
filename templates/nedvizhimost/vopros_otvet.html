@@ -1,0 +1,125 @@
+
+{% extends 'base.html' %}
+
+{% block title %}
+Вопрос ответ
+{% endblock %}
+
+{% block META_description %}
+Вопрос ответ
+{% endblock %}
+
+
+
+
+
+{% block zagblock %}
+<style>.zagblock {
+    height: auto;
+    padding-bottom: 60px;
+}</style>
+<div class="zagblock">
+          <div class="container">
+          <h1>Вопросы–ответы</h1>
+          <h2>ИСТОРИЯ КОМПАНИИ. КОМАНДА. ЦЕННОСТИ.</h2>
+          <svg width="34" height="33" viewBox="0 0 34 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M16.9948 22.9895C16.8834 22.9895 16.7758 22.9655 16.6718 22.9175C16.5678 22.8688 16.4671 22.8028 16.3698 22.7195L10.9328 17.2815C10.7661 17.1148 10.6861 16.9102 10.6928 16.6675C10.6994 16.4242 10.7861 16.2192 10.9528 16.0525C11.1194 15.8858 11.3208 15.8025 11.5568 15.8025C11.7934 15.8025 11.9951 15.8858 12.1618 16.0525L16.1198 20.0105V10.8855C16.1198 10.6495 16.2064 10.4448 16.3798 10.2715C16.5538 10.0975 16.7588 10.0105 16.9948 10.0105C17.2308 10.0105 17.4358 10.0975 17.6098 10.2715C17.7831 10.4448 17.8698 10.6495 17.8698 10.8855V20.0105L21.8278 16.0525C21.9944 15.8858 22.1994 15.8025 22.4428 15.8025C22.6854 15.8025 22.8901 15.8858 23.0568 16.0525C23.2234 16.2192 23.3068 16.4242 23.3068 16.6675C23.3068 16.9102 23.2234 17.1148 23.0568 17.2815L17.6198 22.7195C17.5364 22.8028 17.4391 22.8688 17.3278 22.9175C17.2171 22.9655 17.1061 22.9895 16.9948 22.9895Z" fill="#E60A80"></path>
+<rect x="1" y="0.5" width="32" height="32" rx="16" stroke="#E6007E"></rect>
+</svg>
+
+
+
+
+</div>
+      </div>
+
+{% endblock zagblock %}
+
+{% block content %}
+
+
+
+<section id="predlozh" class="pd40">
+      <div class="container">
+         
+         <div class="row">
+             <div class="col-md-12">
+                 <div class="rows12">
+               <div class="tir">
+                    <h2>Вопросы–ответы</h2>  
+               </div>
+                   <div class="tir">
+
+
+
+<form method="get" id="search23" action="{% url 'vopros_otvet' %}" >
+        
+
+     {{ form.vopros }}
+                 <button type="submit">Найти</button>
+</form>
+
+
+                      
+                   </div>
+                 </div>
+             </div>
+             <div class="col-md-12">
+               {% if count %}
+                  
+
+<div id="mse2_selected_wrapper">
+      <div id="mse2_selected" style="display: block;"><strong>Количество результатов:</strong>
+
+              <span class="mse2_selected_link"><em>{{ count }} </em></span>
+            
+      </div>
+      <div class="asasasa">
+        <a type="reset" href="{% url 'vopros_otvet' %}" class="asas">СБРОСИТЬ ВСЕ <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 4.00009L4 12.0001" stroke="white" stroke-linecap="square" stroke-linejoin="round"></path>
+<path d="M4 4.00009L12 12.0001" stroke="white" stroke-linecap="square" stroke-linejoin="round"></path>
+</svg></a>
+      </div>
+      
+      
+    </div>
+
+               {% endif %}
+             </div> 
+         </div>
+          
+          <div class="row">
+              
+       <div class="col-md-12">
+             <div class="accordion accordion-flush" id="accordionFlushExample">
+ 
+ {% for i in dataset %}
+
+ 
+
+   <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-heading{{i.id}}">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{i.id}}" aria-expanded="false" aria-controls="flush-collapse{{i.id}}">
+       {{i.vopros}}
+      </button>
+    </h2>
+    <div id="flush-collapse{{i.id}}" class="accordion-collapse collapse" aria-labelledby="flush-heading{{i.id}}" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">
+         {{i.otvet|safe}}
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+
+</div>
+       </div>
+              
+            
+          </div>
+      </div>
+  </section>
+
+
+
+{% endblock content %}

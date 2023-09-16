@@ -1,0 +1,44 @@
+<div class="nav">
+    {% with url_name=request.resolver_match.url_name %}
+    <ul class="">
+        <li class=" {% if url_name == 'about' %}active {% endif %}"><a href="{% url 'about' %}">О нас</a></li>
+        <li class="submenu_wrapp {% if url_name == 'nedvizhimost_list' %}active {% endif %}"><a href="{% url 'nedvizhimost_list' %}">Недвижимость <svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 0.755737L5.5 5.25574L10 0.755737" stroke="white"/>
+</svg>
+</a>
+            <ul class="">
+                <li class=" {% if url_name == 'kvartir_list' %}active {% endif %}"><a href="{% url 'kvartir_list' %}">Квартиры</a></li>
+
+                <li class="{% if url_name == 'komerch_list' %}active {% endif %}"><a href="{% url 'komerch_list' %}">Коммерческая недвижимость</a></li>
+                
+                <li class="{% if url_name == 'zagorod_list' %}active {% endif %}"><a href="{% url 'zagorod_list' %}">Загородные дома</a></li>
+                <li class="{% if url_name == 'garazhi_list' %}active {% endif %}"><a href="{% url 'garazhi_list' %}">Гаражи</a></li>
+                <li class="{% if url_name == 'zemuchas_list' %}active {% endif %}"><a href="{% url 'zemuchas_list' %}">Земельные участки</a></li>
+                <li class=" {% if url_name == 'newstroi_list' %}active {% endif %}"><a href="{% url 'newstroi_list' %}">Новостройки</a></li>
+            </ul>
+        </li>
+        <li class="submenu_wrapp {% if url_name == 'maps_list' %}active {% endif %}"><a href="{% url 'uslugi' %}">Услуги <svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 0.755737L5.5 5.25574L10 0.755737" stroke="white"/>
+</svg>
+</a>
+            <ul class="">
+                <li class=" {% if url_name == 'maps_list' %}active {% endif %}"><a href="{% url 'yurusl' %}">Юридические услуги</a></li>
+                <li class=" {% if url_name == 'maps_list' %}active {% endif %}"><a href="{% url 'rieltusl' %}">Риэлторские услуги</a></li>
+            </ul>
+        </li>
+          <li class="#"><a href="#">Инвестиции</a></li>
+        <li class="submenu_wrapp {% if url_name == 'partneryi' %}active {% endif %}"><a href="{% url 'partner' %}">Партнеры <svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 0.755737L5.5 5.25574L10 0.755737" stroke="white"/>
+</svg>
+</a>
+            <ul class="">
+                <li class="{% if url_name == 'spetcs' %}active {% endif %}"><a href="{% url 'spetcs' %}">Спецпредложения</a></li>
+            </ul>
+        </li>
+        <li class="{% if url_name == 'vopros_otvet' %}active {% endif %}"><a href="{% url 'vopros_otvet' %}">Полезно знать</a></li>
+        <li class="{% if url_name == 'contatcs' %}active {% endif %}"><a href="{% url 'contatcs' %}">Контакты</a></li>
+    </ul>
+       {% endwith %}
+</div>
+
+

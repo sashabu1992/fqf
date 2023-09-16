@@ -1,0 +1,157 @@
+
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% block title %}Карта обьектов{% endblock %}
+
+{% block META_description %}Карта обьектов{% endblock %}
+
+
+{% block bread %}
+<section id="bread">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+  <ol class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList"><li><span itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+ <a title="Главная" itemprop="item" href="/"><span itemprop="name">Главная</span><meta itemprop="position" content="0"></a>
+ </span></li><li><span class="sep">-</span></li><li><span itemprop="item" itemscope="" itemtype="http://schema.org/ListItem">
+ <span itemprop="name">Карта обьектов</span><meta itemprop="position" content="2">
+ </span></li></ol>
+ </div>
+ </div>
+ </div>
+    </section>
+
+{% endblock bread %}
+
+{% block content %}
+
+
+<script src="https://api-maps.yandex.ru/2.0/?load=package.standard,package.geoObjects&lang=ru-RU" type="text/javascript"></script>
+  
+    <script type="text/javascript">
+         // Инициализация карты
+        ymaps.ready(init);
+  
+        function init () {
+            
+             //Центрирование и выбор масштаба карты
+               var myMap = new ymaps.Map('map', {
+                    center: [55.761346, 37.621131],  
+                    
+                    zoom: 8
+                });
+          // Создание своей метки 
+{% for i in filter %}
+var myPlacemark{{ i.id }} = new ymaps.Placemark(
+
+                    [ {{ i.coord }} ] , {
+
+                     balloonContent: '<div class="flk"><div class="ity"><img src="{{ i.image_zast|thumbnail_url:'preview' }}" class="imgzast" alt=""></div><div class="ity"><a href="{{ i.get_absolute_url }}" target="_blank">{{ i.title }}</a></div></div>',
+                    iconContent: '!',
+                    hideIcon: false,
+                    
+                         
+                }, {
+                                               
+                
+               preset: 'islands#redIcon'
+                    } );   
+{% endfor %}
+        
+   
+
+                   // Добавление метки на карту 
+                  
+                
+              
+ 
+{% for i in filter %}
+ myMap.geoObjects.add(myPlacemark{{ i.id }});
+{% endfor %}
+        
+   
+                
+             
+
+                
+                //Элементы управления    
+                myMap.controls
+                // Кнопка изменения масштаба
+                    .add('zoomControl')
+                    // Список типов карты
+                    .add('typeSelector')
+                    
+                    // Стандартный набор кнопок
+                    .add('mapTools')    
+                    //Линейка масштаба
+                   .add(new ymaps.control.ScaleLine());
+        }
+    
+    </script>
+  
+  <style>
+           /*Размер карты*/
+           #map { width:100%;height:589px }
+           /*Отображение карты в черно-белом цвете */
+        /*   .ymaps-glass-pane, .ymaps-layers-pane {filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale") !important;
+ */   /* Firefox 3.5+ Chrome 19+ & Safari 6+ 
+    -webkit-filter: grayscale(100%) !important;  */
+}
+    </style>
+ 
+
+
+<div class="container">
+   <div class="filterrest">
+
+
+
+
+ {% include "parts/filterforms.html" %}
+   <button type="submit" class="btn btn-danger pull-right hidden" id="filterforms">Показать предложения</button>
+            <div class="clearfix"></div> 
+              
+  {% include "parts/otvet_form.html" %}
+
+   </div>
+</div>
+
+<div id="block2" class="news pd40" style="padding-bottom:0">
+        <div class="container">
+      
+                    <div class="cart">
+                       
+                       
+                    <div class="content_wrap" >
+          
+            <h1  itemprop="headline">Карта объектов</h1>
+        {% include "parts/vid_spiska.html" %}
+
+   </div>
+                 </div>
+  
+        </div>
+  
+
+          
+    <div id="map" style="    margin-bottom: 0px;"></div>
+
+                
+       
+         
+           
+        
+       
+    </div>
+    
+    
+    <style>
+        .cart {
+    display: block;}
+    </style>
+   
+
+
+
+
+{% endblock content %}

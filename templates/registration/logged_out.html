@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Выход из системы{% endblock %}
+{% block META_description %}Выход из системы{% endblock %}
+
+{% block content %}
+<section id="vhod">
+    <div class="container">
+<div class="row">
+    <div class="col-md-12">
+
+
+<p>Вы вышли из системы!</p>
+
+<a href="{% url 'login'%}">Нажмите здесь, чтобы снова войти в систему.</a>
+
+        </div>
+</div>
+</div>
+</section>
+{% endblock %}

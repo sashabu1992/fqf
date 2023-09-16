@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}Личный кабинет{% endblock %}
+{% block META_description %}Личный кабинет{% endblock %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+<section id="vhod">
+    <div class="container">
+
+
+
+<style>
+
+#real-estates-detail #author img {
+ -webkit-border-radius: 100%;
+ -moz-border-radius: 100%;
+ -ms-border-radius: 100%;
+ -o-border-radius: 100%;
+ border-radius: 100%;
+ border: 5px solid #ecf0f1;
+ margin-bottom: 10px;
+    max-width:200px
+}
+#real-estates-detail .sosmed-author i.fa {
+ width: 30px;
+ height: 30px;
+ border: 2px solid #e8188a;
+ color: #e8188a;
+ padding-top: 6px;
+ margin-top: 10px;
+}
+.panel-default .panel-heading {
+ background-color: #fff;
+}
+#real-estates-detail .slides li img {
+ height: 450px;
+}
+</style>
+
+<div class="container">
+     <div class="col-md-12 ">
+<div class="card mb-3 border-0 nth-shadow">
+   <div class="card-body">
+      <div class="card-title nth-card-title">
+         <h4>Изменение профиля</h4>
+      </div>
+      <form method="post" enctype="multipart/form-data">
+         {% csrf_token %}
+         {{ user_form.as_p }}
+         {{ form.as_p }}
+         <div class="d-grid gap-2 d-md-block mt-2">
+            <button type="submit" class="btn btn-dark">Подтвердить изменение профиля</button>
+         </div>
+      </form>
+   </div>
+</div>
+ </div>
+ </div>
+</div>
+
+
+
+
+    </div>
+</section>
+{% endblock content %}

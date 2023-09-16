@@ -1,0 +1,74 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Политика конфидициальности{% endblock %}
+
+{% block META_description %}Политика конфидициальности{% endblock %}
+
+{% block bread %}
+<section id="bread">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+  <ol class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList"><li><span itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+ <a title="Главная" itemprop="item" href="/"><span itemprop="name">Главная</span><meta itemprop="position" content="0"></a>
+ </span></li><li><span class="sep">-</span></li><li><span itemprop="item" itemscope="" itemtype="http://schema.org/ListItem">
+ <span itemprop="name">Политика конфидициальности</span><meta itemprop="position" content="2">
+ </span></li></ol>
+ </div>
+ </div>
+ </div>
+    </section>
+
+{% endblock bread %}
+
+{% block content %}
+<style>
+       body {
+    background-color: #f2f4f7;
+
+}
+</style>
+<section id="sp-main-body">
+    <div class="container">
+        <div class="row">
+            <div id="sp-component" class="col-lg-12 ">
+                <div class="sp-column ">
+                    <div id="system-message-container">
+                    </div>
+                    <article class="item item-page" itemscope="" itemtype="http://schema.org/Article">
+                        <meta itemprop="inLanguage" content="ru-RU">
+
+
+
+
+
+
+
+
+                        <div itemprop="articleBody">
+
+{{ web_content.text_politic|safe }}
+
+                             </div>
+
+
+
+
+
+                        <!--ul class="pager pagenav">
+                            <li class="next">
+                                <a class="hasTooltip" title="Что ждет дачников в 2020 году: пять важных изменений в законе" aria-label="Следующий: Что ждет дачников в 2020 году: пять важных изменений в законе" href="/blog/129-что-ждет-дачников-в-2020-году-пять-важных-изменений-в-законе.html"
+                                    rel="next">
+			<span aria-hidden="true">Вперед</span> <span class="icon-chevron-right" aria-hidden="true"></span>		</a>
+                            </li>
+                        </ul -->
+
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

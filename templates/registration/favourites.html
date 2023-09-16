@@ -1,0 +1,128 @@
+
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+{% block title %}Избранное{% endblock %}
+{% block META_description %}Избранное{% endblock %}
+
+{% block bread %}
+<section id="bread">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+  <ol class="breadcrumb" itemscope="" itemtype="http://schema.org/BreadcrumbList"><li><span itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+ <a title="Главная" itemprop="item" href="/"><span itemprop="name">Главная</span><meta itemprop="position" content="0"></a>
+ </span></li><li><span class="sep">-</span></li><li><span itemprop="item" itemscope="" itemtype="http://schema.org/ListItem">
+ <span itemprop="name">Избранное</span><meta itemprop="position" content="2">
+ </span></li></ol>
+ </div>
+ </div>
+ </div>
+    </section>
+
+{% endblock bread %}
+
+{% block content %}
+
+
+
+<section id="nazad">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <a href="/" class="btnprev"><svg width="20" height="9" viewBox="0 0 20 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M19 5C19.2761 5 19.5 4.77614 19.5 4.5C19.5 4.22386 19.2761 4 19 4L19 5ZM0.646446 4.14645C0.451185 4.34171 0.451185 4.65829 0.646446 4.85355L3.82843 8.03553C4.02369 8.23079 4.34027 8.23079 4.53553 8.03553C4.7308 7.84027 4.7308 7.52369 4.53553 7.32843L1.70711 4.5L4.53553 1.67157C4.7308 1.47631 4.7308 1.15973 4.53553 0.964465C4.34027 0.769203 4.02369 0.769203 3.82843 0.964465L0.646446 4.14645ZM19 4L1 4L1 5L19 5L19 4Z" fill="#E6007E"/>
+</svg>
+ Вернуться на главную страницу</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<br><br>
+
+   <section id="predlozh" class="pd40">
+      <div class="container">
+         <div class="row">
+             <div class="col-md-12">
+                 <h1>Список избранного</h1>
+
+             </div>
+         </div>
+
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="predlozh">
+
+
+{% for dom in new %}
+
+        {% include "parts/cartochka.html" %}
+
+                    {% empty %}
+<div class="alert alert-warning" role="alert">
+Список избранного пуст!
+</div>
+                    {% endfor %}
+
+
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </section>
+
+    <script>
+      $(document).ready(function() {
+  setTimeout(function() {
+      var mainDivs = $(".opis .cat"); //Получаем все элементы с классом column
+      var maxHeight = 0;
+      for (var i = 0; i < mainDivs.length; ++i) {
+        if (maxHeight < $(mainDivs[i]).height()) { //Находим максимальную высоту
+          maxHeight = $(mainDivs[i]).height();
+        }
+      }
+      for (var i = 0; i < mainDivs.length; ++i) {
+        $(mainDivs[i]).height(maxHeight); //Устанавливаем всем элементам максимальную высоту
+      }
+    }, 1);
+});
+  $(document).ready(function() {
+  setTimeout(function() {
+      var mainDivs = $(".opis h3"); //Получаем все элементы с классом column
+      var maxHeight = 0;
+      for (var i = 0; i < mainDivs.length; ++i) {
+        if (maxHeight < $(mainDivs[i]).height()) { //Находим максимальную высоту
+          maxHeight = $(mainDivs[i]).height();
+        }
+      }
+      for (var i = 0; i < mainDivs.length; ++i) {
+        $(mainDivs[i]).height(maxHeight); //Устанавливаем всем элементам максимальную высоту
+      }
+    }, 1);
+});
+  $(document).ready(function() {
+  setTimeout(function() {
+      var mainDivs = $(".price12"); //Получаем все элементы с классом column
+      var maxHeight = 0;
+      for (var i = 0; i < mainDivs.length; ++i) {
+        if (maxHeight < $(mainDivs[i]).height()) { //Находим максимальную высоту
+          maxHeight = $(mainDivs[i]).height();
+        }
+      }
+      for (var i = 0; i < mainDivs.length; ++i) {
+        $(mainDivs[i]).height(maxHeight); //Устанавливаем всем элементам максимальную высоту
+      }
+    }, 1);
+});
+     </script>
+
+
+
+
+
+{% endblock content %}
+
+

@@ -1,0 +1,313 @@
+
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+{% load static %}
+
+{% block title %} {{ dom.title }} {% endblock %}
+
+{% block META_description %} {{ dom.description }} {% endblock %}
+
+
+{% block content %}
+<style>
+    body {
+    background-color: #f2f4f7;
+}
+</style>
+
+ <link href="{% static 'theme/shaper_empire/css/flexslider.css' %}" rel="stylesheet" type="text/css" />
+     <link href="{% static 'theme/com_sppagebuilder/assets/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" />
+
+    <script src="{% static 'theme/shaper_empire/js/jquery.flexslider-min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'theme/shaper_empire/js/bootstrap.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'theme/shaper_empire/js/jquery.sticky.js' %}" type="text/javascript"></script>
+    <script src="{% static 'theme/shaper_empire/js/main.js' %}" type="text/javascript"></script>
+
+ 
+  <script type="text/javascript">
+  
+
+        jQuery(function($) {
+            if ($("#sppb-addon-1481026887 #carousel").is(".flexslider")) {
+
+                var $sppbTgOptions = $("#sppb-addon-1481026887 .sppb-tg-slider");
+
+                var $autoplay = $sppbTgOptions.data("sppb-tg-autoplay");
+                var $arrows = $sppbTgOptions.data("sppb-tg-arrows");
+
+                $(window).load(function() {
+                    $("#sppb-addon-1481026887 #carousel").flexslider({
+                        animation: "slide",
+                        controlNav: true,
+                        directionNav: $arrows,
+                        animationLoop: false,
+                        slideshow: $autoplay,
+                        itemWidth: 720,
+                        itemMargin: 0,
+                        asNavFor: "#sppb-addon-1481026887 #slider"
+                    });
+
+                    $("#sppb-addon-1481026887 #slider").flexslider({
+                        animation: "fade",
+                        controlNav: false,
+                        directionNav: $arrows,
+                        animationLoop: false,
+                        slideshow: $autoplay,
+                        sync: "#sppb-addon-1481026887 #carousel"
+                    });
+                });
+            }
+        });
+    </script>
+
+<section id="sp-main-body">
+    <div class="container">
+        <div class="row">
+            <div ></div>
+            <div id="sp-component">
+                <div class="sp-column ">
+                    <div id="system-message-container">
+                    </div>
+                    <div id="spproperty" class="spproperty spproperty-view-property">
+                       
+
+                <div class="ancapitalPropertySlider">
+                    {% for item in gallery %}
+                           <a href="/media/{{ item.image }}" {%if forloop.first %} class="active" {%endif%}>
+                <img alt="{{ item.alt }}" src="{{ item.image|thumbnail_url:'gal' }}">
+            </a>
+            {% endfor %}
+                            <div class="ancapitalPropertySliderButtons"><a class="next" href="javascript: void(0)"></a><a class="prev" href="javascript: void(0)"></a></div>
+                        </div>
+                        <!-- /.spproperty-slider -->
+
+                        <div class="spproperty-details-title text-center">
+                            <div class="spproperty-details-icon">
+                                <i class="fa fa-building" aria-hidden="true"></i>
+                            </div>
+
+                            <h2>
+                                <span>{{ dom.get_category_display }} </span>{{ dom.addres }}  </h2>
+
+                        
+                    
+                              
+                        </div>
+                        <!-- /.spproperty-details-title -->
+
+                    
+                    </div>
+                    <!-- /.spproperty -->
+
+                    <script>
+                        jQuery(function($) {
+                            $("#request-for-price-form").on('show.bs.modal', function(e) {
+                                $('#sp-header-sticky-wrapper').css('z-index', '0');
+                            });
+
+                            $("#request-for-price-form").on('hide.bs.modal', function(e) {
+                                $('#sp-header-sticky-wrapper').css('z-index', '999');
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-8 col-xs-12">
+                                    <div class="spproperty-short-overview">
+                                      
+<h3>
+                                            <span>Описание объекта</span>                                                                                           
+                                        </h3>
+                                        <div class="spproperty-short-overview-text">
+                                          {{ dom.post|safe }}
+</div>
+                                        </div>
+
+                                        <div class="spproperty-overview-list" style="display:none;">
+                                            <div class="spproperty-single-list pull-left">
+                                                <span class="pull-left">
+                                    <i class="fa fa-object-group" aria-hidden="true"></i>
+                                </span>
+                                                <p class="pull-left">
+                                                    14 </p>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+
+
+                                <!-- /.col-sm-8 -->
+
+                                <div class="col-sm-4 col-xs-12">
+                                    
+                                    <aside class="spproperty-call-us-widget">
+                                        <h3>
+                                            <span>Стоимость</span>
+                                            <small>
+                              {%if dom.priceot %} <small>от</small> {% endif %}  {{ dom.price|floatformat:"2g" }} ₽                                                                                                                                  </small>
+                                        </h3>
+<br>
+
+                                        <a class="btn1 btn1lg" style="width:100%;" data-bs-toggle="modal" data-bs-target="#exampleModal12">Оставьте заявку</a>
+<br><br>
+
+                                        {% if request.user.is_authenticated %}
+                          {% if fav %}
+      <div>
+        <a class="ajaxfavoritdom blur2" attr-href="{% url 'ajaxbest' dom.id %}" href="{% url 'ajaxbest' dom.id %}"><span class="cp2">Добавить в избранное</span><span class="cp1">Удалить из избранного</span> 
+          </a>
+      </div>
+      {% else %}
+      <div>
+        <a class="ajaxfavoritdom blur1" attr-href="{% url 'ajaxbest' dom.id %}" href="{% url 'ajaxbest' dom.id %}"><span class="cp2">Добавить в избранное</span><span class="cp1">Удалить из избранного</span>  </a>
+      </div>
+      {% endif %}
+                              {% else %}
+      <div>
+        <a href="{% url 'register' %}" >Добавить в избранное</a>
+      </div>
+      {% endif %}
+
+<style>
+ .ajaxfavoritdom.blur2 .cp2{
+        display:none;
+    }
+    .ajaxfavoritdom.blur1 .cp1{
+        display:none;
+    }
+</style>
+                                    </aside>
+               <script type="text/javascript">
+    $(document).ready(function(){
+          $('body').on('click', 'a.ajaxfavoritdom', function(event){
+             event.preventDefault();
+  var a = $(this);
+
+      var link = a.attr("attr-href");
+      $.ajax(link, $(this).toggleClass("blur2 blur1"));
+      return false;
+
+  });
+  });
+  </script>                  
+
+                                    <aside class="spproperty-map-widget">
+                                        <div class="spproperty-map">
+                                           
+                                            <p><i class="fa fa-map-marker" aria-hidden="true"></i></p>
+                                        </div>
+                                        <div class="spproperty-map-widget-content">
+                                            <span>Адрес</span>
+                                            <p class="spproperty-project-address-text">
+                                             {{ dom.addres }}</p>
+                                        </div>
+                                    </aside>
+
+                                   
+
+
+                                </div>
+                            </div>
+                        </div>
+</section>
+
+
+
+
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal12" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered">
+    <div class="modal-content">
+       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-body">
+       
+<form method="POST" id="consult" >
+         {% csrf_token %}
+
+              <h4>бесплатная консультация</h4>
+        <p class="p15">Отправьте заявку на бесплатную консультацию. Мы ответим на все интересующие вас вопросы.</p>
+        <div class="stre"></div>
+
+     {{ form.subject }}
+       <div class="form-group">
+    {{ form.user }}
+        </div>
+      <div class="form-group">
+     {{ form.phone }}
+         </div>
+   <p class="polit">Отправляя заявку, вы соглащаетесь с <a href="{% url 'politika' %}" target="_blank">политикой конфиденциальности сайта</a></p>
+   
+
+    <div class="form-group">
+        
+            <button type="submit" class="btn1">Отправить <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.25 10.875V1.12498C0.25 0.849981 0.3625 0.640481 0.5875 0.496481C0.8125 0.352981 1.05 0.33123 1.3 0.43123L12.85 5.30623C13.1625 5.44373 13.3187 5.67498 13.3187 5.99998C13.3187 6.32498 13.1625 6.55623 12.85 6.69373L1.3 11.5687C1.05 11.6687 0.8125 11.6467 0.5875 11.5027C0.3625 11.3592 0.25 11.15 0.25 10.875ZM1.75 9.74998L10.6375 5.99998L1.75 2.24998V4.87498L6.25 5.99998L1.75 7.12498V9.74998Z" fill="white"/>
+</svg>
+</button>
+        
+    </div>
+ 
+</form>
+
+
+
+
+<div class="good" id="good12">
+    <img src="{% static 'theme/img/1/Group1818.png' %}" class="goodimg" alt="">
+     <h4>ВАША ЗАЯВКА ПРИНЯТА!</h4>
+
+        <div class="stre"></div>
+        <p class="p15">В ближайшее время с вами свяжется наш сотрудник для уточнения всех деталей!</p>
+        <p class="p15 mt40">С уважением, команда “Территории Недвижимости FQF”</p>
+</div>
+
+
+        
+        
+      </div>
+       </div>
+  </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+    $("#consult").submit(function(e){
+      e.preventDefault();
+      var $form = $(this);
+      $(".btn1").prop('disabled', true);
+      $(".btn1").text('Отправляем...');
+      var serializedData = $form.serialize();
+      var $res_message = $("#consult");
+      var $res_message2 = $("#good12");
+      
+      $.ajax({
+          url: '/ajax2/',
+          type: "POST",
+          data: serializedData,
+          dataType: 'json',
+
+          success: function (data) {
+            if (data.error) {
+                  $res_message.text(data.msg);
+                  $res_message.show();
+            }else{
+              $res_message.hide();
+              $res_message2.show();
+                 setTimeout(function () {
+                  window.location.href = "{{ request.path }} "; 
+              }, 4000);
+
+            }
+          }
+        });
+    });
+
+  });
+  </script>
+
+{% endblock content %}

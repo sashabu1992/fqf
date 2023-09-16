@@ -1,0 +1,620 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block title %}Партнеры{% endblock %}
+
+{% block META_description %}Партнеры{% endblock %}
+
+
+{% block zagblock %}
+<style>
+      .zagblock {
+    height: auto;
+    padding-bottom:60px;
+}
+.plus2{
+    background: #FFFFFF;
+box-shadow: 0px 6px 15px rgba(93, 5, 53, 0.12);
+border-radius: 20px;
+padding: 30px 30px 10px;
+
+}
+.rows21 .plus2 {
+    max-width: 23%;
+    margin-bottom: 25px;
+    width: 23%;
+}
+.rows21{
+    margin-top:-30px;
+}
+  </style>
+<div class="zagblock">
+          <div class="container">
+          <h1>Партнеры</h1>
+          <h2>наши партнеры = ваша выгода</h2>
+          <svg width="34" height="33" viewBox="0 0 34 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M16.9948 22.9895C16.8834 22.9895 16.7758 22.9655 16.6718 22.9175C16.5678 22.8688 16.4671 22.8028 16.3698 22.7195L10.9328 17.2815C10.7661 17.1148 10.6861 16.9102 10.6928 16.6675C10.6994 16.4242 10.7861 16.2192 10.9528 16.0525C11.1194 15.8858 11.3208 15.8025 11.5568 15.8025C11.7934 15.8025 11.9951 15.8858 12.1618 16.0525L16.1198 20.0105V10.8855C16.1198 10.6495 16.2064 10.4448 16.3798 10.2715C16.5538 10.0975 16.7588 10.0105 16.9948 10.0105C17.2308 10.0105 17.4358 10.0975 17.6098 10.2715C17.7831 10.4448 17.8698 10.6495 17.8698 10.8855V20.0105L21.8278 16.0525C21.9944 15.8858 22.1994 15.8025 22.4428 15.8025C22.6854 15.8025 22.8901 15.8858 23.0568 16.0525C23.2234 16.2192 23.3068 16.4242 23.3068 16.6675C23.3068 16.9102 23.2234 17.1148 23.0568 17.2815L17.6198 22.7195C17.5364 22.8028 17.4391 22.8688 17.3278 22.9175C17.2171 22.9655 17.1061 22.9895 16.9948 22.9895Z" fill="#E60A80"></path>
+<rect x="1" y="0.5" width="32" height="32" rx="16" stroke="#E6007E"></rect>
+</svg>
+
+
+
+
+</div>
+      </div>
+
+{% endblock zagblock %}
+
+
+{% block content %}
+<section id="baherpartn">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <img src="{% static 'theme/img/sdfsdf.png' %}" class="img-fluid" alt="">
+                <center>
+                    <a href="" class="btn1" data-bs-toggle="modal" data-bs-target="#exampleModal">узнать подробнее</a>
+                </center>
+            </div>
+        </div>
+    </div>
+</section>
+
+  
+  <section id="partners" class="pd40">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+                  <h2 class="zagh">банки - партнеры</h2>
+                 
+{{ web_content.text_bankpartner|safe }}
+              </div>
+          </div>
+          
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="slider-partner">
+                      
+                     
+                      {% for i in bankpartner %}
+                        <div class="it"><img src="/media/{{ i.image_zast }}" class="img-fluid" alt="{{ i.alt }}"></div>
+
+                         {% endfor %}
+                     
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <script>
+
+
+        $('.slider-partner').slick({
+   slidesToShow: 8,
+  slidesToScroll: 1,
+  dots: false,
+  arrows: false,
+  centerMode: false,
+    autoplay: true,
+    infinite: true,
+    autoplaySpeed: 1500,
+  focusOnSelect: true,
+  responsive: [
+    {
+      breakpoint: 900,
+      settings: {
+        slidesToShow: 4,
+          autoplay: true,
+    autoplaySpeed: 1500,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 700,
+      settings: {
+        slidesToShow: 2,
+          autoplay: true,
+    autoplaySpeed: 1500,
+        slidesToScroll: 1,
+        dots: true,
+        infinite: true,
+      }
+    }
+  ]
+});
+</script>
+
+<section id="stat">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Станьте партнером <br>
+“территории недвижимости FQF”</h2>
+
+<a href="" class="btn1" data-bs-toggle="modal" data-bs-target="#exampleModal">стать партнером</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <section id="bonusi" class="pd40">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+                  <h2 class="zagh">бонусы от компаний</h2>
+        
+                      {{ web_content.text_bonus|safe }}
+              </div>
+              
+          </div>
+          
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="sliderbonus">
+
+                      {% for i in partner %}
+                        <div class="it"><img src="/media/{{ i.image_zast }}" class="img-fluid" alt="{{ i.alt }}"></div>
+
+                         {% endfor %}
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <script>
+      
+	      $('.sliderbonus').slick({
+   slidesToShow: 6,
+  slidesToScroll: 1,
+  dots: false,
+  arrows: false,
+  centerMode: false,
+    autoplay: true,
+    infinite: true,
+    autoplaySpeed: 1500,
+  focusOnSelect: true,
+  responsive: [
+       {
+      breakpoint: 1400,
+      settings: {
+        slidesToShow: 5,
+          autoplay: true,
+    autoplaySpeed: 1500,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 900,
+      settings: {
+        slidesToShow: 4,
+          autoplay: true,
+    autoplaySpeed: 1500,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 700,
+      settings: {
+        slidesToShow: 2,
+          autoplay: true,
+    autoplaySpeed: 1500,
+        slidesToScroll: 1,
+        dots: true,
+        infinite: true,
+      }
+    }
+  ]
+});
+  </script>
+  <section id="predlozh" class="pd40 llllf">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+                  <h2 class="zagh2">возможно вам будет полезно</h2>
+                      </div>
+          </div>
+          
+          <div class="row">
+           <!-- не получилось открыть модалку в слайдере -->
+           <div class="sliderpredlozh">
+                        {% for i in usl %}
+
+  
+ <div class="item">   
+                         <div class="pred">
+                            
+                            {% if i.best %} 
+                        <span class="current">
+                                 популярное
+                             </span>
+                             {% endif %}
+                             <span class="izbr">
+                                <img src="{% static 'theme/img/favorite.png' %}" class="img-fluid" alt="">
+                             </span>
+                             <img src="{{ i.image_zast|thumbnail_url:'preview' }}" class="img-fluid trans" alt="">
+                             
+                             <div class="opis">
+                                 <span class="cat"> Услуга       </span>
+                                 <h3 class="het">{{ i.zag }}</h3>
+                                 <div class="str12"></div>
+                                 <span class="price12"><small>от</small> {{ i.price }} ₽</span>
+                                 <a href="" class="knop" data-bs-toggle="modal" data-bs-target="#exampleModaldocpopual{{ i.id }}">Подробнее →</a>
+                             </div>
+                         </div>
+                     </div>
+
+
+          {% endfor %}
+  </div>
+              {% for i in usl %}
+                                                                            
+  <!-- Modal -->
+<div class="modal fade" id="exampleModaldocpopual{{ i.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered">
+    <div class="modal-content">
+       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+       
+       <div class="hedaet" style="background:url('{{ i.image_zast_verh|thumbnail_url:'baherverh' }}');    display: block;
+    width: 800px;
+    height: 216px;
+    border-radius: 6px;"></div>
+      <div class="modal-body2">
+        <div class="opis">
+                                 <span class="cat"> Услуга       </span>
+                                 <div class="rows">
+                                     <div class="klop">
+                                         <h3>{{ i.zag }}</h3>
+                                 <div class="str12"></div>
+                                     </div>
+                                     <div class="klop">
+                                 <span class="price12"><small>от</small> {{ i.price }} ₽</span>
+                                     </div>
+                                 </div>
+                                 
+                                 <div class="contentr">
+                                     {{ i.post|safe }}
+                                 </div>
+                                 
+                                  <div class="knopcentr">
+                      <a href="" class="btn1 btn1lg" data-bs-toggle="modal" data-bs-target="#exampleModal12">ХОЧУ ПРОКОНСУЛЬТИРОВАТЬСЯ</a>
+          
+                  </div>
+                             </div>
+        
+      </div>
+       </div>
+  </div>
+</div>
+
+               {% endfor %}
+          </div>
+      </div>
+  </section>
+  
+  <script>
+      
+
+ $('.sliderpredlozh').slick({
+   slidesToShow:4,
+  slidesToScroll: 1,
+  dots: false,
+  arrows: false,
+  centerMode: false,
+    autoplay: true,
+    infinite: true,
+    autoplaySpeed: 1500,
+  focusOnSelect: true,
+  responsive: [
+       {
+      breakpoint: 1400,
+      settings: {
+        slidesToShow: 5,
+          autoplay: true,
+    autoplaySpeed: 1500,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+       {
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 4,
+          autoplay: true,
+    autoplaySpeed: 1500,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 1000,
+      settings: {
+        slidesToShow: 3,
+          autoplay: true,
+    autoplaySpeed: 1500,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 700,
+      settings: {
+        slidesToShow: 1,
+          autoplay: true,
+    autoplaySpeed: 1500,
+        slidesToScroll: 1,
+        dots: true,
+        infinite: true,
+      }
+    }
+  ]
+});
+
+  </script>
+
+  <section id="forma" class="pd40">
+     <div class="container">
+         <div class="row">
+             <div class="col-md-12">
+                 <div class="formbg">
+                     <img src="theme/img/arrow_downward.png" class="img-fluid imgstr" alt="">
+                   <div id="form1">
+              
+                     
+                             <div class="porty"> 
+         <div id="klj">
+                        <h2>бесплатная консультация</h2>
+                         <p>Отправьте заявку на бесплатную консультацию. Мы ответим на все интересующие вас вопросы.</p>
+                         <div class="str21"></div>
+                 <form method="POST" id="fr1">
+         {% csrf_token %}
+
+     {{ form.subject }}
+    {{ form.user }}
+     {{ form.phone }}
+    <button type="submit" class="btn1 btn12">Отправить <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.25 10.875V1.12498C0.25 0.849981 0.3625 0.640481 0.5875 0.496481C0.8125 0.352981 1.05 0.33123 1.3 0.43123L12.85 5.30623C13.1625 5.44373 13.3187 5.67498 13.3187 5.99998C13.3187 6.32498 13.1625 6.55623 12.85 6.69373L1.3 11.5687C1.05 11.6687 0.8125 11.6467 0.5875 11.5027C0.3625 11.3592 0.25 11.15 0.25 10.875ZM1.75 9.74998L10.6375 5.99998L1.75 2.24998V4.87498L6.25 5.99998L1.75 7.12498V9.74998Z" fill="white"></path>
+</svg>
+</button>
+</form>
+                    <p class="pdj">Отправляя заявку, вы соглащаетесь с <a href="{% url 'politika' %}" target="_blank">политикой конфиденциальности сайта</a></p>
+                      </div>    
+                     </div>
+
+<div class="good" id="good2">
+  <img src="{% static 'theme/img/1/Group1818.png' %}" class="goodimg" alt="">
+     <h4>ВАША ЗАЯВКА ПРИНЯТА!</h4>
+
+        <div class="stre"></div>
+        <p class="p15">В ближайшее время с вами свяжется наш сотрудник для уточнения всех деталей!</p>
+        <p class="p15 mt40">С уважением, команда “Территории Недвижимости FQF”</p>
+</div>
+                     
+                     
+                     </div>   
+                 </div>
+             </div>
+         </div>
+     </div>
+ </section>
+ 
+ <script type="text/javascript">
+    $(document).ready(function(){
+    $("#fr1").submit(function(e){
+      e.preventDefault();
+      var $form = $(this);
+      $(".btn12").prop('disabled', true);
+      $(".btn12").text('Отправляем...');
+      var serializedData = $form.serialize();
+      var $res_message = $(".porty");
+      var $res_message2 = $("#good2");
+      
+      $.ajax({
+          url: '/ajax/',
+          type: "POST",
+          data: serializedData,
+          dataType: 'json',
+
+          success: function (data) {
+            if (data.error) {
+                  $res_message.text(data.msg);
+                  $res_message.show();
+            }else{
+              $res_message.hide();
+              $res_message2.show();
+            }
+          }
+        });
+    });
+  });
+  </script>
+ 
+ <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered">
+    <div class="modal-content">
+       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-body">
+       
+         <form method="POST" id="partner">
+         {% csrf_token %}
+ <h4>СТАТЬ НАШИМ ПАРТНЕРОМ – ЛЕГКО!</h4>
+        <p class="p15">Оставьте заявку на обратный звонок. Мы перезвоним в ближайшее время.</p>
+        <div class="stre"></div>
+     {{ form2.subject }}
+         <div class="form-group">
+      
+        <div class="controls">
+    {{ form2.user }}
+       </div>
+    </div>
+        <div class="form-group">
+      
+        <div class="controls">
+    {{ form2.content }}
+       </div>
+    </div>
+        <div class="form-group">
+      
+        <div class="controls">
+     {{ form2.phone }}
+        </div>
+    </div>
+       <p class="polit">Отправляя заявку, вы соглащаетесь с <a href="{% url 'politika' %}" target="_blank">политикой конфиденциальности сайта</a></p>
+   <div class="form-group">
+    <button type="submit" class="btn1 btn11">Отправить <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.25 10.875V1.12498C0.25 0.849981 0.3625 0.640481 0.5875 0.496481C0.8125 0.352981 1.05 0.33123 1.3 0.43123L12.85 5.30623C13.1625 5.44373 13.3187 5.67498 13.3187 5.99998C13.3187 6.32498 13.1625 6.55623 12.85 6.69373L1.3 11.5687C1.05 11.6687 0.8125 11.6467 0.5875 11.5027C0.3625 11.3592 0.25 11.15 0.25 10.875ZM1.75 9.74998L10.6375 5.99998L1.75 2.24998V4.87498L6.25 5.99998L1.75 7.12498V9.74998Z" fill="white"></path>
+</svg>
+</button>
+ </div>
+</form>
+       
+        
+<div class="good" id="good1">
+   <img src="{% static 'theme/img/1/Group1818.png' %}" class="goodimg" alt="">
+     <h4>ВАША ЗАЯВКА ПРИНЯТА!</h4>
+
+        <div class="stre"></div>
+        <p class="p15">В ближайшее время с вами свяжется наш сотрудник для уточнения всех деталей!</p>
+        <p class="p15 mt40">С уважением, команда “Территории Недвижимости FQF”</p>
+</div>
+        
+        
+      </div>
+       </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+    $("#partner").submit(function(e){
+      e.preventDefault();
+      var $form = $(this);
+      $(".btn11").prop('disabled', true);
+      $(".btn11").text('Отправляем...');
+      var serializedData = $form.serialize();
+      var $res_message = $("#partner");
+      var $res_message2 = $("#good1");
+      
+      $.ajax({
+          url: '/ajax3/',
+          type: "POST",
+          data: serializedData,
+          dataType: 'json',
+
+          success: function (data) {
+            if (data.error) {
+                  $res_message.text(data.msg);
+                  $res_message.show();
+            }else{
+              $res_message.hide();
+              $res_message2.show();
+            }
+          }
+        });
+    });
+  });
+  </script>
+  
+  
+    
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal12" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered">
+    <div class="modal-content">
+       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-body">
+       
+<form method="POST" id="consult" >
+         {% csrf_token %}
+
+              <h4>бесплатная консультация</h4>
+        <p class="p15">Отправьте заявку на бесплатную консультацию. Мы ответим на все интересующие вас вопросы.</p>
+        <div class="stre"></div>
+
+     {{ form3.subject }}
+       <div class="form-group">
+    {{ form3.user }}
+        </div>
+      <div class="form-group">
+     {{ form3.phone }}
+         </div>
+   <p class="polit">Отправляя заявку, вы соглащаетесь с <a href="{% url 'politika' %}" target="_blank">политикой конфиденциальности сайта</a></p>
+   
+
+    <div class="form-group">
+        
+            <button type="submit" class="btn1">Отправить <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.25 10.875V1.12498C0.25 0.849981 0.3625 0.640481 0.5875 0.496481C0.8125 0.352981 1.05 0.33123 1.3 0.43123L12.85 5.30623C13.1625 5.44373 13.3187 5.67498 13.3187 5.99998C13.3187 6.32498 13.1625 6.55623 12.85 6.69373L1.3 11.5687C1.05 11.6687 0.8125 11.6467 0.5875 11.5027C0.3625 11.3592 0.25 11.15 0.25 10.875ZM1.75 9.74998L10.6375 5.99998L1.75 2.24998V4.87498L6.25 5.99998L1.75 7.12498V9.74998Z" fill="white"/>
+</svg>
+</button>
+        
+    </div>
+ 
+</form>
+
+
+
+
+<div class="good" id="good12">
+    <img src="theme/img/1/Group1818.png" class="goodimg" alt="">
+     <h4>ВАША ЗАЯВКА ПРИНЯТА!</h4>
+
+        <div class="stre"></div>
+        <p class="p15">В ближайшее время с вами свяжется наш сотрудник для уточнения всех деталей!</p>
+        <p class="p15 mt40">С уважением, команда “Территории Недвижимости FQF”</p>
+</div>
+
+
+        
+        
+      </div>
+       </div>
+  </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+    $("#consult").submit(function(e){
+      e.preventDefault();
+      var $form = $(this);
+      $(".btn1").prop('disabled', true);
+      $(".btn1").text('Отправляем...');
+      var serializedData = $form.serialize();
+      var $res_message = $("#consult");
+      var $res_message2 = $("#good12");
+      
+      $.ajax({
+          url: '/ajax2/',
+          type: "POST",
+          data: serializedData,
+          dataType: 'json',
+
+          success: function (data) {
+            if (data.error) {
+                  $res_message.text(data.msg);
+                  $res_message.show();
+            }else{
+              $res_message.hide();
+              $res_message2.show();
+                 setTimeout(function () {
+                  window.location.href = "{{ request.path }} "; 
+              }, 4000);
+
+            }
+          }
+        });
+    });
+
+  });
+  </script>
+{% endblock content %}
