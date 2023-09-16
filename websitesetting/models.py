@@ -10,6 +10,7 @@ import os
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django_ckeditor_5.fields import CKEditor5Field
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class WebsiteSettings(models.Model):
@@ -139,4 +140,44 @@ class BankPartner(models.Model):
     
     def __str__(self):
         """Return title and username."""
-        return str(self.image_zast) 
+        return str(self.image_zast)
+
+    # Отзывы клиентов
+class Revius_klient(models.Model):
+    name = models.CharField(max_length=250, blank=True, verbose_name=_('Имя'))
+    text = models.TextField(max_length=6000, verbose_name="Отзыв", blank=True)
+    kolstar = models.IntegerField(
+        validators=[
+            MaxValueValidator(5),
+            MinValueValidator(1)
+        ],
+        blank=False,
+        null=False
+    )
+    class Meta:
+        ordering = ('id',)
+        verbose_name = ('Отзывы клиентов')
+        verbose_name_plural = ('Отзывы клиентов')
+
+    def __str__(self):
+        """Return title and username."""
+        return str(self.name)
+
+#В офисе – как дома
+def get_file_image_office(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = "%s.%s" % (uuid.uuid4(), ext)
+    return os.path.join('img/office/', filename)
+
+class OficeImg(models.Model):
+    image = models.ImageField(upload_to=get_file_image_office, verbose_name="Фото", blank=False)
+    alt = models.CharField(max_length=1000, verbose_name="Тег ALT", blank=True)
+
+    class Meta:
+        ordering = ('id',)
+        verbose_name = ('В офисе – как дома')
+        verbose_name_plural = ('В офисе – как дома')
+
+    def __str__(self):
+        """Return title and username."""
+        return str(self.image)

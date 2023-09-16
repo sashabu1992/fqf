@@ -1,7 +1,7 @@
 from django.contrib import admin
 # Register your models here.
 # Register your models here.
-from .models import WebsiteSettings, VoprosOtvet, Baher, Partner, BankPartner, WebsiteContent
+from .models import WebsiteSettings, VoprosOtvet, Baher, Partner, BankPartner, WebsiteContent, Revius_klient, OficeImg
 from django.utils.http import urlencode
 from django.urls import reverse
 from django.utils.safestring import mark_safe
@@ -26,6 +26,14 @@ class Partner(admin.ModelAdmin):
     def preview(self, obj):
         return mark_safe(f'<img style="max-width:200px" src="{obj.image_zast.url}">')
 
+@admin.register(OficeImg)
+class OficeImg(admin.ModelAdmin):
+    list_display = ( 'preview', 'alt' )
+    readonly_fields = ["preview"]
+
+    def preview(self, obj):
+        return mark_safe(f'<img style="max-width:200px" src="{obj.image.url}">')
+
 @admin.register(Baher)
 class Baher(admin.ModelAdmin):
     list_display = ( 'preview', 'alt' )
@@ -35,9 +43,8 @@ class Baher(admin.ModelAdmin):
         return mark_safe(f'<img style="max-width:200px" src="{obj.image_zast.url}">')
 
 admin.site.register(VoprosOtvet)
-
-
 admin.site.register(WebsiteSettings)
+admin.site.register(Revius_klient)
 
 
 

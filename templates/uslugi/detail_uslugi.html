@@ -1,0 +1,66 @@
+
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+{% load static %}
+
+{% block title %} {{ dom.title }} {% endblock %}
+
+{% block META_description %} {{ dom.description }} {% endblock %}
+
+
+{% block content %}
+<style>
+    body {
+    background-color: #f2f4f7;
+}
+</style>
+
+
+
+  <script type="text/javascript">
+
+
+        jQuery(function($) {
+            if ($("#sppb-addon-1481026887 #carousel").is(".flexslider")) {
+
+                var $sppbTgOptions = $("#sppb-addon-1481026887 .sppb-tg-slider");
+
+                var $autoplay = $sppbTgOptions.data("sppb-tg-autoplay");
+                var $arrows = $sppbTgOptions.data("sppb-tg-arrows");
+
+                $(window).load(function() {
+                    $("#sppb-addon-1481026887 #carousel").flexslider({
+                        animation: "slide",
+                        controlNav: true,
+                        directionNav: $arrows,
+                        animationLoop: false,
+                        slideshow: $autoplay,
+                        itemWidth: 720,
+                        itemMargin: 0,
+                        asNavFor: "#sppb-addon-1481026887 #slider"
+                    });
+
+                    $("#sppb-addon-1481026887 #slider").flexslider({
+                        animation: "fade",
+                        controlNav: false,
+                        directionNav: $arrows,
+                        animationLoop: false,
+                        slideshow: $autoplay,
+                        sync: "#sppb-addon-1481026887 #carousel"
+                    });
+                });
+            }
+        });
+    </script>
+
+<section id="sp-main-body">
+<div class="container">
+    <h2>Заработало</h2>
+</div>
+</section>
+
+
+
+
+{% endblock content %}

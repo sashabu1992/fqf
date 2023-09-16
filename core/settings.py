@@ -190,6 +190,7 @@ THUMBNAIL_ALIASES = {
         'gal': {'size': (700, 400), 'crop': "smart"},
         'baherverh': {'size': (800, 216), 'crop': "smart"},
         'user': {'size': (400, 400), 'crop': "smart"},
+        'officefoto': {'size': (400, 270), 'crop': "smart"},
     },
 }
 

@@ -14,9 +14,49 @@ img{
 .blur{
    filter: grayscale(100%);
 }
+.revius{
+    border-radius: 20px;
+background: #FFF;
+    padding:24px;
+box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.10);
+}
+.shapka12{
+    display:flex;
+    align-items: center;
+    margin-bottom:40px;
+}
+
+.shapka12 .foto{
+    margin-right:20px
+}
+.daleechit{
+    color: #C7327C;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 22px; /* 157.143% */
+}
+.shapka12 .name span{
+    display:block;
+    color: #313131;
+font-size: 19px;
+font-style: normal;
+font-weight: 400;
+line-height: 29px; /* 152.632% */
+letter-spacing: 0.19px;
+}
+.revius p{
+color: #313131;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 26px; /* 162.5% */
+}
 .logo img{
     max-width:158px;
 }
+
+
   .pdt10{
         padding-top:10px;
             display: block;
@@ -512,6 +552,41 @@ border-color:none;
     background:url("/static/theme/img/Rectangle8.png");
     background-size:cover;
     padding:56px 0;
+}
+#reviusform{
+    background:url("/static/theme/img/fon750.png");
+    background-size:cover;
+     padding:56px 0;
+    margin-bottom:70px;
+    position: relative;
+}
+#reviusform h2{
+font-size: 50px;
+font-style: normal;
+font-weight: 500;
+line-height: 100%; /* 50px */
+letter-spacing: 2px;
+text-transform: uppercase;
+    background:linear-gradient(91deg, #D4D4D4 30.23%, #757575 52.69%, #EAEAEA 74.16%, #DFDFDF 95.83%);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+    margin-bottom: 24px;
+}
+#reviusform p{
+    color: rgba(255, 255, 255, 0.80);
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 24px; /* 150% */
+    margin-bottom: 70px;
+}
+.center .it{
+    padding:10px
+}
+#reviusform img{
+    position: absolute;
+    bottom: 0;
 }
 #stat h2{
     font-family: 'Roboto Condensed';
@@ -1478,6 +1553,9 @@ line-height: 22px;
 color: #000000;
 text-transform: uppercase;
 }
+#form1 h2 span{
+    color: #E6007E;
+}
 #form1 p{
     font-style: normal;
 font-weight: 400;
@@ -1512,6 +1590,30 @@ width:33%;
 margin-bottom:15px;
 }
 #fr1 .btn1{
+    width:33%;
+    margin-bottom:15px;
+}
+#fr112{
+      display: flex;
+    max-width: 800px;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+#fr112 input{
+    background: #FFFFFF;
+    border: 1px solid #C8C9CB;
+border-radius: 6px;
+padding: 11px 18px;
+gap: 24px;
+font-style: normal;
+font-weight: 400;
+font-size: 13px;
+line-height: 22px;
+color: #C8C9CB;
+width:33%;
+margin-bottom:15px;
+}
+#fr112 .btn1{
     width:33%;
     margin-bottom:15px;
 }

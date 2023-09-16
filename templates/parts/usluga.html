@@ -17,53 +17,11 @@
                                  <h3 class="het">{{ i.zag }}</h3>
                                  <div class="str12"></div>
                                  <span class="price12"><small>от</small> {{ i.price }} ₽</span>
-                                 <a href="" class="knop" data-bs-toggle="modal" data-bs-target="#exampleModaldocpopual{{ i.id }}{{ modalkey }}">Подробнее →</a>
+                                 <a href="{{ i.get_absolute_url }}" class="knop" >Подробнее →</a>
                              </div>
                          </div>
                          
                                                               
-  <!-- Modal -->
-<div class="modal fade" id="exampleModaldocpopual{{ i.id }}{{ modalkey }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog  modal-dialog-centered">
-    <div class="modal-content">
-       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-       
-       <div class="hedaet" style="background:url('{{ i.image_zast_verh|thumbnail_url:'baherverh' }}');    display: block;
-    width: 800px;
-    height: 216px;
-    border-radius: 6px;"></div>
-      <div class="modal-body2">
-        <div class="opis">
-                                 <span class="cat"> Услуга       </span>
-                                 <div class="rows">
-                                     <div class="klop">
-                                         <h3>{{ i.zag }}</h3>
-                                 <div class="str12"></div>
-                                     </div>
-                                     <div class="klop">
-                                 <span class="price12"><small>от</small> {{ i.price }} ₽</span>
-                                     </div>
-                                 </div>
-                                 
-                                 <div class="contentr">
-                                     {{ i.post|safe }}
-                                 </div>
-                                 
-                                  <div class="knopcentr">
-                      <a href="" class="btn1 btn1lg" data-bs-toggle="modal" data-bs-target="#exampleModal12">ХОЧУ ПРОКОНСУЛЬТИРОВАТЬСЯ</a>
-                      
-          
-                  </div>
-                              
-                                 
-                             </div>
-
- 
-        
-      </div>
-       </div>
-  </div>
-</div>
 
 
 

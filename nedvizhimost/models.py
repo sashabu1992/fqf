@@ -37,7 +37,18 @@ def get_file_image_zast(instance, filename):
     filename = "%s.%s" % (uuid.uuid4(), ext)
     return os.path.join('img/image_zast/', filename)
 
-
+def increment_slug(slug, obj):
+    """
+    Добавляет числовой суффикс к slug, если он уже существует в базе данных.
+    Например, если slug="test", а в базе данных уже есть запись с таким slug,
+    то функция вернет "test-1". Если "test-1" тоже уже существует, то вернет "test-2" и т.д.
+    """
+    original_slug = slug
+    counter = 1
+    while Dom.objects.filter(slug=slug).exclude(id=obj.id).exists():
+        slug = '{}-{}'.format(original_slug, counter)
+        counter += 1
+    return slug if original_slug == slug else slug + '-1'
 
 class Dom(models.Model):
     slug = models.SlugField(max_length=255, blank=True, unique=True, verbose_name="URl")
@@ -83,12 +94,17 @@ class Dom(models.Model):
 
     def get_absolute_url(self):
         return reverse('DetailPosts', kwargs={'slug_dom': self.slug}) # new
+    def clean(self):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        while Dom.objects.filter(slug=self.slug).exclude(id=self.id).exists():
+            self.slug = increment_slug(self.slug, self)
+        super(Dom, self).clean()
 
     def save(self, *args, **kwargs):
-        if not self.slug:
-            # Newly created object, so set slug
-            self.slug = slugify(self.title)
+        self.full_clean()
         super(Dom, self).save(*args, **kwargs)
+
 
 
 def get_file_image_foto(instance, filename):

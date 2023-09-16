@@ -9,6 +9,16 @@ def uslugi(request):
     return render(request, 'nedvizhimost/uslugi.html', context={'usl':usl})
 
 
+
+
+def DetailUslug(request, slug_uslug):
+    uslugi = Uslugi.objects.get(slug=slug_uslug)
+    return render(
+        request,
+        'uslugi/detail_uslugi.html',
+        context={'uslugi': uslugi,  }
+    )
+
 def usl_list(request, tipusl, h1):
     form = USLForm(request.POST)
     form2 = ContactForm(request.POST)

@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
        path('uslugi/', views.uslugi, name='uslugi'),
+       path('uslugi/<slug:slug_uslug>/', views.DetailUslug, name='DetailUslug'),
        path('yuridicheskie-uslugi/', views.usl_list, {
         'tipusl' :'usl1',
         'h1': 'ЮРИДИЧЕСКИЕ УСЛУГИ'
@@ -13,4 +14,5 @@ urlpatterns = [
         'h1': 'РИЭЛТОРСКИЕ УСЛУГИ'
         },
         name='rieltusl'),
+
 ]
