@@ -69,10 +69,14 @@ class Uslugi(models.Model):
     tipcdelki = models.CharField(max_length=16, choices=CATUSLUGI_CHOISE, default='doc', verbose_name="Категория услуги")
     image_zast = models.ImageField(upload_to=get_file_image_zast_usl, verbose_name="Заставка услуги", blank=False)
     image_zast_verh = models.ImageField(upload_to=get_file_image_zast_usl_form, verbose_name="Заставка услуги в форму", blank=False)
-    post = CKEditor5Field( verbose_name="Контент", blank=True, config_name='extends')
+    podzag = models.CharField(max_length=3000, verbose_name="Заголовок Блока 1", blank=True)
+    post = CKEditor5Field( verbose_name="Блок 1", blank=True, config_name='extends')
+    podzag2 = models.CharField(max_length=3000, verbose_name="Заголовок Блока 2", blank=True)
+    post2 = CKEditor5Field(verbose_name="Блок 2", blank=True, config_name='extends')
+    podzag3 = models.CharField(max_length=3000, verbose_name="Заголовок Блока 3", blank=True)
+    post3 = CKEditor5Field(verbose_name="Блок 3", blank=True, config_name='extends')
     best = models.BooleanField(default=False, verbose_name="Лучшее предложение")
     price = models.IntegerField( default='0', verbose_name="Цена")
-
     published_date = models.DateTimeField(blank=True, null=True, verbose_name="Дата публикации")
     created = models.DateField(auto_now=True, blank=True, verbose_name="Дата создания")
     modified = models.DateField( blank=True, auto_now=True, verbose_name="Дата изменения")
@@ -99,10 +103,22 @@ class Uslugi(models.Model):
         self.full_clean()
         super(Uslugi, self).save(*args, **kwargs)
 
-
-
-
     def __str__(self):
         """Return title and username."""
         return str(self.title)
 
+
+# Модель вопрос ответ
+class VoprosOtvet(models.Model):
+    usluga = models.ForeignKey(Uslugi, verbose_name='Услуга', on_delete=models.CASCADE)
+    vopros = models.TextField(max_length=3000, verbose_name="Вопрос", blank=True)
+    otvet = CKEditor5Field(max_length=10000, verbose_name="Ответ", blank=True, config_name='extends')
+
+    class Meta:
+        ordering = ('id',)
+        verbose_name = ('Вопрос - Ответ для услуг')
+        verbose_name_plural = ('Вопрос - Ответ для услуг')
+
+    def __str__(self):
+        """Return title and username."""
+        return str(self.vopros)

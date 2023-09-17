@@ -1,10 +1,17 @@
 from django.contrib import admin
-from .models import PriceUslugi, Uslugi
+from .models import PriceUslugi, Uslugi, VoprosOtvet
 from django import forms
-
 
 # Register your models here.
 admin.site.register(PriceUslugi)
+
+
+@admin.register(VoprosOtvet)
+class VoprosOtvet(admin.ModelAdmin):
+    search_fields = ('vopros',  )
+    list_display = ('usluga', 'vopros', 'otvet', )
+    list_filter = ('usluga',  )
+
 
 
 
@@ -18,7 +25,7 @@ class Uslugi(admin.ModelAdmin):
             'fields': ('title', 'description', 'slug')
         }),
         ('Основные данные', {
-            'fields': ('zag', 'tipusl', 'tipcdelki', 'image_zast', 'image_zast_verh', 'post', 'price')
+            'fields': ('zag', 'tipusl', 'tipcdelki', 'image_zast', 'image_zast_verh', 'podzag','post','podzag2','post2','podzag3','post3', 'price' )
         }),
         ('Настройки', {
             'fields': ('best', 'created', 'modified', 'published_date', 'is_draft')

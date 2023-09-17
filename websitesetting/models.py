@@ -78,7 +78,7 @@ class WebsiteContent(models.Model):
         return str(self.language) 
 
 
-#Модель Районов
+#Модель вопрос ответ
 class VoprosOtvet(models.Model):
     vopros = models.TextField(max_length=3000, verbose_name="Вопрос", blank=True)
     otvet  = CKEditor5Field(max_length=10000, verbose_name="Ответ", blank=True, config_name='extends')
@@ -181,3 +181,27 @@ class OficeImg(models.Model):
     def __str__(self):
         """Return title and username."""
         return str(self.image)
+
+def get_file_image_plus(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = "%s.%s" % (uuid.uuid4(), ext)
+    return os.path.join('img/plus/', filename)
+def get_file_image_plusmob(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = "%s.%s" % (uuid.uuid4(), ext)
+    return os.path.join('img/plus/mob/', filename)
+
+class PlusVam(models.Model):
+    image = models.ImageField(upload_to=get_file_image_plus, verbose_name="Фото", blank=False)
+    imagemob = models.ImageField(upload_to=get_file_image_plusmob, verbose_name="Фото в мобилку", blank=False)
+    zag = models.CharField(max_length=250, blank=True, verbose_name=_('Заголовок'))
+    text = models.TextField(max_length=6000, verbose_name="Текст", blank=True)
+
+    class Meta:
+        ordering = ('id',)
+        verbose_name = ('Преимущества для вас')
+        verbose_name_plural = ('Преимущества для вас')
+
+    def __str__(self):
+        """Return title and username."""
+        return str(self.zag)

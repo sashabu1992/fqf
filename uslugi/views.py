@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import PriceUslugi, Uslugi
+from .models import PriceUslugi, Uslugi, VoprosOtvet
 # Create your views here.
 from crm.forms import USLForm, ContactForm
 
@@ -13,10 +13,14 @@ def uslugi(request):
 
 def DetailUslug(request, slug_uslug):
     uslugi = Uslugi.objects.get(slug=slug_uslug)
+    form2 = ContactForm(request.POST)
+    usluga_id = Uslugi.objects.get(slug=slug_uslug)
+    vopotv = VoprosOtvet.objects.filter(usluga_id=usluga_id)
+    usl_best = Uslugi.objects.filter( best=True)
     return render(
         request,
         'uslugi/detail_uslugi.html',
-        context={'uslugi': uslugi,  }
+        context={'uslugi': uslugi, 'form2':form2, 'vopotv':vopotv, 'usl_best':usl_best}
     )
 
 def usl_list(request, tipusl, h1):

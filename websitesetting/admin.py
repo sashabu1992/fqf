@@ -1,7 +1,7 @@
 from django.contrib import admin
 # Register your models here.
 # Register your models here.
-from .models import WebsiteSettings, VoprosOtvet, Baher, Partner, BankPartner, WebsiteContent, Revius_klient, OficeImg
+from .models import WebsiteSettings, VoprosOtvet, Baher, Partner, BankPartner, WebsiteContent, Revius_klient, OficeImg, PlusVam
 from django.utils.http import urlencode
 from django.urls import reverse
 from django.utils.safestring import mark_safe
@@ -45,6 +45,7 @@ class Baher(admin.ModelAdmin):
 admin.site.register(VoprosOtvet)
 admin.site.register(WebsiteSettings)
 admin.site.register(Revius_klient)
+admin.site.register(PlusVam)
 
 
 

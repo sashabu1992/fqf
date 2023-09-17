@@ -3,7 +3,7 @@ from django.views.generic import TemplateView, ListView, DetailView
 from django.views import generic
 from nedvizhimost.models import Dom
 from uslugi.models import Uslugi
-from websitesetting.models import  Baher, Partner, BankPartner, Revius_klient, OficeImg
+from websitesetting.models import  Baher, Partner, BankPartner, Revius_klient, OficeImg, PlusVam
 from nedvizhimost.forms import DomFilterForms
 
 
@@ -80,6 +80,7 @@ def glav(request):
     best = Dom.objects.filter(best=True)
     baher = Baher.objects.all()
     revius_klient = Revius_klient.objects.all()
+    plus = PlusVam.objects.all()
     partner = Partner.objects.all()
     oficeimg = OficeImg.objects.all()
     form = DomFilterForms(request.GET)
@@ -89,7 +90,7 @@ def glav(request):
     return render(
         request,
         'nedvizhimost/index.html',
-        context={'filter':filter, 'form':form, 'baher': baher, 'partner':partner, 'revius_klient':revius_klient,'oficeimg':oficeimg, 'bankpartner':bankpartner, 'best':best, 'form2':form2}
+        context={'filter':filter, 'form':form, 'baher': baher, 'plus':plus, 'partner':partner, 'revius_klient':revius_klient,'oficeimg':oficeimg, 'bankpartner':bankpartner, 'best':best, 'form2':form2}
         )
 
 

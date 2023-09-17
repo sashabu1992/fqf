@@ -1525,6 +1525,26 @@ background: radial-gradient(25.48% 91.82% at 48.88% 8.18%, rgba(230, 0, 126, 0.4
     position:relative;
     height: calc(100% - 30px);
 }
+.formbg22{
+    background: url("/static/theme/img/Rectangle75.png");
+    background-size: cover;
+}
+.formbg22 h2.hyt{
+    text-align: center;
+font-size: 50px;
+font-style: normal;
+font-weight: 500;
+line-height: 100%; /* 50px */
+letter-spacing: 2px;
+text-transform: uppercase;
+    background: linear-gradient(91deg, #D4D4D4 30.23%, #757575 52.69%, #EAEAEA 74.16%, #DFDFDF 95.83%);
+background-clip: text;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+    max-width:548px;
+    margin: 0 auto;
+    margin-bottom:30px
+}
 .formbg2{
     position:relative;
      padding-top:70px;
@@ -1830,6 +1850,31 @@ footer{
     background:url("/static/theme/img/Rectangle 10.jpg");
     background-size:cover;
     padding:30px 0;
+}
+.pdb80{
+    padding-bottom:80px
+}
+.bestusl .slide{
+    padding:10px
+}
+.btnwhite{
+    background: #FDF0F7;
+    border-color: #FDF0F7;
+    color: #E60A80;
+}
+.btnwhite{
+    margin-left:30px
+}
+.btnwhite svg{
+    margin-right:15px
+}
+.btnwhite:hover{
+     color: #E60A80;
+}
+#bahert{
+     background:url("/static/theme/img/Rectangle761.jpg");
+    background-size:cover;
+    height:428px
 }
 .navfoot ul{
     padding:0;
@@ -3734,8 +3779,8 @@ cursor: pointer;
     padding: 10px;
     line-height:16px;
     background:#fff;
-    border-radius:6px
-    
+    border-radius:6px;
+    border: 1px solid #C8C9CB;
 }
  
 /* Checked */
@@ -3861,6 +3906,64 @@ footer{
 .img-responsive{
     max-width:100%;
 }
+.sliderpredlozh2{
+    margin-top:40px
+}
+.ecran{
+    border-radius: 20px;
+height:433px!important;
+/* тень */
+box-shadow: 0px 6px 15px 0px rgba(93, 5, 53, 0.12);
+    padding:32px
+}
+.textovka{
+    max-width:538px
+}
+.pdr20{
+    padding:0 10px
+}
+.textovka .btn1{
+    display:block;
+    margin-bottom:10px
+}
+
+.textovka .btnwhite {
+    margin-left: 0px;
+}
+.sliderpredlozh2 .slick-list {
+  box-sizing: initial;
+  padding: 25px 0px;
+}
+.textovka .btn1 {
+    display: block;
+    margin-bottom: 10px;
+}
+.btn1 {
+    text-align: center;
+}
+.btnwhite {
+    margin-left: 30px;
+}
+.textovka h2{
+    color: #000;
+font-size: 30px;
+font-style: normal;
+font-weight: 700;
+line-height: 40px; /* 133.333% */
+text-transform: uppercase;
+    margin-bottom:20px
+ }
+.textovka h2 span{
+color: #E6007E;
+ }
+.textovka p{
+    color: rgba(0, 0, 0, 0.40);
+margin-bottom: 24px;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 22px; /* 137.5% */
+}
 @media(max-width:700px){
     .modal-body {
     padding: 50px;
@@ -3871,9 +3974,7 @@ footer{
 .btn1 {
     padding: 8px 10px 8px 10px;
 }
-.pd40 {
-    padding:10px 0;
-}
+
 .spisok a.active {
     padding: 15px 20px;}
     #stat h2 {
@@ -3974,6 +4075,82 @@ footer{
         font-size:15px;
         margin-right: 10px;
     }
+}
+.revius{
+    margin-bottom: 15px;
+}
+.hideimgmob{
+    display:none!important;
+}
+@media(max-width:768px){
+   #reviusform img {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    margin-bottom: -56px;
+}
+    #reviusform {
+    text-align: center;
+}
+   #reviusform .btn1 {
+    margin: 10px auto;
+    display: block;
+}
+   #reviusform h2 {
+       text-align: center;
+font-size: 28px;
+font-style: normal;
+font-weight: 500;
+line-height: 110%; /* 30.8px */
+letter-spacing: 2px;
+text-transform: uppercase;
+   }
+   #fr112 {
+    flex-wrap: wrap;
+}
+   #fr112 input {
+    width: 100%;
+    margin-bottom: 15px;
+}
+   #fr112 .btn1 {
+    width: 100%;
+    margin-bottom: 15px;
+}
+   #form1 h2 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 22px;
+    color: #000000;
+    text-transform: uppercase;
+}
+   .ecran {
+    border-radius: 20px;
+    height: auto!important;
+    box-shadow: 0px 6px 15px 0px rgba(93, 5, 53, 0.12);
+}
+  .textovka h2{
+text-align: center;
+font-size: 20px;
+line-height: 30px; /* 150% */
+  }
+  .ecran{
+    padding:0
+}
+  .textovka{
+      padding:20px
+  }
+  .hideimgmob{
+    display:block!important;
+      width:100%;
+      border-radius: 20px 20px 0 0;
+}
+  .mw150 {
+    max-width: 100%;
+}
+  .filterrest .btn{
+      width:100%
+  }
 }
 
 

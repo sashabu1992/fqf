@@ -1,0 +1,23 @@
+ {% load static %}
+{% load thumbnail %}
+
+
+                         <div class="pred">
+                           
+                            {% if i.best %} 
+                        <span class="current">
+                                 популярное   
+                             </span>
+                             {% endif %}
+
+                             <img src="{{ i.image_zast|thumbnail_url:'preview' }}" class="img-fluid trans" alt="">
+                             
+                             <div class="opis">
+                                 <span class="cat"> Услуга       </span>
+                                 <h3 class="het">{{ i.zag }}</h3>
+                                 <div class="str12"></div>
+                                 <span class="price12"><small>от</small> {{ i.price }} ₽</span>
+                                 <a href="{{ i.get_absolute_url }}" class="knop" >Подробнее →</a>
+                             </div>
+
+                     </div>
