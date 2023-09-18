@@ -17,13 +17,15 @@
                 <li class=" {% if url_name == 'newstroi_list' %}active {% endif %}"><a href="{% url 'newstroi_list' %}">Новостройки</a></li>
             </ul>
         </li>
-        <li class="submenu_wrapp {% if url_name == 'maps_list' %}active {% endif %}"><a href="{% url 'uslugi' %}">Услуги <svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <li class="submenu_wrapp {% if url_name == 'maps_list' %}active {% endif %}"><a href="{% url 'uslugi' %}">Услуги
+            <svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M1 0.755737L5.5 5.25574L10 0.755737" stroke="white"/>
 </svg>
 </a>
             <ul class="">
                 <li class=" {% if url_name == 'maps_list' %}active {% endif %}"><a href="{% url 'yurusl' %}">Юридические услуги</a></li>
                 <li class=" {% if url_name == 'maps_list' %}active {% endif %}"><a href="{% url 'rieltusl' %}">Риэлторские услуги</a></li>
+                <li class=" {% if url_name == 'maps_list' %}active {% endif %}"><a href="{% url 'uslugi' %}">Цены</a></li>
             </ul>
         </li>
           <li class="#"><a href="#">Инвестиции</a></li>

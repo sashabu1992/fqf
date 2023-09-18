@@ -194,8 +194,8 @@ def get_file_image_plusmob(instance, filename):
 class PlusVam(models.Model):
     image = models.ImageField(upload_to=get_file_image_plus, verbose_name="Фото", blank=False)
     imagemob = models.ImageField(upload_to=get_file_image_plusmob, verbose_name="Фото в мобилку", blank=False)
-    zag = models.CharField(max_length=250, blank=True, verbose_name=_('Заголовок'))
-    text = models.TextField(max_length=6000, verbose_name="Текст", blank=True)
+    zag = models.CharField(max_length=250, blank=False, verbose_name=_('Заголовок'))
+    text = models.TextField(max_length=6000, blank=False, verbose_name="Текст")
 
     class Meta:
         ordering = ('id',)

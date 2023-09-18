@@ -20,6 +20,9 @@ background: #FFF;
     padding:24px;
 box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.10);
 }
+#myTab .nav-item{
+
+}
 .shapka12{
     display:flex;
     align-items: center;
@@ -587,6 +590,12 @@ line-height: 24px; /* 150% */
 #reviusform img{
     position: absolute;
     bottom: 0;
+}
+.center .it img{
+    transition:0.7s
+}
+.center .it img:hover{
+    transform: scale(1.05);
 }
 #stat h2{
     font-family: 'Roboto Condensed';
@@ -1244,11 +1253,14 @@ display:block;
     margin-top:32px;
 }
 .zagblock h1{
+
     font-style: normal;
 font-weight: 700;
 font-size: 28px;
-line-height: 22px;
+line-height: 26px;
+
 color: #E6007E;
+        margin: 20px auto;
 text-transform: uppercase;
 margin-bottom:15px;
 }
@@ -4100,7 +4112,7 @@ line-height: 22px; /* 137.5% */
        text-align: center;
 font-size: 28px;
 font-style: normal;
-font-weight: 500;
+font-weight: 600;
 line-height: 110%; /* 30.8px */
 letter-spacing: 2px;
 text-transform: uppercase;
@@ -4150,6 +4162,14 @@ line-height: 30px; /* 150% */
 }
   .filterrest .btn{
       width:100%
+  }
+  #myTab .nav-item {
+    width: 100%;
+    padding: 3px 20px;
+}
+  #myTab .nav-item .nav-link{
+      width:100%;
+      text-align:center
   }
 }
 
