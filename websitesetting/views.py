@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import  VoprosOtvet
+from .models import  VoprosOtvet, Revius_klient
 # Create your views here.
 from django.db.models import Q
 from .forms import VoprosOtvetForm
@@ -16,3 +16,7 @@ def vopros_otvet(request):
     
     return render(request, 'nedvizhimost/vopros_otvet.html',  context={'dataset':dataset, 'form':form, 'count': count})
 
+
+def reviews(request):
+    revius_klient = Revius_klient.objects.all()
+    return render(request, 'nedvizhimost/reviews.html', context={'revius_klient': revius_klient,})

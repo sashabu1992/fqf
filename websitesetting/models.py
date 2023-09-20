@@ -120,6 +120,8 @@ def get_file_image_partner(instance, filename):
 class Partner(models.Model):
     image_zast = models.ImageField(upload_to=get_file_image_partner, verbose_name="Лого", blank=False)
     alt  = models.CharField(max_length=1000, verbose_name="Тег ALT", blank=True)
+    zag = models.CharField(max_length=250, blank=True, verbose_name=_('Заголовок'))
+    text = CKEditor5Field(verbose_name="Текст ", blank=True, config_name='extends')
     class Meta:
         ordering = ('id',)
         verbose_name = ('Наши Партнеры')

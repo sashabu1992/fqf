@@ -212,11 +212,47 @@
                   <div class="sliderbonus">
 
                       {% for i in partner %}
-                        <div class="it"><img src="media/{{ i.image_zast }}" class="img-fluid" alt="{{ i.alt }}"></div>
+
+                        <div  class="it"><a href="" data-bs-toggle="modal" data-bs-target="#exampleModalpodpart{{ i.id }}">
+                       <img src="media/{{ i.image_zast }}" class="img-fluid" alt="{{ i.alt }}">
+                        </a>
+                        </div>
+
 
                          {% endfor %}
+
+
                   </div>
               </div>
+
+             {% for i in partner %}
+                    <!-- Modal -->
+<div class="modal fade" id="exampleModalpodpart{{ i.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog  modal-dialog-centered">
+    <div class="modal-content">
+       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+
+      <div class="modal-body2">
+ <div class="shapka12">
+
+                             <div class="name">
+                                 <span>{{ i.zag }}</span>
+
+                             </div>
+                        </div>
+
+                       <p>{{ i.text|safe }}</p>
+
+
+
+                    </div>
+      </div>
+       </div>
+  </div>
+
+
+                       {% endfor %}
           </div>
       </div>
   </section>
