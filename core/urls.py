@@ -35,6 +35,7 @@ urlpatterns = [
     path('', include('crm.urls')),
     path('', include('users.urls')),
     path('', include('uslugi.urls')),
+    path('', include('invest.urls')),
     path('contatcs/', views.contatcs, name='contatcs'),
     path('about/', views.about, name='about'),
     path('partner/', views.partner, name='partner'),  

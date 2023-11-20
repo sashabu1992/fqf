@@ -3,11 +3,13 @@
     <ul class="">
 
 
-      <li class="submenu_wrapp {% if url_name == 'about' %}active {% endif %}"><a href="{% url 'about' %}">О нас <svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <li class="submenu_wrapp {% if url_name == 'glav' %}active {% endif %}">
+          <a href="{% url 'glav' %}">Главная <svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M1 0.755737L5.5 5.25574L10 0.755737" stroke="white"/>
 </svg>
 </a>
             <ul class="">
+             <li class="{% if url_name == 'about' %}active {% endif %}"><a href="{% url 'about' %}">О нас</a></li>
                 <li class="{% if url_name == 'reviews' %}active {% endif %}"><a href="{% url 'reviews' %}">Отзывы</a></li>
             </ul>
         </li>
@@ -39,7 +41,7 @@
                 <li class=" {% if url_name == 'uslugi' %}active {% endif %}"><a href="{% url 'uslugi' %}">Цены</a></li>
             </ul>
         </li>
-          <li class="#"><a href="#">Инвестиции</a></li>
+          <li class="#"><a href="{% url 'InvestPost' %}">Инвестиции</a></li>
         <li class="submenu_wrapp {% if url_name == 'partner' %}active {% endif %}"><a href="{% url 'partner' %}">Партнеры <svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M1 0.755737L5.5 5.25574L10 0.755737" stroke="white"/>
 </svg>

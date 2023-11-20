@@ -1,0 +1,327 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+
+
+
+{% block title %}Инвест{% endblock %}
+
+{% block META_description %}Инвест{% endblock %}
+
+
+{% block zagblock %}
+ <style>
+         #mse2_mfilter{
+             margin-top:40px;
+         }
+         #mse2_results{
+             margin-top:60px;
+         }
+         .filterrest {
+    margin-bottom: -100%;
+    min-height: 264px;
+}
+         #bk1{
+             margin-bottom: 280px;
+         }
+
+     </style><div class="zagblock">
+          <div class="container">
+          <h1>Инвестируйте с высокой доходностью</h1>
+          <h2>лучшее вложение-своя территория</h2>
+          <svg width="34" height="33" viewBox="0 0 34 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M16.9948 22.9895C16.8834 22.9895 16.7758 22.9655 16.6718 22.9175C16.5678 22.8688 16.4671 22.8028 16.3698 22.7195L10.9328 17.2815C10.7661 17.1148 10.6861 16.9102 10.6928 16.6675C10.6994 16.4242 10.7861 16.2192 10.9528 16.0525C11.1194 15.8858 11.3208 15.8025 11.5568 15.8025C11.7934 15.8025 11.9951 15.8858 12.1618 16.0525L16.1198 20.0105V10.8855C16.1198 10.6495 16.2064 10.4448 16.3798 10.2715C16.5538 10.0975 16.7588 10.0105 16.9948 10.0105C17.2308 10.0105 17.4358 10.0975 17.6098 10.2715C17.7831 10.4448 17.8698 10.6495 17.8698 10.8855V20.0105L21.8278 16.0525C21.9944 15.8858 22.1994 15.8025 22.4428 15.8025C22.6854 15.8025 22.8901 15.8858 23.0568 16.0525C23.2234 16.2192 23.3068 16.4242 23.3068 16.6675C23.3068 16.9102 23.2234 17.1148 23.0568 17.2815L17.6198 22.7195C17.5364 22.8028 17.4391 22.8688 17.3278 22.9175C17.2171 22.9655 17.1061 22.9895 16.9948 22.9895Z" fill="#E60A80"></path>
+<rect x="1" y="0.5" width="32" height="32" rx="16" stroke="#E6007E"></rect>
+</svg>
+
+</div>
+      </div>
+      <div class="container">
+<div class="row msearch2" id="mse2_mfilter">
+  <div class="col-md-12">
+
+      <div class="filterrest">
+
+
+   <button type="submit" class="btn btn-danger btn-lg pull-right hidden  btn-lg" id="filterforms_glav">Показать предложения</button>
+            <div class="clearfix"></div>
+
+
+    </div>
+  </div>
+
+ </div></div>
+
+{% endblock zagblock %}
+
+
+{% block content %}
+
+  <section id="investplus">
+     <div class="container">
+  <div class="slider_invest">
+         <div class="items">
+        <div class="slid_invest">
+                <div class="rows">
+                    <div  class="img_kl">
+                        <img src="{% static 'theme/img/invest/hourglasswithpinksand.png' %}" alt="">
+                    </div>
+                    <div>
+                        <span class="k1">В чем польза “Территория недвижимости fqf” для вас?</span>
+                        <span  class="k2"> экономьте время</span>
+                        <span  class="k3"> Больше не тратьте время на поиск и анализ множества предложений недвижимости на разных сайтах. Мы сделаем это за вас профессионально, быстро, предложив оптимальные варианты по выгодной цене!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="items">
+        <div class="slid_invest">
+                <div class="rows">
+                    <div  class="img_kl">
+                        <img src="{% static 'theme/img/invest/cat under umbrella.png' %}" alt="">
+                    </div>
+                    <div>
+                        <span class="k1">В чем польза “Территория недвижимости fqf” для вас?</span>
+                        <span  class="k2"> Оставайтесь под защитой</span>
+                        <span  class="k3">Мы сотрудничаем только с проверенными застройщиками и собственниками, гарантируем прозрачность всех сделок. Обеспечиваем юридическое сопровождение и профессиональное управление недвижимостью.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="items">
+        <div class="slid_invest">
+                <div class="rows">
+                    <div  class="img_kl">
+                        <img src="{% static 'theme/img/invest/target and dart.png' %}" alt="">
+                    </div>
+                    <div>
+                        <span class="k1">В чем польза “Территория недвижимости fqf” для вас?</span>
+                        <span  class="k2"> Получайте желаемое</span>
+                        <span  class="k3">Наша цель - найти для вас самое подходящее предложение на рынке. Мы не ограничены договоренностями с конкретными застройщиками и собственниками. Мы делаем все возможное, чтобы вы остались довольны сделкой.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+             <div class="items">
+        <div class="slid_invest">
+                <div class="rows">
+                    <div  class="img_kl">
+                        <img src="{% static 'theme/img/invest/check mark side view pink.png' %}" alt="">
+                    </div>
+                    <div>
+                        <span class="k1">В чем польза “Территория недвижимости fqf” для вас?</span>
+                        <span  class="k2"> Реализуйте легко</span>
+                        <span  class="k3">Больше не тратьте время на поиск и анализ множества предложений недвижимости на разных сайтах. Мы сделаем это за вас профессионально, быстро, предложив оптимальные варианты по выгодной цене!</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+             <div class="items">
+        <div class="slid_invest">
+                <div class="rows">
+                    <div class="img_kl">
+                        <img src="{% static 'theme/img/invest/crown slope.png' %}" alt="">
+                    </div>
+                    <div>
+                        <span class="k1">В чем польза “Территория недвижимости fqf” для вас?</span>
+                        <span  class="k2">Почувствуйте уровень сервиса</span>
+                        <span  class="k3"> Забота о каждом клиенте, искреннее уважение и дружелюбный подход к работе помогают достичь желаемого вами результата. Это доказывают: 70% клиентов приходят по рекомендации друзей, 65% обращаются к нам повторно и 25% проводят с нами 3 и более сделки с недвижимостью ежегодно.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+  </div>
+  </section>
+  <script>
+
+
+        $('.slider_invest').slick({
+  dots: true,
+  infinite: true,
+  speed: 200,
+            autoplay: true,
+    autoplaySpeed: 1500,
+  fade: true,
+  cssEase: 'linear'
+});
+  </script>
+
+
+ <section id="invest_list">
+ <div class="container">
+   <div class="row">
+              <div class="col-md-12">
+                  <h2 class="zagh2">
+                      <span>Инвестиционные объекты</span>
+                  <span class="iskl">Найдено 4 предложения</span>
+                  </h2>
+                      </div>
+          </div>
+     
+     <div class="rows">
+         <div class="knop">
+             <a href="" class="active">Список</a>
+             <a href="">показать на карте <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_2198_908" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="16" height="16">
+<rect width="16" height="16" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask0_2198_908)">
+<path d="M8.00065 12.6666C6.43398 11.5111 5.26443 10.3889 4.49198 9.29998C3.71998 8.21109 3.33398 7.14442 3.33398 6.09998C3.33398 5.31109 3.47576 4.61931 3.75932 4.02465C4.04243 3.43042 4.40621 2.93331 4.85065 2.53331C5.2951 2.13331 5.7951 1.83331 6.35065 1.63331C6.90621 1.43331 7.45621 1.33331 8.00065 1.33331C8.54509 1.33331 9.0951 1.43331 9.65065 1.63331C10.2062 1.83331 10.7062 2.13331 11.1507 2.53331C11.5951 2.93331 11.9591 3.43042 12.2427 4.02465C12.5258 4.61931 12.6673 5.31109 12.6673 6.09998C12.6673 7.14442 12.2811 8.21109 11.5086 9.29998C10.7366 10.3889 9.56732 11.5111 8.00065 12.6666ZM8.00065 7.33331C8.36732 7.33331 8.68132 7.20265 8.94265 6.94131C9.20354 6.68042 9.33398 6.36665 9.33398 5.99998C9.33398 5.63331 9.20354 5.31931 8.94265 5.05798C8.68132 4.79709 8.36732 4.66665 8.00065 4.66665C7.63398 4.66665 7.32021 4.79709 7.05932 5.05798C6.79798 5.31931 6.66732 5.63331 6.66732 5.99998C6.66732 6.36665 6.79798 6.68042 7.05932 6.94131C7.32021 7.20265 7.63398 7.33331 8.00065 7.33331ZM3.33398 14.6666V13.3333H12.6673V14.6666H3.33398Z" fill="#939393"/>
+</g>
+</svg>
+</a>
+         </div>
+     </div>
+
+
+     <div class="row">
+{% include "invest/invest_card.html" %}
+         {% include "invest/invest_card.html" %}
+
+     </div>
+ </div>
+ </section>
+
+
+
+
+ {% include "parts/kakproishodit.html" %}
+
+    <style>
+  #kakrabo .zagh2{
+    color: #E60A80;
+    color: #E60A80;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#kakrabo  h2.zagh2::before{
+        background: #E60A80;
+        z-index: -1;
+}
+#kakrabo h2.zagh2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -30px;
+    width: 100%;
+    height: 2px;
+    background: #C4C4C4;
+    z-index: -3;
+}
+#kakrabo h2.zagh2 .iskl{
+color: rgba(230, 10, 128, 0.50);
+font-family: Roboto Condensed;
+font-size: 13px;
+font-style: normal;
+font-weight: 400;
+line-height: 21px; /* 161.538% */
+    text-transform: initial;
+}
+    </style>
+
+
+
+<section id="forma" class="pd40">
+     <div class="container">
+         <div class="row">
+             <div class="col-md-12">
+                 <div class="formbg">
+                     <img src="{% static 'theme/img/arrow_downward.png' %}" class="img-fluid imgstr" alt="">
+                   <div id="form1">
+
+
+                             <div class="porty">
+         <div id="klj">
+                        <h2>бесплатная консультация</h2>
+                         <p>Отправьте заявку на бесплатную консультацию. Мы ответим на все интересующие вас вопросы.</p>
+                         <div class="str21"></div>
+
+                    <form method="POST" id="fr1">
+         {% csrf_token %}
+
+     {{ form2.subject }}
+    {{ form2.user }}
+     {{ form2.phone }}
+    <button type="submit" class="btn1">Отправить <svg width="14" height="12" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.25 10.875V1.12498C0.25 0.849981 0.3625 0.640481 0.5875 0.496481C0.8125 0.352981 1.05 0.33123 1.3 0.43123L12.85 5.30623C13.1625 5.44373 13.3187 5.67498 13.3187 5.99998C13.3187 6.32498 13.1625 6.55623 12.85 6.69373L1.3 11.5687C1.05 11.6687 0.8125 11.6467 0.5875 11.5027C0.3625 11.3592 0.25 11.15 0.25 10.875ZM1.75 9.74998L10.6375 5.99998L1.75 2.24998V4.87498L6.25 5.99998L1.75 7.12498V9.74998Z" fill="white"></path>
+</svg>
+</button>
+</form>
+
+                        <p class="pdj">Отправляя заявку, вы соглащаетесь с <a href="{% url 'politika' %}" target="_blank">политикой конфиденциальности сайта</a></p>
+                      </div>
+                     </div>
+
+<div class="good" id="good2">
+       <img src="{% static 'theme/img/1/Group1818.png' %}" class="goodimg" alt="">
+     <h4>ВАША ЗАЯВКА ПРИНЯТА!</h4>
+
+        <div class="stre"></div>
+        <p class="p15">В ближайшее время с вами свяжется наш сотрудник для уточнения всех деталей!</p>
+        <p class="p15 mt40">С уважением, команда “Территории Недвижимости FQF”</p>
+</div>
+
+
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </section>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    $("#fr1").submit(function(e){
+      e.preventDefault();
+      var $form = $(this);
+      $("#fr1 .btn1").prop('disabled', true);
+      $("#fr1 .btn1").text('Отправляем...');
+      var serializedData = $form.serialize();
+      var $res_message = $("#fr1 .porty");
+      var $res_message2 = $("#fr1 #good2");
+
+      $.ajax({
+          url: '/ajax/',
+          type: "POST",
+          data: serializedData,
+          dataType: 'json',
+
+          success: function (data) {
+            if (data.error) {
+                  $res_message.text(data.msg);
+                  $res_message.show();
+            }else{
+              $res_message.hide();
+              $res_message2.show();
+            }
+          }
+        });
+    });
+  });
+  </script>
+
+
+         <section id="plus" class="pd40">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+                  <h2 class="zagh">Преимущества для вас</h2>
+                  <p><a href="{%  url 'login' %}" class="btn2"><b>Войдите или зарегистрируйтесь</b> в личном кабинете<svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.3 16C12.9 15.9167 14.25 15.3 15.35 14.15C16.45 13 17 11.6167 17 10C17 8.33333 16.4167 6.91667 15.25 5.75C14.0833 4.58333 12.6667 4 11 4C9.38333 4 8 4.55 6.85 5.65C5.7 6.75 5.08333 8.1 5 9.7L7.1 9.075C7.31667 8.175 7.78333 7.43767 8.5 6.863C9.21667 6.28767 10.05 6 11 6C12.1 6 13.0417 6.39167 13.825 7.175C14.6083 7.95833 15 8.9 15 10C15 10.95 14.7123 11.7833 14.137 12.5C13.5623 13.2167 12.825 13.6833 11.925 13.9L11.3 16ZM11 20C12.3833 20 13.6833 19.7373 14.9 19.212C16.1167 18.6873 17.175 17.975 18.075 17.075C18.975 16.175 19.6873 15.1167 20.212 13.9C20.7373 12.6833 21 11.3833 21 10C21 8.61667 20.7373 7.31667 20.212 6.1C19.6873 4.88333 18.975 3.825 18.075 2.925C17.175 2.025 16.1167 1.31233 14.9 0.787C13.6833 0.262333 12.3833 0 11 0C9.61667 0 8.31667 0.262333 7.1 0.787C5.88333 1.31233 4.825 2.025 3.925 2.925C3.025 3.825 2.31267 4.88333 1.788 6.1C1.26267 7.31667 1 8.61667 1 10V10.45C1 10.6 1.01667 10.75 1.05 10.9L3 10.3V10C3 7.76667 3.775 5.875 5.325 4.325C6.875 2.775 8.76667 2 11 2C13.2333 2 15.125 2.775 16.675 4.325C18.225 5.875 19 7.76667 19 10C19 12.2333 18.225 14.125 16.675 15.675C15.125 17.225 13.2333 18 11 18H10.7L10.1 19.95C10.25 19.9833 10.4 20 10.55 20H11ZM2.825 20.15L6.75 16.225L7.5 18.5C7.58333 18.7333 7.74167 18.8457 7.975 18.837C8.20833 18.829 8.36667 18.7083 8.45 18.475L10.725 10.9C10.7917 10.7167 10.75 10.55 10.6 10.4C10.45 10.25 10.2833 10.2083 10.1 10.275L2.525 12.55C2.29167 12.6333 2.17067 12.7917 2.162 13.025C2.154 13.2583 2.26667 13.4167 2.5 13.5L4.775 14.25L0.85 18.175C0.75 18.275 0.700001 18.3917 0.700001 18.525C0.700001 18.6583 0.75 18.775 0.85 18.875L2.125 20.15C2.225 20.25 2.34167 20.3 2.475 20.3C2.60833 20.3 2.725 20.25 2.825 20.15Z" fill="url(#paint0_radial_79_647)"/>
+<defs>
+<radialGradient id="paint0_radial_79_647" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(11 5.5) rotate(90) scale(25.5)">
+<stop stop-color="#E6007E"/>
+<stop offset="1" stop-color="#E6007E" stop-opacity="0"/>
+</radialGradient>
+</defs>
+</svg>
+</a> чтобы получить доступ ко всем возможностям. </p>
+              </div>
+          </div>
+
+
+      </div>
+  </section>
+
+{% endblock content %}

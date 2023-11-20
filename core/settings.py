@@ -59,7 +59,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap4',
     'django_email_verification',
-    'nedvizhimost.templatetags.filter'
+    'nedvizhimost.templatetags.filter',
+    'invest',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
