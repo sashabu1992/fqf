@@ -69,6 +69,7 @@ class Invest(models.Model):
     colkomnat = models.CharField(max_length=16, choices=COL_KOMNAT, default='not', verbose_name="Кол-во комнат")
     ploshad = models.IntegerField(default='0', verbose_name="Площадь")
     price = models.IntegerField(default='0', verbose_name="Цена")
+    adres = models.CharField(max_length=555, blank=True, verbose_name="Адрес")
 
     class Meta:
         ordering = ('title',)
@@ -104,3 +105,7 @@ class GalleryDom(models.Model):
     invest = models.ForeignKey(Invest, verbose_name='Объект недвижимости', on_delete=models.CASCADE)
     image = models.ImageField(upload_to=get_file_image_foto, verbose_name="Фото объекта")
     alt  = models.CharField(max_length=1000, verbose_name="Тег ALT", blank=True)
+
+class TagInvest(models.Model):
+    invest = models.ForeignKey(Invest, verbose_name='Объект недвижимости', on_delete=models.CASCADE)
+    tag  = models.CharField(max_length=1000, verbose_name="Тег", blank=True)
