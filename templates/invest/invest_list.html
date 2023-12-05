@@ -176,8 +176,15 @@
 
 
      <div class="row">
+
+        {% for i in invest %}
 {% include "invest/invest_card.html" %}
-         {% include "invest/invest_card.html" %}
+
+  {% empty %}
+<div class="alert alert-warning" role="alert">
+Подходящих результатов не найдено!
+</div>
+                    {% endfor %}
 
      </div>
  </div>

@@ -1,28 +1,36 @@
    {% load static %}
+{% load thumbnail %}
+
        <div class="col-md-12">
          <div class="investcard">
                 <div class="rows">
                     <div class="sliderinv">
-<div id="carouselExampleIndicators" class="carousel slide">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+<div id="slinv{{ i.id }}" class="sliderinvest">
+       {% for item in gallery %}
+      {% if item.invest.id == i.id %}
+<div class="item">
+      <img src="{{ item.image|thumbnail_url:'galinvestcart' }}" class="d-block w-100" alt="{{ item.alt }}">
   </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="{% static 'theme/img/invest/1.png' %}" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="{% static 'theme/img/invest/2.png' %}" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="{% static 'theme/img/invest/3.png' %}" class="d-block w-100" alt="...">
-    </div>
-  </div>
+             {% endif %}
+            {% endfor %}
 
 </div>
                     </div>
+      {% for item in gallery %}
+      {% if item.invest.id == i.id %}
+ <script>
+                  $('#slinv{{ i.id }}').slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  arrows: false,
+  dots: true,
+  fade: true,
+});
+
+              </script>
+  {% endif %}
+            {% endfor %}
+
                     <div class="opisinv">
                         <div class="stroka">
                             <div>Апартаменты</div>
@@ -41,7 +49,7 @@
 
                              </div>
                         </div>
-                        <h2>Апартаменты под управлением отельного оператора alean Resort </h2>
+                        <h2>{{ i.h1 }} </h2>
                         <div class="stroka2">
                             <div>
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -58,8 +66,7 @@
                         </div>
 
                         <p class="opisinv_p">
-                            Курортный комплекс на большой благоустроенной территории 8га со всей необходимой инфраструктурой для круглогодичного семейного отдыха с собственной пляжной по..
-                        </p>
+                          {{ i.introtext|truncatechars:180 }}     </p>
 
 
                         <div class="strmetki">
@@ -69,7 +76,7 @@
                         </div>
 
                         <div class="priceinvest">
-                            <span>от</span> 12 999 999 ₽
+                            <span>от</span> {{ i.price|floatformat:"2g" }} ₽
                         </div>
 
                         <div class="strbuttoninv">
@@ -81,9 +88,8 @@
 <path fill-rule="evenodd" clip-rule="evenodd" d="M9.63314 8.02244C9.45564 7.62744 9.26864 7.61944 9.09914 7.61244C8.96064 7.60644 8.80264 7.60694 8.64464 7.60694C8.48664 7.60694 8.22964 7.66644 8.01214 7.90394C7.79464 8.14144 7.18164 8.71494 7.18164 9.88194C7.18164 11.0489 8.03164 12.1769 8.15014 12.3349C8.26864 12.4929 9.79114 14.9644 12.2021 15.9154C14.2056 16.7054 14.6136 16.5484 15.0486 16.5089C15.4836 16.4694 16.4521 15.9354 16.6496 15.3814C16.8471 14.8274 16.8471 14.3529 16.7881 14.2539C16.7286 14.1549 16.5706 14.0959 16.3336 13.9769C16.0966 13.8579 14.9301 13.2844 14.7126 13.2054C14.4951 13.1264 14.3371 13.0869 14.1786 13.3244C14.0206 13.5614 13.5661 14.0959 13.4276 14.2539C13.2891 14.4124 13.1506 14.4324 12.9136 14.3134C12.6766 14.1944 11.9126 13.9444 11.0061 13.1364C10.3011 12.5079 9.82514 11.7314 9.68664 11.4939C9.54814 11.2569 9.67164 11.1284 9.79064 11.0099C9.89714 10.9034 10.0276 10.7329 10.1466 10.5944C10.2651 10.4559 10.3046 10.3569 10.3836 10.1989C10.4626 10.0404 10.4231 9.90194 10.3636 9.78344C10.3051 9.66444 9.84414 8.49144 9.63314 8.02244Z" fill="white"/>
 </svg> Написать в WhatsApp
 </a>
-                            <a href="{% url 'InvestDeteil' %}" class="b2">
+                            <a href="{{ i.get_absolute_url }}" class="b2">
                                 Подробнее
-
                             </a>
                         </div>
                     </div>

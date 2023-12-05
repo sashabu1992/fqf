@@ -576,6 +576,30 @@ background-clip: text;
 -webkit-text-fill-color: transparent;
     margin-bottom: 24px;
 }
+.sliderinvest .slick-dots {
+    bottom: 20px;}
+.sliderinvest{
+    margin-bottom:0!important;
+}
+.sliderinvest .slick-dots li button::before {
+    font-family: slick;
+    font-size: 6px;
+    line-height: 20px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 20px;
+    height: 20px;
+    content: "•";
+    text-align: center;
+    opacity: 0.75;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+}
+.sliderinvest .slick-dots li.slick-active button:before {
+    opacity: 1;
+    color: #fff;
+}
 #reviusform p{
     color: rgba(255, 255, 255, 0.80);
 font-size: 16px;
