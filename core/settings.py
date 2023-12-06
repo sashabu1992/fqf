@@ -192,7 +192,8 @@ THUMBNAIL_ALIASES = {
         'baherverh': {'size': (800, 216), 'crop': "smart"},
         'user': {'size': (400, 400), 'crop': "smart"},
         'officefoto': {'size': (400, 270), 'crop': "smart"},
-        'galinvestcart': {'size': (640, 550), 'crop': "smart"},
+        'galinvestcart': {'size': (850, 730), 'crop': "smart"},
+        'galinvest': {'size': (200, 150), 'crop': "smart"},
 
     },
 }

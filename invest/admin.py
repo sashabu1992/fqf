@@ -1,7 +1,7 @@
 from django.contrib import admin
 # Register your models here.
 # Register your models here.
-from .models import Invest, GalleryDom
+from .models import Invest, GalleryDom, TagInvest
 from django.utils.http import urlencode
 from django.urls import reverse
 from django.utils.safestring import mark_safe
@@ -17,6 +17,9 @@ class GalleryDom(admin.TabularInline):
     model = GalleryDom
     extra = 0
 
+class TagInvest(admin.TabularInline):
+    model = TagInvest
+    extra = 0
 
 
 @admin.register(Invest)
@@ -28,18 +31,18 @@ class Invest(admin.ModelAdmin):
             'fields': ('title','description', 'slug')
         }),
         ('Содержимое', {
-            'fields': ('h1', 'introtext', 'post')
+            'fields': ('h1', 'introtext', 'post', 'infrastr')
         }),
         ('Характеристики объекта', {
             'fields': ('deistvie', 'tipcdelki', 'price', 'colkomnat',
-                'ploshad',)
+                'ploshad', 'adres')
         }),
         ('Настройки', {
             'fields': ('created', 'modified', 'published_date', 'is_draft')
         }),
 
     )
-    inlines = [GalleryDom]
+    inlines = [TagInvest, GalleryDom]
     readonly_fields = ('created', 'modified', )
     list_filter = ('is_draft', 'deistvie', 'tipcdelki',)
     prepopulated_fields = {'slug': ('title',)}

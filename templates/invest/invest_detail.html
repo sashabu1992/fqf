@@ -4,9 +4,9 @@
 
 
 
-{% block title %}Инвест детейл{% endblock %}
+{% block title %}{{ investpost.title }}{% endblock %}
 
-{% block META_description %}Инвест детейл{% endblock %}
+{% block META_description %}{{ investpost.description }}{% endblock %}
 
 
 {% block bread %}
@@ -24,7 +24,7 @@
  </span></li>
 
       <li><span class="sep">-</span></li><li><span itemprop="item" itemscope="" itemtype="http://schema.org/ListItem">
- <span itemprop="name">Текущая страница</span><meta itemprop="position" content="3">
+ <span itemprop="name">{{ investpost.h1 }}</span><meta itemprop="position" content="3">
  </span></li>
   </ol>
  </div>
@@ -55,7 +55,7 @@
   <div class="container">
       <div class="row">
           <div class="col-md-12">
-              <h1>Аппартаменты под управлением отельного оператора alean Resort</h1>
+              <h1>{{ investpost.h1 }}</h1>
           </div>
           <div class="col-md-12">
               <div class="sewww">
@@ -71,7 +71,7 @@
 </svg>
 
                             </div>
-                            <div>Россия, Краснодарский край, г.Сочи, пос. Якорная щель, ул. Главная, 54</div>
+                            <div>{{ investpost.adres }}</div>
                         </div>
                   <div class="stroka">
 
@@ -100,18 +100,16 @@
       <div class="row">
           <div class="col-md-8">
               <div class="slider-for">
-                    <div><img src="{% static 'theme/img/invest/1.png' %}" alt=""></div>
-                  <div><img src="{% static 'theme/img/invest/1.png' %}" alt=""></div>
-                  <div><img src="{% static 'theme/img/invest/1.png' %}" alt=""></div>
-                    <div><img src="{% static 'theme/img/invest/1.png' %}" alt=""></div>
-                    <div><img src="{% static 'theme/img/invest/1.png' %}" alt=""></div>
+                  {% for item in gallery %}
+<div><img src="{{ item.image|thumbnail_url:'galinvestcart' }}" class="d-block w-100" alt="{{ item.alt }}"></div>
+            {% endfor %}
+
               </div>
               <div class="slider-nav">
-                    <div><img src="{% static 'theme/img/invest/1.png' %}" alt=""></div>
-                  <div><img src="{% static 'theme/img/invest/1.png' %}" alt=""></div>
-                    <div><img src="{% static 'theme/img/invest/1.png' %}" alt=""></div>
-                    <div><img src="{% static 'theme/img/invest/1.png' %}" alt=""></div>
-                  <div><img src="{% static 'theme/img/invest/1.png' %}" alt=""></div>
+                   {% for item in gallery %}
+<div><img src="{{ item.image|thumbnail_url:'galinvest' }}" class="d-block w-100" alt="{{ item.alt }}"></div>
+            {% endfor %}
+
               </div>
 
 
@@ -143,12 +141,7 @@ $('.slider-nav').slick({
 </div>
     </div>
     <div class="contentblock dlop1">
-       <p> Апартаменты в новом проекте курортного комплекса на большой благоустроенной территории 8га со всей необходимой инфраструктурой для круглогодичного семейного отдыха с собственной пляжной полосой 800м.
-     </p>    <p> Уникальное предложение это два отельных продукта– курортные апартаменты и семейный курорт “Ультра все включено” создают гибкий формат выбора отдыха.
-       </p>    <p>  Прекрасное расположение курорта, вблизи национальный парк и море, что дает не только положительные впечатление, а также оздоровительный эффект.
-       </p>    <p>  Отельный оператор Alean Collection является пионером в развитии концепций All Inclusive и Ultra All Inclusive в России. Существующие проекты оператора являются востребованными, поэтому могут гарантировать высокую доходность по инвестициям.
-       </p>    <p>  Застройщик–группа компаний “ЭТО”. Российская группа компаний, в состав которой входит 12 предприятий, действующих в Сочи и Москве. ГК “ЭТО” специализируется на строительстве отелей и апартаментных комплексов в Сочи и Краснодарском крае.
-     </p>
+      {{ investpost.post|safe }}
     </div>
 </div>
               <div class="boxc pd30">
@@ -160,22 +153,9 @@ $('.slider-nav').slick({
 </div>
     </div>
     <div class="contentblock dlop1">
-    <p>В данном комплексе продумано все до мелочей, и он располагает следующей инфраструктурой: </p>
-        <ul>
-            <li>бары и рестораны</li>
-               <li>академии тенниса и футбола</li>
-               <li>спортивные полощадки и workout</li>
-               <li>фитнес-центр</li>
-               <li>центр водного спорта </li>
-               <li>детские клубы , творческие мастерские, game центр, детские площадки и аквапарк</li>
-                 <li>детское кафе пляжная полоса</li>
-                 <li>2 комплекса открытых подогреваемых бассейнов</li>
-                 <li>крытый бассейн с элементами аквапарка анимационные программы</li>
-                 <li>ежедневное шоу</li>
-                 <li>развлекательный центр салоны красоты, spa-центр, термальный комплекс и медицинский центр конференц центр</li>
-                 <li>коворкинг</li>
 
-        </ul>
+        {{ investpost.infrastr|safe }}
+
     </div>
 </div>
 
@@ -207,7 +187,7 @@ $('.slider-nav').slick({
         </div>
       <div class="opis__rows">
           <span class="zag">Тип сделки</span>
-          <span class="gorod">Продажа</span>
+          <span class="gorod">   {{ investpost.get_deistvie_display }}</span>
       </div>
                            </div>
                     <div class="rows2_div">
@@ -216,7 +196,7 @@ $('.slider-nav').slick({
         </div>
       <div class="opis__rows">
           <span class="zag">Тип объекта</span>
-          <span class="gorod">Курортный комплекс</span>
+          <span class="gorod">{{ investpost.get_tipcdelki_display }}</span>
       </div>
                            </div>
 

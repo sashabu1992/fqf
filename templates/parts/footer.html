@@ -58,6 +58,28 @@ $("#filterforms_glav").click(function(){
     $("#mse2_filters").submit();
 });
 
+
+$("#filterforms_invest").click(function(){
+    $('#mse2_filters_invest').attr('action', {% url 'InvestPost' %});
+    $("input").each(function(){
+        if($(this).val() == '') {
+            $(this).remove();
+        }
+    });
+    $("select").each(function(){
+        if($(this).val() == '') {
+            $(this).remove();
+        }
+    });
+     $("select").each(function(){
+        if($(this).val() == 'not') {
+            $(this).remove();
+        }
+    });
+
+    $("#mse2_filters_invest").submit();
+});
+
 </script>    
 <footer>
     <div class="container">

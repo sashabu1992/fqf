@@ -33,7 +33,7 @@
 
                     <div class="opisinv">
                         <div class="stroka">
-                            <div>Апартаменты</div>
+                            <div>{{ i.get_tipcdelki_display }}</div>
                              <div>
                                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M18 8C19.6569 8 21 6.65685 21 5C21 3.34315 19.6569 2 18 2C16.3431 2 15 3.34315 15 5C15 6.65685 16.3431 8 18 8Z" stroke="#E60A80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -62,7 +62,7 @@
 </svg>
 
                             </div>
-                            <div>Россия, Краснодарский край, г.Сочи, пос. Якорная щель, ул. Главная, 54</div>
+                            <div>{{ i.adres }}</div>
                         </div>
 
                         <p class="opisinv_p">
@@ -70,9 +70,13 @@
 
 
                         <div class="strmetki">
-                            <span>2 варианта</span>
-                              <span>Доходность 3%</span>
-                             <span>Окупаемость 5 лет</span>
+                               {% for item in tag %}
+      {% if item.invest.id == i.id %}
+ <span>{{ item.tag }}</span>
+             {% endif %}
+            {% endfor %}
+
+
                         </div>
 
                         <div class="priceinvest">

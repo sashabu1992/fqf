@@ -55,8 +55,9 @@ class Invest(models.Model):
 
     """Основные данные """
     h1 = models.CharField(max_length=255, verbose_name="Заголовок H1")
+    introtext = models.TextField(max_length=1000, verbose_name="Краткое описание(в карточку)", blank=True)
     post = CKEditor5Field(verbose_name="Содержание", blank=True, config_name='extends')
-    introtext = models.TextField(max_length=1000, verbose_name="Краткое описание", blank=True)
+    infrastr = CKEditor5Field(verbose_name="Инфраструктура", blank=True, config_name='extends')
     published_date = models.DateTimeField(blank=True, null=True, verbose_name="Дата публикации")
     created = models.DateField(auto_now_add=True, blank=True, verbose_name="Дата создания")
     modified = models.DateField(auto_now=True, verbose_name="Дата изменения")
@@ -69,6 +70,7 @@ class Invest(models.Model):
     colkomnat = models.CharField(max_length=16, choices=COL_KOMNAT, default='not', verbose_name="Кол-во комнат")
     ploshad = models.IntegerField(default='0', verbose_name="Площадь")
     price = models.IntegerField(default='0', verbose_name="Цена")
+    adres = models.CharField(max_length=555, blank=True, verbose_name="Адрес")
 
     class Meta:
         ordering = ('title',)
@@ -80,7 +82,7 @@ class Invest(models.Model):
         return str(self.h1)
 
     def get_absolute_url(self):
-        return reverse('InvestPosts', kwargs={'slug_invest': self.slug})  # new
+        return reverse('InvestDeteilPosts', kwargs={'slug_invest': self.slug})  # new
 
     def clean(self):
         if not self.slug:
@@ -104,3 +106,7 @@ class GalleryDom(models.Model):
     invest = models.ForeignKey(Invest, verbose_name='Объект недвижимости', on_delete=models.CASCADE)
     image = models.ImageField(upload_to=get_file_image_foto, verbose_name="Фото объекта")
     alt  = models.CharField(max_length=1000, verbose_name="Тег ALT", blank=True)
+
+class TagInvest(models.Model):
+    invest = models.ForeignKey(Invest, verbose_name='Объект недвижимости', on_delete=models.CASCADE)
+    tag  = models.CharField(max_length=1000, verbose_name="Тег", blank=True)

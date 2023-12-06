@@ -1,0 +1,182 @@
+ 
+<form method="GET" id="mse2_filters_invest" action="">
+ <div class="fler">
+                   
+           <fieldset class="flert"> 
+
+               <div class="form-group-flex">
+
+             
+ {% for field in form.deistvie %}
+
+  
+  {{ field }}
+
+  {% endfor %}
+  
+
+
+</div>
+
+
+</fieldset>
+
+  <fieldset class="flert">
+
+               <div class="form-group-flex">
+
+
+ {% for field in form.tipcdelki %}
+
+
+  {{ field }}
+
+  {% endfor %}
+
+
+
+</div>
+
+
+</fieldset>
+
+
+
+            </div>
+ <div class="fler">
+
+ <fieldset class="flert">
+
+  
+ 
+               <div class="form-group-flex">
+
+             
+ {% for field in form.category %}               
+
+  
+  {{ field }}
+
+  {% endfor %}
+
+
+    </div>
+</fieldset> 
+ 
+      
+               </div>
+ <div class="fler fler_21">   
+
+
+
+   
+           <fieldset >
+    <h4 class="filter_title">Город</h4>
+  
+
+               <div class="form-group-flex">
+
+            <select name="gorod" id="">
+          
+ {% for field in form.gorod %}               
+
+  
+  {{ field }}
+
+  {% endfor %}
+  
+
+  </select> 
+
+</div>
+
+</fieldset> 
+
+  <fieldset >
+    <h4 class="filter_title">Кол-во комнат</h4>
+  
+
+               <div class="form-group-flex">
+
+            <select name="colkomnat" id="">
+ {% for field in form.colkomnat %}               
+
+  
+  {{ field }}
+
+  {% endfor %}
+  </select> 
+
+</div>
+
+</fieldset> 
+      
+
+<fieldset class="mw150">
+    <h4 class="filter_title">Стоимость, ₽ </h4>
+  
+       <div class="flert_flex">
+       
+ {% for field in form.min_price %}
+                
+        <div class="form-group-flex">
+ 
+      
+        {{ field }}
+
+</div>
+  {% endfor %}
+<div><span>-</span></div>
+ {% for field in form.max_price %}
+                
+        <div class="form-group-flex">
+      
+        {{ field }}
+
+</div>
+  {% endfor %}
+
+</div>
+      
+
+
+</fieldset>
+       
+
+
+
+<fieldset class="mw150">
+    <h4 class="filter_title">Площадь, м/кв </h4>
+  
+
+       <div class="flert_flex">
+ {% for field in form.min_pl %}
+                
+        <div class="form-group-flex">
+ 
+
+        {{ field }}
+
+</div>
+  {% endfor %}
+<div><span>-</span></div>
+ {% for field in form.max_pl %}
+                
+        <div class="form-group-flex">
+   
+        {{ field }}
+
+</div>
+  {% endfor %}
+</div>
+
+</fieldset>
+
+
+          
+
+            </div>
+                       </form>
+
+
+     
