@@ -35,7 +35,7 @@ class Invest(admin.ModelAdmin):
         }),
         ('Характеристики объекта', {
             'fields': ('deistvie', 'tipcdelki', 'price', 'colkomnat',
-                'ploshad', 'adres')
+                'ploshad', 'adres', 'gotov','drugoe','country','present')
         }),
         ('Настройки', {
             'fields': ('created', 'modified', 'published_date', 'is_draft')

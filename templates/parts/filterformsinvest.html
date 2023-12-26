@@ -1,159 +1,64 @@
- 
-<form method="GET" id="mse2_filters_invest" action="">
- <div class="fler">
-                   
-           <fieldset class="flert"> 
+ <style>
+    #filterforms_invest{
+            height: 42px;
+    line-height: 42px;
+    padding: 0 20px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+    }
+</style>
+<form method="GET" id="mse2_filters" action="">
 
+
+ <div class="fler fler_21">
+  <fieldset >
+    <h4 class="filter_title">Действие</h4>
                <div class="form-group-flex">
-
-             
+                    <select name="deistvie" id="">
  {% for field in form.deistvie %}
-
-  
   {{ field }}
-
   {% endfor %}
-  
-
-
+  </select>
 </div>
-
-
 </fieldset>
-
-  <fieldset class="flert">
-
-               <div class="form-group-flex">
-
-
- {% for field in form.tipcdelki %}
-
-
-  {{ field }}
-
-  {% endfor %}
-
-
-
-</div>
-
-
-</fieldset>
-
-
-
-            </div>
- <div class="fler">
-
- <fieldset class="flert">
-
-  
- 
-               <div class="form-group-flex">
-
-             
- {% for field in form.category %}               
-
-  
-  {{ field }}
-
-  {% endfor %}
-
-
-    </div>
-</fieldset> 
- 
-      
-               </div>
- <div class="fler fler_21">   
-
-
-
-   
            <fieldset >
-    <h4 class="filter_title">Город</h4>
-  
-
+    <h4 class="filter_title">Тип</h4>
                <div class="form-group-flex">
-
-            <select name="gorod" id="">
-          
- {% for field in form.gorod %}               
-
-  
+                    <select name="tipcdelki" id="">
+ {% for field in form.tipcdelki %}
   {{ field }}
-
   {% endfor %}
-  
-
-  </select> 
-
+  </select>
 </div>
-
-</fieldset> 
-
+</fieldset>
   <fieldset >
     <h4 class="filter_title">Кол-во комнат</h4>
-  
+
 
                <div class="form-group-flex">
 
             <select name="colkomnat" id="">
- {% for field in form.colkomnat %}               
+ {% for field in form.colkomnat %}
 
-  
+
   {{ field }}
 
   {% endfor %}
-  </select> 
+  </select>
 
 </div>
-
-</fieldset> 
-      
-
-<fieldset class="mw150">
-    <h4 class="filter_title">Стоимость, ₽ </h4>
-  
-       <div class="flert_flex">
-       
- {% for field in form.min_price %}
-                
-        <div class="form-group-flex">
- 
-      
-        {{ field }}
-
-</div>
-  {% endfor %}
-<div><span>-</span></div>
- {% for field in form.max_price %}
-                
-        <div class="form-group-flex">
-      
-        {{ field }}
-
-</div>
-  {% endfor %}
-
-</div>
-      
-
 
 </fieldset>
-       
-
-
-
 <fieldset class="mw150">
     <h4 class="filter_title">Площадь, м/кв </h4>
-  
+
 
        <div class="flert_flex">
  {% for field in form.min_pl %}
-                
+
         <div class="form-group-flex">
- 
+
 
         {{ field }}
 
@@ -161,9 +66,9 @@
   {% endfor %}
 <div><span>-</span></div>
  {% for field in form.max_pl %}
-                
+
         <div class="form-group-flex">
-   
+
         {{ field }}
 
 </div>
@@ -172,11 +77,72 @@
 
 </fieldset>
 
+   <fieldset >
+    <h4 class="filter_title">Готовность</h4>
+               <div class="form-group-flex">
+                    <select name="gotov" id="">
+ {% for field in form.gotov %}
+  {{ field }}
+  {% endfor %}
+  </select>
+</div>
+</fieldset>
 
-          
+   <fieldset >
+    <h4 class="filter_title">Другое</h4>
+               <div class="form-group-flex">
+                    <select name="drugoe" id="">
+ {% for field in form.drugoe %}
+  {{ field }}
+  {% endfor %}
+  </select>
+</div>
+</fieldset>
+</div>
+  <div class="fler fler_21">
 
-            </div>
-                       </form>
+<fieldset class="stoimostknp">
+    <h4 class="filter_title">Стоимость, ₽ </h4>
+
+       <div class="flert_flex">
+
+ {% for field in form.min_price %}
+
+        <div class="form-group-flex">
+
+
+        {{ field }}
+
+</div>
+  {% endfor %}
+<div><span>-</span></div>
+ {% for field in form.max_price %}
+
+        <div class="form-group-flex">
+
+        {{ field }}
+
+</div>
+  {% endfor %}
+
+</div>
+</fieldset>
+    <fieldset class="countryknop">
+    <h4 class="filter_title">Страна</h4>
+               <div class="form-group-flex">
+                    <select name="country" id="">
+ {% for field in form.country %}
+  {{ field }}
+  {% endfor %}
+  </select>
+</div>
+</fieldset>
+    <fieldset class="sendknop">
+         <h4 class="filter_title">&nbsp;</h4>
+   <button type="submit" class="btn btn-danger btn-lg  hidden  btn-lg" id="filterforms_invest">Показать предложения</button>
+</fieldset>
+</div>
+           </form>
 
 
      

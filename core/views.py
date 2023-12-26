@@ -51,12 +51,13 @@ def success(request):
 def success2(request):
     res = {'error': False}
     form = NedvForm(request.POST)
+    print("1111")
     if request.method == "POST":
         if form.is_valid():
             # Формируем сообщение для отправки
             data = form.data
             subject = f'Форма БЕСПЛАТНАЯ КОНСУЛЬТАЦИЯ '
-            telo = f'Сообщение от {data["user"]} Телефон: {data["phone"]} Сообщение: {data["content"]} '
+            telo = f'Сообщение от {data["user"]} Телефон: {data["phone"]}  '
             email(subject, telo)
             form.save()
     return JsonResponse(res)

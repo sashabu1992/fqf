@@ -1,0 +1,94 @@
+
+
+
+{% if otvet  %}
+
+<div id="mse2_selected_wrapper">
+      <div id="mse2_selected" style="display: block;"><strong>Выбранные фильтры:</strong>
+
+      {% for i in deistvie %}
+            {% if i == 'kupit'%}
+              <span class="mse2_selected_link"><em>Купить</em></span>
+            {% elif i == 'prodat' %}
+              <span class="mse2_selected_link"><em>Продать</em></span>
+            {% endif %}
+         {% endfor %}
+
+
+      {% for i in country %}
+            {% if i == 'russia'%}
+              <span class="mse2_selected_link"><em>Россия</em></span>
+            {% elif i == 'oae' %}
+              <span class="mse2_selected_link"><em>ОАЭ</em></span>
+            {% endif %}
+         {% endfor %}
+
+
+      {% for i in drugoe %}
+            {% if i == 'remont'%}
+              <span class="mse2_selected_link"><em>C ремонтом</em></span>
+            {% elif i == 'bezremont' %}
+              <span class="mse2_selected_link"><em>Без ремонта</em></span>
+            {% endif %}
+         {% endfor %}
+
+
+          {% for i in vibor_tipcdelki %}
+            {% if i == 'kvartira'%}
+              <span class="mse2_selected_link"><em>Квартиры</em></span>
+
+            {% endif %}
+         {% endfor %}
+
+
+          {% for i in gotov %}
+            {% if i == 'gotov'%}
+              <span class="mse2_selected_link"><em>Строится</em></span>
+            {% elif i == 'sdan' %}
+              <span class="mse2_selected_link"><em>Сдан</em></span>
+            {% endif %}
+         {% endfor %}
+
+
+        {% for i in vibor_colkomnat %}
+             {% if i == 'stud'%}
+              <span class="mse2_selected_link"><small>Кол-во комнат</small> <em>Студия</em></span>
+            {% elif i == '1k'%}
+              <span class="mse2_selected_link"><small>Кол-во комнат</small> <em>1</em></span>
+            {% elif i == '2k' %}
+              <span class="mse2_selected_link"><small>Кол-во комнат</small> <em>2</em></span>
+             {% elif i == '3k' %}
+              <span class="mse2_selected_link"><small>Кол-во комнат</small> <em>3</em></span>
+             {% elif i == '4k' %}
+              <span class="mse2_selected_link"><small>Кол-во комнат</small> <em>4+</em></span>
+            {% endif %}
+         {% endfor %}
+
+
+{% if vibor_min_price %}
+    <span class="mse2_selected_link"><em><small>Цена от</small> {{ vibor_min_price }}</em></span>
+{% endif %}
+{% if vibor_max_price %}
+    <span class="mse2_selected_link"><em><small>Цена до</small> {{ vibor_max_price }}</em></span>
+{% endif %}
+
+{% if vibor_min_pl %}
+    <span class="mse2_selected_link"><em><small>Площадь от</small> {{ vibor_min_pl }}</em></span>
+{% endif %}
+{% if vibor_max_pl %}
+    <span class="mse2_selected_link"><em><small>Площадь до</small> {{ vibor_max_pl }}</em></span>
+{% endif %}
+
+
+      </div>
+
+      <div class="asasasa">
+        <a type="reset" href="{{ request.path }}" class="asas">СБРОСИТЬ ВСЕ <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 4.00009L4 12.0001" stroke="white" stroke-linecap="square" stroke-linejoin="round"></path>
+<path d="M4 4.00009L12 12.0001" stroke="white" stroke-linecap="square" stroke-linejoin="round"></path>
+</svg></a>
+      </div>
+
+  </div>
+    </div>
+{% endif %}

@@ -13,14 +13,28 @@ from django.contrib.auth.models import User
 
 
 DEISTVIE_CHOISE= (
+    ('not','---------'),
     ('kupit','Купить'),
     ('prodat', 'Продать')
 )
 TIP_CHOISE= (
+    ('not','---------'),
     ('apartament','Апартаменты'),
-    ('kvartira','Квартиры'),
-    ('komerch', 'Коммерческая недвижимость'),
-    ('zagorod','Загородные дома'),
+)
+GOTOV= (
+    ('not','---------'),
+    ('gotov','строится'),
+    ('sdan','сдан'),
+)
+DRUGOE= (
+    ('not','---------'),
+    ('remont','с ремонтом'),
+    ('bezremont','без ремонта'),
+)
+COUNTRY= (
+    ('not','---------'),
+    ('russia','Россия'),
+    ('oae','ОАЭ'),
 )
 COL_KOMNAT= (
     ('not','---------'),
@@ -71,6 +85,13 @@ class Invest(models.Model):
     ploshad = models.IntegerField(default='0', verbose_name="Площадь")
     price = models.IntegerField(default='0', verbose_name="Цена")
     adres = models.CharField(max_length=555, blank=True, verbose_name="Адрес")
+    gotov = models.CharField(max_length=16, choices=GOTOV, default='gotov',
+                                verbose_name="Готовность")
+    drugoe = models.CharField(max_length=16, choices=DRUGOE, default='remont',
+                                verbose_name="Другое")
+    country = models.CharField(max_length=16, choices=COUNTRY, default='russia',
+                              verbose_name="Страна")
+    present = models.FileField(upload_to="present", blank=True, verbose_name="Презентация")
 
     class Meta:
         ordering = ('title',)

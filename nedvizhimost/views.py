@@ -24,6 +24,11 @@ def nedvizhimost_list(request, template, category, h1):
     vibor_tipcdelki = otvet.getlist('tipcdelki')
     vibor_category = otvet.getlist('category')
     vibor_colkomnat = otvet.getlist('colkomnat')
+    vibor_min_price = otvet.get('min_price')
+    vibor_max_price = otvet.get('max_price')
+    vibor_min_pl = otvet.get('min_pl')
+    vibor_max_pl = otvet.get('max_pl')
+
     if otvet.get('gorod'):
         vibor_gorod = Gorod.objects.filter(id=int(otvet.get('gorod')))
     else:
@@ -41,10 +46,7 @@ def nedvizhimost_list(request, template, category, h1):
     else:
         vibor_komplex = ''
 
-    vibor_min_price = otvet.get('min_price')
-    vibor_max_price = otvet.get('max_price')
-    vibor_min_pl = otvet.get('min_pl')
-    vibor_max_pl = otvet.get('max_pl')
+
 
     if form.is_valid():
         print("------------------111111111-------------------")

@@ -60,7 +60,7 @@ $("#filterforms_glav").click(function(){
 
 
 $("#filterforms_invest").click(function(){
-    $('#mse2_filters_invest').attr('action', {% url 'InvestPost' %});
+    $('#mse2_filters').attr('action', {% url 'InvestPost' %});
     $("input").each(function(){
         if($(this).val() == '') {
             $(this).remove();

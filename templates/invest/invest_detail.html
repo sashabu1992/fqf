@@ -295,9 +295,10 @@ buttons.forEach((button, index) => {
                        Цена продажи
                     </span>
                     <div class="priceinvest mk0">
-                            <span>от</span> 12 999 999 ₽
+                            <span>от</span> {{ investpost.price|floatformat:"2g" }} руб.
                         </div>
-                    <a href="" class="download"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                    <a href="{{ investpost.present.url }}" class="download" target="_blank"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M19 13.6667V17.2222C19 17.6937 18.8127 18.1459 18.4793 18.4793C18.1459 18.8127 17.6937 19 17.2222 19H4.77778C4.30628 19 3.8541 18.8127 3.5207 18.4793C3.1873 18.1459 3 17.6937 3 17.2222V13.6667" stroke="#E60A80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M6.55469 9.22223L10.9991 13.6667L15.4436 9.22223" stroke="#E60A80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M11 13.6667V3" stroke="#E60A80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

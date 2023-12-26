@@ -547,6 +547,10 @@ border-color:none;
 .form-control.error{
     border-color:red;
 }
+.form-control{
+    margin-bottom:10px;
+    height:42px;
+}
 .good{
  text-align:center;   
  display:none;
@@ -3721,6 +3725,7 @@ border: 1px solid #E60A80;
     flex-wrap: wrap;
     gap: 10px;
         justify-content: space-between;
+    align-items: center;
 }
 .flert{
     width:100%!important;
@@ -4587,6 +4592,15 @@ font-size: 16px;
 font-style: normal;
 font-weight: 400;
 line-height: 22px; /* 137.5% */
+}
+.countryknop{
+    min-width:33%;
+}
+.sendknop{
+     min-width:33%;
+}
+.stoimostknp{
+    min-width:33%;
 }
 .download{
     display:flex;

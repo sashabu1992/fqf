@@ -18,12 +18,9 @@
              margin-top:60px;
          }
          .filterrest {
-    margin-bottom: -100%;
-    min-height: 264px;
+    margin-bottom: -30px;
 }
-         #bk1{
-             margin-bottom: 280px;
-         }
+
 
      </style><div class="zagblock">
           <div class="container">
@@ -43,9 +40,9 @@
       <div class="filterrest">
 
  {% include "parts/filterformsinvest.html" %}
-   <button type="submit" class="btn btn-danger btn-lg pull-right hidden  btn-lg" id="filterforms_invest">Показать предложения</button>
-            <div class="clearfix"></div>
 
+            <div class="clearfix"></div>
+  {% include "invest/otvet_form_invest.html" %}
 
     </div>
   </div>
@@ -236,7 +233,7 @@ line-height: 21px; /* 161.538% */
              <div class="col-md-12">
                  <div class="formbg">
                      <img src="{% static 'theme/img/arrow_downward.png' %}" class="img-fluid imgstr" alt="">
-                   <div id="form1">
+                   <div id="form1" class="investform">
 
 
                              <div class="porty">
@@ -285,8 +282,8 @@ line-height: 21px; /* 161.538% */
       $("#fr1 .btn1").prop('disabled', true);
       $("#fr1 .btn1").text('Отправляем...');
       var serializedData = $form.serialize();
-      var $res_message = $("#fr1 .porty");
-      var $res_message2 = $("#fr1 #good2");
+      var $res_message = $(".investform .porty");
+      var $res_message2 = $(".investform #good2");
 
       $.ajax({
           url: '/ajax/',
