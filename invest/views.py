@@ -2,16 +2,18 @@ from django.shortcuts import render
 from crm.forms import  ContactForm
 from .models import Invest, GalleryDom, TagInvest
 from .forms import InvestFilterForms
-
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
+from django.http import JsonResponse, HttpResponse, JsonResponse
+from nedvizhimost.models import Dom
 # Create your views here.
-def InvestPost(request):
+def InvestPost(request, template):
     invest = Invest.objects.filter(is_draft=True)
     form = InvestFilterForms(request.GET)
     otvet = request.GET
     gallery = GalleryDom.objects.filter()
     tag = TagInvest.objects.filter()
     form2 = ContactForm(request.POST)
-
+    best = Dom.objects.filter(best=True)
     deistvie = otvet.getlist('deistvie')
     country = otvet.getlist('country')
     vibor_min_price = otvet.get('min_price')
@@ -23,7 +25,6 @@ def InvestPost(request):
     vibor_tipcdelki = otvet.getlist('tipcdelki')
     vibor_colkomnat = otvet.getlist('colkomnat')
     if form.is_valid():
-        print("------------------111111111-------------------")
         if form.cleaned_data["min_price"]:
             invest = invest.filter(price__gte=form.cleaned_data["min_price"])
         if form.cleaned_data["max_price"]:
@@ -46,19 +47,34 @@ def InvestPost(request):
             invest = invest.filter(colkomnat__in=form.cleaned_data["colkomnat"])
     return render(
         request,
-        'invest/invest_list.html',
-        context={'form2':form2, 'invest':invest, 'gallery':gallery, 'tag':tag, 'form':form,  'otvet': otvet, 'deistvie':deistvie,'vibor_min_price':vibor_min_price,'vibor_max_price':vibor_max_price,
+        template,
+        context={'best':best, 'form2':form2, 'invest':invest, 'gallery':gallery, 'tag':tag, 'form':form,  'otvet': otvet, 'deistvie':deistvie,'vibor_min_price':vibor_min_price,'vibor_max_price':vibor_max_price,
                  'vibor_min_pl':vibor_min_pl,'vibor_max_pl':vibor_max_pl, 'country':country, 'drugoe': drugoe, 'gotov':gotov, 'vibor_tipcdelki':vibor_tipcdelki, 'vibor_colkomnat':vibor_colkomnat
                  }
     )
 
 
 def InvestDeteil(request, slug_invest):
+    best = Dom.objects.filter(best=True)
     investpost = Invest.objects.get(is_draft=True, slug=slug_invest)
     gallery = GalleryDom.objects.filter(invest_id=1)
     form2 = ContactForm(request.POST)
+
+    fav = bool
+    if investpost.favorite_invest.filter(id=request.user.id).exists():
+        fav = True
     return render(
         request,
         'invest/invest_detail.html',
-        context={'form2':form2, 'investpost':investpost, 'gallery':gallery }
+        context={'best':best, 'form2':form2, 'investpost':investpost, 'gallery':gallery, 'fav':fav }
     )
+
+
+def ajaxfavorite(request, id):
+    res = {'error': False}
+    invest = get_object_or_404(Invest, id=id)
+    if invest.favorite_invest.filter(id=request.user.id).exists():
+        invest.favorite_invest.remove(request.user)
+    else:
+        invest.favorite_invest.add(request.user)
+    return JsonResponse(res)

@@ -92,6 +92,14 @@ class Invest(models.Model):
     country = models.CharField(max_length=16, choices=COUNTRY, default='russia',
                               verbose_name="Страна")
     present = models.FileField(upload_to="present", blank=True, verbose_name="Презентация")
+    dohod = models.CharField(max_length=255, blank=True, verbose_name="Доходность")
+    okup = models.CharField(max_length=255, blank=True, verbose_name="Окупаемость")
+    location = models.CharField(max_length=255, blank=True, verbose_name="Локация")
+    opisanie = CKEditor5Field( verbose_name="Краткое описание(в сайдбаре перед ценой)", blank=True, config_name='extends')
+    coord = models.CharField(max_length=255, verbose_name="Координаты (56.033470, 38.121869)")
+    """избранное """
+    favorite_invest = models.ManyToManyField(User, related_name='favorite_invest', verbose_name="Избранное Инвестиции", default=None, blank=True)
+
 
     class Meta:
         ordering = ('title',)

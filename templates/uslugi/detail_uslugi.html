@@ -43,7 +43,7 @@
                  <div class="formbg formbg22">
     <h2 class="hyt">Нет времени читать
 что здесь написано?</h2>
-                   <div id="form1">
+                   <div id="form1" class="try1">
 
 
                              <div class="porty">
@@ -92,8 +92,8 @@
       $("#fr1 .btn1").prop('disabled', true);
       $("#fr1 .btn1").text('Отправляем...');
       var serializedData = $form.serialize();
-      var $res_message = $("#fr1 .porty");
-      var $res_message2 = $("#fr1 #good2");
+      var $res_message = $(".try1 .porty");
+      var $res_message2 = $(".try1 #good2");
 
       $.ajax({
           url: '/ajax/',
@@ -269,7 +269,7 @@
              <div class="col-md-12">
                  <div class="formbg">
                      <img src="{% static 'theme/img/arrow_downward.png' %}" class="img-fluid imgstr" alt="">
-                   <div id="form1">
+                   <div id="form1" class="tr2">
 
 
                              <div class="porty">
@@ -278,7 +278,7 @@
                          <p>Отправьте заявку на бесплатную консультацию. Мы ответим на все интересующие вас вопросы.</p>
                          <div class="str21"></div>
 
-                    <form method="POST" id="fr1">
+                    <form method="POST" id="fr1" class="tr2212">
          {% csrf_token %}
 
      {{ form2.subject }}
@@ -312,14 +312,14 @@
  </section>
   <script type="text/javascript">
     $(document).ready(function(){
-    $("#fr1").submit(function(e){
+    $(".tr2212").submit(function(e){
       e.preventDefault();
       var $form = $(this);
-      $("#fr1 .btn1").prop('disabled', true);
-      $("#fr1 .btn1").text('Отправляем...');
+      $(".tr2212 .btn1").prop('disabled', true);
+      $(".tr2212 .btn1").text('Отправляем...');
       var serializedData = $form.serialize();
-      var $res_message = $("#fr1 .porty");
-      var $res_message2 = $("#fr1 #good2");
+      var $res_message = $(".tr2 .porty");
+      var $res_message2 = $(".tr2 #good2");
 
       $.ajax({
           url: '/ajax/',

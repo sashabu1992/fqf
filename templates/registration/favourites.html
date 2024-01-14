@@ -46,7 +46,7 @@
       <div class="container">
          <div class="row">
              <div class="col-md-12">
-                 <h1>Список избранного</h1>
+                 <h1>Список избранного недвижимости</h1>
 
              </div>
          </div>
@@ -62,16 +62,47 @@
 
                     {% empty %}
 <div class="alert alert-warning" role="alert">
-Список избранного пуст!
+Список избранного недвижимости пуст!
 </div>
                     {% endfor %}
+
 
 
                   </div>
               </div>
 
           </div>
+
+      <div class="row">
+             <div class="col-md-12">
+                 <h1>Список избранного Инвестиций</h1>
+
+             </div>
+         </div>
+
+       <div class="row">
+              <div class="col-md-12">
+                  <div class="predlozh">
+
+
+{% for i in new2 %}
+
+        {% include "invest/invest_card.html" %}
+
+                    {% empty %}
+<div class="alert alert-warning" role="alert">
+Список избранного инвестиций пуст!
+</div>
+                    {% endfor %}
+
+                  </div>
+              </div>
+
+          </div>
+
       </div>
+
+
   </section>
 
     <script>

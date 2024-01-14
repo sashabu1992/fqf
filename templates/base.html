@@ -11,7 +11,11 @@
 
     <title>{% block title %} {% endblock title %} | {{ web_settings.name_site }}</title>
     <meta name="description" content=" {% block META_description %}{% endblock META_description %}" />
-    
+
+{% block opengraph %} {% endblock opengraph %}
+
+
+
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -21,7 +25,27 @@
 <meta name="msapplication-TileColor" content="#da532c">
 <meta name="theme-color" content="#ffffff">
 {% include "parts/head.html" %}
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
+   ym(89913885, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/89913885" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+<meta name="yandex-verification" content="cb8eeda276cd6218" />
+
+<script type="text/javascript" async src="https://app.uiscom.ru/static/cs.min.js?k=KR5EixI8y0prTNgKQPvlWD1rvx90I7pc"></script>
+<!--script async src="//widjet.matomba.ru/quiz/b3eebec0b52fe91471fbc0df5741b651"></script -->
 </head>
 <body>
 
@@ -215,9 +239,11 @@
 
           success: function (data) {
             if (data.error) {
+                
                   $res_message.text(data.msg);
                   $res_message.show();
             }else{
+                
               $res_message.hide();
               $res_message2.show();
                  setTimeout(function () {

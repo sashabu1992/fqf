@@ -17,7 +17,7 @@
 </style>
 
  <link href="{% static 'theme/shaper_empire/css/flexslider.css' %}" rel="stylesheet" type="text/css" />
-     <link href="{% static 'theme/com_sppagebuilder/assets/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css" />
+
 
     <script src="{% static 'theme/shaper_empire/js/jquery.flexslider-min.js' %}" type="text/javascript"></script>
     <script src="{% static 'theme/shaper_empire/js/bootstrap.min.js' %}" type="text/javascript"></script>
@@ -225,7 +225,7 @@
   <div class="modal-dialog  modal-dialog-centered">
     <div class="modal-content">
        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      <div class="modal-body">
+      <div class="modal-body" >
        
 <form method="POST" id="consult" >
          {% csrf_token %}
@@ -298,9 +298,7 @@
             }else{
               $res_message.hide();
               $res_message2.show();
-                 setTimeout(function () {
-                  window.location.href = "{{ request.path }} "; 
-              }, 4000);
+               
 
             }
           }

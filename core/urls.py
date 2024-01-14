@@ -30,6 +30,7 @@ sitemaps = {
 urlpatterns = [
     path('ckeditor5/', include('django_ckeditor_5.urls')),
     path('admin/', admin.site.urls),
+
     path('', include('nedvizhimost.urls')),
     path('', include('websitesetting.urls')),
     path('', include('crm.urls')),
@@ -40,7 +41,7 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('partner/', views.partner, name='partner'),  
     path('spetcs/', views.spetcs, name='spetcs'),      
-    path('politika/', views.politika, name='politika'),       
+    path('politika/', views.politika, name='politika'),
     path('', views.glav, name='glav'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}),
 

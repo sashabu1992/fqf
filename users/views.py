@@ -12,6 +12,7 @@ from django.db import transaction
 from django.urls import reverse_lazy
 from .forms import ProfileUpdateForm, UserUpdateForm
 from nedvizhimost.models import Dom
+from invest.models import Invest, GalleryDom
 
 def register(request):
 	if request.method == 'POST':
@@ -74,9 +75,11 @@ class ProfileEditView(UpdateView):
 @ login_required
 def favourite_list(request):
     new = Dom.objects.filter(favorit=request.user)
+    new2 = Invest.objects.filter(favorite_invest=request.user)
+    gallery = GalleryDom.objects.filter()
     return render(request,
                   'registration/favourites.html',
-                  {'new': new})
+                  {'new': new, 'new2':new2, 'gallery':gallery})
 
 
 @ login_required
@@ -86,4 +89,13 @@ def favourite_add(request, id):
         dom.favorit.remove(request.user)
     else:
         dom.favorit.add(request.user)
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+@ login_required
+def favourite_add2(request, id):
+    invest = get_object_or_404(Invest, id=id)
+    if invest.favorit.filter(id=request.user.id).exists():
+        invest.favorit.remove(request.user)
+    else:
+        invest.favorit.add(request.user)
     return HttpResponseRedirect(request.META['HTTP_REFERER'])

@@ -11,8 +11,88 @@ a{
 img{
   max-width:100%;
 }
+.matomba_button_style{
+
+}
+#matomba_button{
+   bottom: 2%!important;
+    right: 2.5%!important;
+    border-radius: 100%!important;
+    height: 28px!important;
+    width: 28px!important;
+}
+#matomba_button {
+  box-shadow: 0 0 0 #7951db;
+  animation: animationpulse2 2s infinite;
+   -webkit-animation: animationpulse2 2s ease-out;
+   -webkit-animation-iteration-count: infinite;
+}
+#matomba_button:hover {
+  animation: linear;
+}
+
+@-webkit-keyframes animationpulse2 {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 inherit;
+  }
+  70% {
+      -webkit-box-shadow: 0 0 0 15px rgba(0,0,0, 0);
+  }
+  100% {
+      -webkit-box-shadow: 0 0 0 0 rgba(0,0,0, 0);
+  }
+}
+@keyframes animationpulse2 {
+  0% {
+     transform: scale(1.0, 1.0);
+    -moz-box-shadow: 0 0 0 0 inherit;
+    box-shadow: 0 0 0 0 inherit;
+  }
+  10% {
+     transform: scale(1.1, 1.1);
+  }
+  15% {
+     transform: scale(1.0, 1.0);
+  }
+  70% {
+      -moz-box-shadow: 0 0 0 15px rgba(0,0,0, 0);
+      box-shadow: 0 0 0 15px rgba(0,0,0, 0);
+  }
+  100% {
+      -moz-box-shadow: 0 0 0 0 rgba(0,0,0, 0);
+      box-shadow: 0 0 0 0 rgba(0,0,0, 0);
+  }
+}
+@-ms-keyframes animationpulse2 {
+    0% {
+        -ms-transform: scale(1.0, 1.0);
+        box-shadow: 0 0 5px #7951db;
+    }
+    10% {
+        box-shadow: 0 0 15px #7951db;
+        -ms-transform: scale(1.1, 1.1);
+    }
+    20% {
+     box-shadow: 0 0 5px #7951db;
+        -ms-transform: scale(1.0, 1.0);
+    }
+    100% {
+    box-shadow: 0 0 5px #7951db;
+       -ms-transform: scale(1.0, 1.0);
+    }
+}
 .blur{
    filter: grayscale(100%);
+}
+.addfavoritinvest.blur{
+     filter: grayscale(0%);
+}
+.flinv{
+    display:flex;
+    gap:10px
+}
+.addfavoritinvest.blur svg{
+    fill:#E6007E
 }
 .revius{
     border-radius: 20px;
@@ -604,6 +684,11 @@ background-clip: text;
     opacity: 1;
     color: #fff;
 }
+.share{
+    position:relative;
+    display: block;
+}
+
 #reviusform p{
     color: rgba(255, 255, 255, 0.80);
 font-size: 16px;
@@ -624,6 +709,61 @@ line-height: 24px; /* 150% */
 }
 .center .it img:hover{
     transform: scale(1.05);
+}
+.share:hover .share-buttons{
+    display:flex
+}
+.share-buttons {
+    z-index:12;
+       display: none;
+    flex-wrap: wrap;
+    position: absolute;
+    width: max-content;
+    right: 0;
+    background: #fff;
+    border: 1px solid #000;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 6px 15px 0px rgba(93, 5, 53, 0.12);
+}
+
+.share-buttons button {
+    width: 40px;
+    height: 40px;
+        border: none;
+}
+
+.share-buttons button:not(:last-child) {
+    margin-right: 5px;
+    border: none;
+}
+
+.share-buttons .facebook {
+    background: url("/static/theme/img/ic/share-btns.png") no-repeat left top;
+}
+
+.share-buttons .vkontakte {
+    background: url("/static/theme/img/ic/share-btns.png") no-repeat -168px top;
+}
+
+.share-buttons .ok {
+    background: url("/static/theme/img/ic/share-btns.png") no-repeat -126px top;
+}
+
+.share-buttons .twitter {
+    background: url("/static/theme/img/ic/share-btns.png") no-repeat -42px top;
+}
+
+.share-buttons .pinterest {
+    background: url("/static/theme/img/ic/share-btns.png") no-repeat -210px top;
+}
+
+.share-buttons .mail {
+    background: url("/static/theme/img/ic/share-btns.png") no-repeat -294px top;
+}
+
+.share-buttons .telegram {
+    background: url("/static/theme/img/ic/share-btns.png") no-repeat -672px top;
 }
 #stat h2{
     font-family: 'Roboto Condensed';
@@ -4364,9 +4504,7 @@ line-height: 21px; /* 161.538% */
     width: 100%;
     justify-content: space-between;
 }
-.investcard  .stroka svg{
-    margin-left:20px
-}
+
 .investcard  .stroka2{
         display:flex;
   color:  #626262;
@@ -4717,7 +4855,234 @@ line-height: 22px; /* 137.5% */
 .rowszag.active svg{
     transform: rotate(180deg);
 }
+#baherpredlozh .rows .btn1{
+       order:0;
+        max-width: 243px;
 
+    }
+    #baherpredlozh .rows h4{
+color:  #FFF;
+/* тень */
+text-shadow: 0px 6px 15px rgba(93, 5, 53, 0.12);
+font-family: Roboto Condensed;
+font-size: 50px;
+font-style: normal;
+font-weight: 700;
+line-height: 60px; /* 120% */
+letter-spacing: 1px;
+text-transform: uppercase;
+    }
+    #baherpredlozh .rows .item1{
+        display:flex;
+        flex-direction: column;
+            gap: 20px;
+    padding: 40px;
+        width:40%;
+    }
+    #baherpredlozh .rows .item2{
+        position:relative;
+            width:60%;
+    }
+    #baherpredlozh .rows p{
+color: rgba(255, 255, 255, 0.70);
+font-family: Roboto Condensed;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: 28px; /* 175% */
+text-transform: uppercase;
+    }
+    #baherpredlozh .rows p.ogr{
+color: rgba(255, 255, 255, 0.50);
+font-family: Roboto Condensed;
+        display:block;
+font-size: 13px;
+font-style: normal;
+font-weight: 400;
+line-height: 18px; /* 138.462% */
+    }
+    #baherpredlozh .rows{
+        display:flex;
+        gap:20px;
+        justify-content: space-between;
+    }
+    #baherpredlozh .rows img{
+       height: 400px;
+    position: absolute;
+    width: 100%;
+    display: block;
+    top: 0;
+    }
+    #baherpredlozh{
+               height: 400px;
+            background: radial-gradient(55.32% 96.45% at 46.4% 0%, rgba(230, 0, 126, 0.3) 0%, rgba(230, 0, 126, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, #000000;
+    }
+@media(max-width:1300px){
+    .b1 {
+    align-items: center;
+    font-size: 14px;
+}
+    .b2{
+            align-items: center;
+    font-size: 14px;
+    }
+    .sliderinv {
+    width: 540px;
+}
+    .opisinv {
+    width: calc(100% - 540px);
+}
+}
+@media(max-width:1200px){
+     .sliderinv {
+    width: 100%;
+}
+    .opisinv {
+    width: 100%;
+}
+    .investcard .rows {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+}
+    #invest_list .col-md-12.cartcol {
+    flex: 0 0 auto;
+    width: 50%;
+}
+    .strbuttoninv {
+    width: 100%;
+    display: flex;
+    gap: 14px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+    .strbuttoninv a {
+    width: 100%;
+}
+    #kakrabo .blokt h3{
+    min-height:44px
+     }
+    #baherpredlozh .rows h4 {
+    color: #FFF;
+    text-shadow: 0px 6px 15px rgba(93, 5, 53, 0.12);
+    font-family: Roboto Condensed;
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+    #baherpredlozh .rows img {
+    height: 350px;
+    position: absolute;
+    width: 100%;
+    display: block;
+    top: 0;
+}
+    #baherpredlozh {
+    height: 350px;
+    background: radial-gradient(55.32% 96.45% at 46.4% 0%, rgba(230, 0, 126, 0.3) 0%, rgba(230, 0, 126, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */, #000000;
+}
+}
+@media(max-width:992px){
+    .k2 {
+    font-size: 36px;
+    line-height: 36px;
+}
+    .slid_invest .rows .img_kl img {
+    min-width: 107px;
+}
+    .k1 {
+    margin-bottom: 20px;
+}
+     #invest_list .col-md-12.cartcol {
+    flex: 0 0 auto;
+    width: 100%;
+}
+     #kakrabo .col-md-4 {
+    flex: 0 0 auto;
+    width: 100%
+}
+     #baherpredlozh .rows .item2 {
+    position: relative;
+    width: 60%;
+    display: none;
+}#baherpredlozh {
+    height: 100%;}
+ #baherpredlozh .rows .item1 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px;
+    width: 100%;
+         text-align: center;}
+     #baherpredlozh .rows .btn1 {
+    order: 0;
+    max-width: 243px;
+    margin: 0 auto;
+}
+#investdetail h1 {
+    color: #E60A80;
+    font-family: Roboto Condensed;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 34px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+.sewww {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+.rows2_div {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 40px;
+}
+h2.zagh {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 32px;
+    color: #E60A80;
+    text-transform: uppercase;
+    position: relative;
+    margin-bottom: 59px;
+}
+
+}
+@media(max-width:700px){
+    .slid_invest .rows {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    height: 10%;
+    flex-wrap: wrap;
+        text-align:center;
+            justify-content: center;
+}
+    .knop {
+    display: flex;
+    gap: 13px;
+    align-items: Center;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+    .knop a{
+        width:100%
+    }
+    .slid_invest .rows .img_kl img {
+    max-width: 107px;
+    display: block;
+}
+}
 
 
 

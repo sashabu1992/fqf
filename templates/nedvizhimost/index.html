@@ -322,7 +322,7 @@
              <div class="col-md-12">
                  <div class="formbg">
                      <img src="{% static 'theme/img/arrow_downward.png' %}" class="img-fluid imgstr" alt="">
-                   <div id="form1">
+                   <div id="form1" class="tr2">
               
                      
                              <div class="porty"> 
@@ -371,8 +371,8 @@
       $("#fr1 .btn1").prop('disabled', true);
       $("#fr1 .btn1").text('Отправляем...');
       var serializedData = $form.serialize();
-      var $res_message = $("#fr1 .porty");
-      var $res_message2 = $("#fr1 #good2");
+      var $res_message = $(".tr2 .porty");
+      var $res_message2 = $(".tr2 #good2");
 
       $.ajax({
           url: '/ajax/',
@@ -686,7 +686,7 @@
              <div class="col-md-12">
                  <div class="formbg">
                      <img src="{% static 'theme/img/arrow_downward.png' %}" class="img-fluid imgstr" alt="">
-                   <div id="form1">
+                   <div id="form1" class="tr1">
 
 
                              <div class="porty">
@@ -739,7 +739,7 @@
   arrows: false,
   centerMode: false,
     autoplay: true,
-    infinite: true,
+    infinite: false,
     autoplaySpeed: 1500,
   focusOnSelect: true,
   responsive: [
@@ -975,8 +975,8 @@ $('.center').slick({
       $("#fr112 .btn1").prop('disabled', true);
       $("#fr112 .btn1").text('Отправляем...');
       var serializedData = $form.serialize();
-      var $res_message = $("#fr112 .porty");
-      var $res_message2 = $("#fr112 #good2");
+      var $res_message = $(".tr1 .porty");
+      var $res_message2 = $(".tr1 #good2");
 
       $.ajax({
           url: '/ajax/',

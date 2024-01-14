@@ -14,8 +14,6 @@
             <excludedPath path="/.htaccess" />
             <excludedPath path="/my.cnf" />
             <excludedPath local="true" path="$PROJECT_DIR$/venv" />
-            <excludedPath path="/media" />
-            <excludedPath local="true" path="$PROJECT_DIR$/media" />
           </excludedPaths>
         </serverdata>
       </paths>

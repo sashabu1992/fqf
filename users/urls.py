@@ -11,5 +11,6 @@ urlpatterns = [
     path('email/', include(email_urls)),
     path('profile/edit/', ProfileEditView.as_view(), name='profile-edit'),
     path('fav/<int:id>/', views.favourite_add, name='favourite_add'),
+    path('fav2/<int:id>/', views.favourite_add2, name='favourite_add2'),
     path('favourites/', views.favourite_list, name='favourite_list'),
 ]

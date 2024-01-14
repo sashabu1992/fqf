@@ -60,7 +60,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap4',
     'django_email_verification',
     'nedvizhimost.templatetags.filter',
-    'invest',
+        'invest',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -194,7 +194,6 @@ THUMBNAIL_ALIASES = {
         'officefoto': {'size': (400, 270), 'crop': "smart"},
         'galinvestcart': {'size': (850, 730), 'crop': "smart"},
         'galinvest': {'size': (200, 150), 'crop': "smart"},
-
     },
 }
 

@@ -8,6 +8,19 @@
 
 {% block META_description %}{{ investpost.description }}{% endblock %}
 
+{% block opengraph %}
+
+    <meta property="og:title" content="{{ investpost.h1 }}">
+<meta property="og:site_name" content="«FQF» Территория Недвижимости">
+<meta property="og:url" content="https://fqf-nedvizhimost.ru{{ investpost.get_absolute_url }}">
+<meta property="og:description" content="{{ investpost.description }}">
+{% for item in gallery %}{% if forloop.first %}<meta property="og:image" content="https://fqf-nedvizhimost.ru{{ item.image|thumbnail_url:'galinvestcart' }}">{% endif %}{% endfor %}
+
+
+{% endblock %}
+
+
+
 
 {% block bread %}
 <section id="bread">
@@ -76,17 +89,61 @@
                   <div class="stroka">
 
                              <div>
-                                 <a href="">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 <a href="" class="share">  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M18 8C19.6569 8 21 6.65685 21 5C21 3.34315 19.6569 2 18 2C16.3431 2 15 3.34315 15 5C15 6.65685 16.3431 8 18 8Z" stroke="#E60A80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
 <path d="M6 15C7.65685 15 9 13.6569 9 12C9 10.3431 7.65685 9 6 9C4.34315 9 3 10.3431 3 12C3 13.6569 4.34315 15 6 15Z" stroke="#E60A80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
 <path d="M18 22C19.6569 22 21 20.6569 21 19C21 17.3431 19.6569 16 18 16C16.3431 16 15 17.3431 15 19C15 20.6569 16.3431 22 18 22Z" stroke="#E60A80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
 <path d="M8.58984 13.51L15.4198 17.49" stroke="#E60A80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
 <path d="M15.4098 6.51001L8.58984 10.49" stroke="#E60A80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>Поделиться    </a>      </div>
+</svg>Поделиться
+
+                                           {% include 'invest/share_button.html' %}
+                                 </a>
+
+
+
+                             </div>
                               <div>
-                                  <a href=""> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                                    {% if request.user.is_authenticated %}
+                          {% if fav %}
+
+
+                                <a class="ajaxfavorit blurinv" attr-href="{% url 'ajaxfavorite' investpost.id %}" href="{% url 'ajaxfavorite' investpost.id %}"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M20.8401 4.60999C20.3294 4.099 19.7229 3.69364 19.0555 3.41708C18.388 3.14052 17.6726 2.99817 16.9501 2.99817C16.2276 2.99817 15.5122 3.14052 14.8448 3.41708C14.1773 3.69364 13.5709 4.099 13.0601 4.60999L12.0001 5.66999L10.9401 4.60999C9.90843 3.5783 8.50915 2.9987 7.05012 2.9987C5.59109 2.9987 4.19181 3.5783 3.16012 4.60999C2.12843 5.64169 1.54883 7.04096 1.54883 8.49999C1.54883 9.95903 2.12843 11.3583 3.16012 12.39L4.22012 13.45L12.0001 21.23L19.7801 13.45L20.8401 12.39C21.3511 11.8792 21.7565 11.2728 22.033 10.6053C22.3096 9.93789 22.4519 9.22248 22.4519 8.49999C22.4519 7.77751 22.3096 7.0621 22.033 6.39464C21.7565 5.72718 21.3511 5.12075 20.8401 4.60999Z" stroke="#E60A80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
 </svg>В избранное</a>
+
+      {% else %}
+        <a class="ajaxfavorit " attr-href="{% url 'ajaxfavorite' investpost.id %}" href="{% url 'ajaxfavorite' investpost.id %}"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M20.8401 4.60999C20.3294 4.099 19.7229 3.69364 19.0555 3.41708C18.388 3.14052 17.6726 2.99817 16.9501 2.99817C16.2276 2.99817 15.5122 3.14052 14.8448 3.41708C14.1773 3.69364 13.5709 4.099 13.0601 4.60999L12.0001 5.66999L10.9401 4.60999C9.90843 3.5783 8.50915 2.9987 7.05012 2.9987C5.59109 2.9987 4.19181 3.5783 3.16012 4.60999C2.12843 5.64169 1.54883 7.04096 1.54883 8.49999C1.54883 9.95903 2.12843 11.3583 3.16012 12.39L4.22012 13.45L12.0001 21.23L19.7801 13.45L20.8401 12.39C21.3511 11.8792 21.7565 11.2728 22.033 10.6053C22.3096 9.93789 22.4519 9.22248 22.4519 8.49999C22.4519 7.77751 22.3096 7.0621 22.033 6.39464C21.7565 5.72718 21.3511 5.12075 20.8401 4.60999Z" stroke="#E60A80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>В избранное</a>
+      {% endif %}
+                              {% else %}
+      <div>
+         <a  href="{% url 'register'  %}"> <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M20.8401 4.60999C20.3294 4.099 19.7229 3.69364 19.0555 3.41708C18.388 3.14052 17.6726 2.99817 16.9501 2.99817C16.2276 2.99817 15.5122 3.14052 14.8448 3.41708C14.1773 3.69364 13.5709 4.099 13.0601 4.60999L12.0001 5.66999L10.9401 4.60999C9.90843 3.5783 8.50915 2.9987 7.05012 2.9987C5.59109 2.9987 4.19181 3.5783 3.16012 4.60999C2.12843 5.64169 1.54883 7.04096 1.54883 8.49999C1.54883 9.95903 2.12843 11.3583 3.16012 12.39L4.22012 13.45L12.0001 21.23L19.7801 13.45L20.8401 12.39C21.3511 11.8792 21.7565 11.2728 22.033 10.6053C22.3096 9.93789 22.4519 9.22248 22.4519 8.49999C22.4519 7.77751 22.3096 7.0621 22.033 6.39464C21.7565 5.72718 21.3511 5.12075 20.8401 4.60999Z" stroke="#E60A80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>В избранное</a>
+
+      </div>
+      {% endif %}
+
+                                  <style>
+                                      .sewww .stroka .blurinv svg {
+                                          fill:#E6007E
+                                      }
+                                  </style>
+ <script type="text/javascript">
+    $(document).ready(function(){
+          $('body').on('click', 'a.ajaxfavorit', function(event){
+             event.preventDefault();
+             var a = $(this);
+      var link = a.attr("attr-href");
+      $.ajax(link, $(this).toggleClass("blurinv"));
+      return false;
+
+  });
+  });
+  </script>
 
 
                              </div>
@@ -176,7 +233,7 @@ $('.slider-nav').slick({
             </div>
       <div class="opis__rows">
           <span class="zag">Локация</span>
-          <span class="gorod">г.Сочи</span>
+          <span class="gorod">{{ investpost.location }}</span>
       </div>
         </div>
 
@@ -206,7 +263,7 @@ $('.slider-nav').slick({
         </div>
       <div class="opis__rows">
           <span class="zag">Доходность</span>
-          <span class="gorod">3% (в год)</span>
+          <span class="gorod">{{ investpost.dohod }}</span>
       </div>
                            </div>
 
@@ -216,43 +273,10 @@ $('.slider-nav').slick({
         </div>
       <div class="opis__rows">
           <span class="zag">Окупаемость</span>
-          <span class="gorod">от 5 лет</span>
+          <span class="gorod">{{ investpost.okup }}</span>
       </div>
                            </div>
         </div>
-
-    </div>
-</div>
-
-
-                    <div class="boxc pd30">
-    <div class="rowszag har">
-        <div><span class="trre">Дополнительно</span></div>
-         <div><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M24 20L16 12L8 20" stroke="#E60A80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-</div>
-    </div>
-    <div class="contentblock dlop1">
-        <p>В качестве ознакомительного материала, вы можете скачать инвестиционный прогноз.</p>
-
-        <a href="" class="download"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<mask id="mask0_894_5154" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">
-<rect width="32" height="32" fill="url(#pattern0)"/>
-</mask>
-<g mask="url(#mask0_894_5154)">
-<rect x="-7.5" y="-5.25" width="45.375" height="43.1875" fill="#E60A80"/>
-</g>
-<defs>
-<pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
-<use xlink:href="#image0_894_5154" transform="scale(0.00195312)"/>
-</pattern>
-<image id="image0_894_5154" width="512" height="512" xlink:href="data:image/png;base64,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"/>
-</defs>
-</svg>
-
-            Инвестиционный прогноз
-</a>
 
     </div>
 </div>
@@ -272,6 +296,7 @@ buttons.forEach((button, index) => {
           </div>
            <div class="col-md-4">
                 <div class="boxc detailinf">
+                    <!--
                     <span class="podzaginv">
                         Варианты покупки
                     </span>
@@ -282,30 +307,34 @@ buttons.forEach((button, index) => {
                 <option value="" >3 Апартаменты категории Standard c балконом</option>
             </select>
 </div>
+                    -->
                      <span class="podzaginv">
                        Описание
                     </span>
-                    <span class="span_p">Общая площадь: 22,27 м2 </span>
-                    <span class="span_p">  Жилая площадь: 15,21 м2 </span>
-                     <span class="span_p"> Балкон: 4,32 м2 </span>
-                    <span class="span_p">Санузел: 2,74 м2 </span>
 
-                    <p class="span_p2">*Комплектация и ремонт номер входит в стоимость апартамента и будет выполнена в соответствии с международными стандартами компании Alean Collection.</p>
-                     <span class="podzaginv">
+                    {{ investpost.opisanie|safe }}
+                          <span class="podzaginv">
                        Цена продажи
                     </span>
                     <div class="priceinvest mk0">
                             <span>от</span> {{ investpost.price|floatformat:"2g" }} руб.
                         </div>
 
+{% if investpost.present %}
+   
                     <a href="{{ investpost.present.url }}" class="download" target="_blank"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M19 13.6667V17.2222C19 17.6937 18.8127 18.1459 18.4793 18.4793C18.1459 18.8127 17.6937 19 17.2222 19H4.77778C4.30628 19 3.8541 18.8127 3.5207 18.4793C3.1873 18.1459 3 17.6937 3 17.2222V13.6667" stroke="#E60A80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M6.55469 9.22223L10.9991 13.6667L15.4436 9.22223" stroke="#E60A80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M11 13.6667V3" stroke="#E60A80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg> Скачать презентацию
  </a>
+{% else %}
+
+{% endif %}
+
+
                     <div class="strbuttoninv">
-                            <a href="" class="b1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <a href="https://api.whatsapp.com/send?phone=79296415870" class="b1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M2.43359 21.6515L3.78059 16.734C2.94959 15.295 2.51259 13.662 2.51309 11.9895C2.51559 6.757 6.77359 2.5 12.0066 2.5C14.5461 2.501 16.9291 3.4895 18.7216 5.283C20.5136 7.077 21.5006 9.461 21.4996 11.997C21.4976 17.2295 17.2386 21.487 12.0066 21.487H12.0026C10.4141 21.4865 8.85259 21.088 7.46609 20.3315L2.43359 21.6515Z" fill="white"></path>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M2.43338 21.9015C2.36738 21.9015 2.30338 21.8755 2.25588 21.8275C2.19338 21.764 2.16888 21.6715 2.19238 21.586L3.51188 16.768C2.69388 15.315 2.26238 13.665 2.26338 11.99C2.26538 6.619 6.63588 2.25 12.0064 2.25C14.6114 2.251 17.0589 3.2655 18.8984 5.1065C20.7379 6.948 21.7504 9.395 21.7494 11.997C21.7474 17.3675 17.3764 21.737 12.0064 21.737C10.4119 21.7365 8.83438 21.343 7.43438 20.5985L2.49688 21.893C2.47588 21.899 2.45488 21.9015 2.43338 21.9015Z" fill="white"></path>
 <path fill-rule="evenodd" clip-rule="evenodd" d="M12.0068 2.5C14.5463 2.501 16.9293 3.4895 18.7218 5.283C20.5138 7.077 21.5008 9.461 21.4998 11.997C21.4978 17.2295 17.2388 21.487 12.0068 21.487H12.0028C10.4143 21.4865 8.8528 21.088 7.4663 20.3315L2.4338 21.6515L3.7808 16.734C2.9498 15.295 2.5128 13.662 2.5133 11.9895C2.5158 6.757 6.7738 2.5 12.0068 2.5ZM12.0068 2C6.4988 2 2.0158 6.481 2.0133 11.9895C2.0128 13.673 2.4378 15.332 3.2438 16.8005L1.9513 21.52C1.9043 21.6925 1.9523 21.8765 2.0783 22.0035C2.1733 22.0995 2.3018 22.152 2.4338 22.152C2.4763 22.152 2.5188 22.1465 2.5608 22.1355L7.4043 20.8655C8.8183 21.5995 10.4033 21.987 12.0028 21.9875C17.5148 21.9875 21.9978 17.506 22.0003 11.9975C22.0013 9.328 20.9628 6.818 19.0763 4.93C17.1888 3.0415 14.6783 2.001 12.0068 2Z" fill="#CFD8DC"></path>
@@ -367,7 +396,7 @@ line-height: 21px; /* 161.538% */
              <div class="col-md-12">
                  <div class="formbg">
                      <img src="{% static 'theme/img/arrow_downward.png' %}" class="img-fluid imgstr" alt="">
-                   <div id="form1">
+                   <div id="form1" class="leps">
 
 
                              <div class="porty">
@@ -416,8 +445,8 @@ line-height: 21px; /* 161.538% */
       $("#fr1 .btn1").prop('disabled', true);
       $("#fr1 .btn1").text('Отправляем...');
       var serializedData = $form.serialize();
-      var $res_message = $("#fr1 .porty");
-      var $res_message2 = $("#fr1 #good2");
+      var $res_message = $(".leps .porty");
+      var $res_message2 = $(".leps #good2");
 
       $.ajax({
           url: '/ajax/',
@@ -440,6 +469,119 @@ line-height: 21px; /* 161.538% */
   </script>
 
 
+
+    <section id="predlozh" class="pd40">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+                  <h2 class="zagh">возможно, вас заинтересует</h2>
+                      </div>
+          </div>
+
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="sliderpredlozh">
+
+
+{% for dom in best %}
+          {% include "parts/cartochka.html" %}
+
+
+                    {% endfor %}
+                  </div>
+              </div>
+
+  <div class="col-md-12 txtcenter">
+                  <a href="{% url 'best_list' %}" class="apokaz">Показать все <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6.99965 13.812C6.88832 13.812 6.78065 13.788 6.67665 13.74C6.57265 13.6913 6.47198 13.6253 6.37465 13.542L0.93765 8.10401C0.770984 7.93734 0.690984 7.73267 0.69765 7.49001C0.704317 7.24667 0.790984 7.04167 0.95765 6.87501C1.12432 6.70834 1.32565 6.62501 1.56165 6.62501C1.79832 6.62501 1.99998 6.70834 2.16665 6.87501L6.12465 10.833V1.70801C6.12465 1.47201 6.21132 1.26734 6.38465 1.09401C6.55865 0.920008 6.76365 0.833008 6.99965 0.833008C7.23565 0.833008 7.44065 0.920008 7.61465 1.09401C7.78798 1.26734 7.87465 1.47201 7.87465 1.70801V10.833L11.8327 6.87501C11.9993 6.70834 12.2043 6.62501 12.4476 6.62501C12.6903 6.62501 12.895 6.70834 13.0617 6.87501C13.2283 7.04167 13.3117 7.24667 13.3117 7.49001C13.3117 7.73267 13.2283 7.93734 13.0617 8.10401L7.62465 13.542C7.54132 13.6253 7.44398 13.6913 7.33265 13.74C7.22198 13.788 7.11098 13.812 6.99965 13.812Z" fill="#E60A80"></path>
+</svg>
+</a>
+              </div>
+
+
+          </div>
+      </div>
+  </section>
+<script>
+$('.sliderpredlozh').slick({
+   slidesToShow:4,
+  slidesToScroll: 1,
+  dots: false,
+  arrows: false,
+  centerMode: false,
+    autoplay: true,
+    infinite: true,
+    autoplaySpeed: 1500,
+  focusOnSelect: true,
+  responsive: [
+       {
+      breakpoint: 1400,
+      settings: {
+        slidesToShow: 4,
+          autoplay: true,
+    autoplaySpeed: 1500,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+       {
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 3,
+          autoplay: true,
+    autoplaySpeed: 1500,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 1000,
+      settings: {
+        slidesToShow: 2,
+          autoplay: true,
+    autoplaySpeed: 1500,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 700,
+      settings: {
+        slidesToShow: 1,
+          autoplay: true,
+    autoplaySpeed: 1500,
+        slidesToScroll: 1,
+        dots: true,
+        infinite: true,
+      }
+    }
+  ]
+});
+</script>
+
+
+
+    <section id="baherpredlozh">
+    <div class="container">
+            <div class="rows">
+                <div class="item1">
+                    <h4>крутой посыл из 4 слов</h4>
+                    <p>легкое описание из 1 предложения</p>
+                    <a href="#" class="btn1">призыв к действию</a>
+                    <p class="ogr">Ограничения прописанные здесь</p>
+                </div>
+                  <div class="item2">
+                      <img src="{% static 'theme/img/Ellipse149.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
          <section id="plus" class="pd40">
       <div class="container">
           <div class="row">
@@ -458,6 +600,207 @@ line-height: 21px; /* 161.538% */
               </div>
           </div>
 
+
+           <div class="row">
+              <div class="col-md-12">
+                  <div class="sliderpredlozh2">
+                  <div class="item">
+                         <div class="pred pred2">
+                            <div class="icbr">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.7386 11.0578C7.47043 10.8141 7.06084 10.8141 6.79267 11.0578L0.230166 17.0238C-0.0571775 17.285 -0.078365 17.7297 0.182869 18.017C0.444057 18.3043 0.88876 18.3254 1.1761 18.0643L1.40626 17.8551V23.2969C1.40626 23.6852 1.72107 24 2.10939 24H12.4219C12.8102 24 13.125 23.6852 13.125 23.2969V17.8551L13.3552 18.0643C13.4899 18.1868 13.6592 18.2472 13.8279 18.2472C14.0191 18.2472 14.2097 18.1696 14.3484 18.017C14.6096 17.7297 14.5884 17.285 14.3011 17.0238L7.7386 11.0578ZM7.96876 22.5937H6.56251V19.7812H7.96876V22.5937ZM11.7188 22.5937H9.37501V19.0781C9.37501 18.6898 9.0602 18.375 8.67188 18.375H5.85939C5.47107 18.375 5.15626 18.6898 5.15626 19.0781V22.5937H2.81251V16.5767L7.26564 12.5284L11.7188 16.5767V22.5937Z" fill="white"/>
+<path d="M5.85938 16.2656C5.85938 16.6539 6.17419 16.9688 6.5625 16.9688H7.96875C8.35706 16.9688 8.67188 16.6539 8.67188 16.2656C8.67188 15.8773 8.35706 15.5625 7.96875 15.5625H6.5625C6.17419 15.5625 5.85938 15.8773 5.85938 16.2656Z" fill="white"/>
+<path d="M9.65162 7.142C9.91281 7.4293 10.3575 7.45049 10.6449 7.1893L10.875 6.98005V12.4219C10.875 12.8102 11.1898 13.125 11.5781 13.125H21.8906C22.2789 13.125 22.5938 12.8102 22.5938 12.4219V6.98005L22.8239 7.1893C22.9586 7.31179 23.1279 7.37216 23.2966 7.37216C23.4879 7.37216 23.6784 7.29463 23.8172 7.142C24.0784 6.85466 24.0572 6.40996 23.7699 6.14877L17.2074 0.182848C16.9392 -0.0609492 16.5296 -0.0609492 16.2614 0.182848L9.69892 6.14877C9.41157 6.41 9.39038 6.85466 9.65162 7.142ZM17.4375 11.7187H16.0313V8.90624H17.4375V11.7187ZM16.7344 1.65336L21.1875 5.70168V11.7187H18.8438V8.20311C18.8438 7.8148 18.5289 7.49999 18.1406 7.49999H15.3281C14.9398 7.49999 14.625 7.8148 14.625 8.20311V11.7187H12.2813V5.70168L16.7344 1.65336Z" fill="white"/>
+<path d="M16.0312 6.09375H17.4375C17.8258 6.09375 18.1406 5.77894 18.1406 5.39062C18.1406 5.00231 17.8258 4.6875 17.4375 4.6875H16.0312C15.6429 4.6875 15.3281 5.00231 15.3281 5.39062C15.3281 5.77894 15.6429 6.09375 16.0312 6.09375Z" fill="white"/>
+<path d="M23.7941 16.7059L21.9191 14.8309C21.6445 14.5564 21.1993 14.5564 20.9247 14.8309L19.0497 16.7059C18.7751 16.9805 18.7751 17.4257 19.0497 17.7003C19.3243 17.9749 19.7695 17.9749 20.0441 17.7003L20.7188 17.0256V21.4219C20.7188 22.068 20.193 22.5937 19.5469 22.5937H15.3281C14.9398 22.5937 14.625 22.9085 14.625 23.2969C14.625 23.6852 14.9398 24 15.3281 24H19.5469C20.9685 24 22.125 22.8434 22.125 21.4219V17.0256L22.7997 17.7003C22.937 17.8376 23.1169 17.9062 23.2969 17.9062C23.4768 17.9062 23.6568 17.8376 23.794 17.7003C24.0686 17.4257 24.0686 16.9805 23.7941 16.7059Z" fill="white"/>
+<path d="M2.08099 11.5128C2.21824 11.6501 2.3982 11.7188 2.57815 11.7188C2.7581 11.7188 2.93806 11.6501 3.0753 11.5128L4.9503 9.63778C5.2249 9.36319 5.2249 8.91802 4.9503 8.64342C4.67576 8.36883 4.23054 8.36883 3.95595 8.64342L3.28127 9.31814V2.57812C3.28127 1.93195 3.80698 1.40625 4.45315 1.40625H11.9531C12.3415 1.40625 12.6563 1.09144 12.6563 0.703125C12.6563 0.314812 12.3415 0 11.9531 0H4.45315C3.03157 0 1.87502 1.15655 1.87502 2.57812V9.31814L1.2003 8.64347C0.925758 8.36887 0.480539 8.36887 0.205945 8.64347C-0.0686484 8.91806 -0.0686484 9.36323 0.205945 9.63783L2.08099 11.5128Z" fill="white"/>
+</svg>
+<div class="str54"></div>
+                            </div>
+                             <img src="{% static 'theme/img/1/1.png' %}" class="img-fluid trans" alt="">
+
+                             <div class="opis opis21">
+
+                                 <h3>Юридические услуги</h3>
+                                <p>Оказываем широкий спектр юридических услуг</p>
+                             </div>
+                         </div>
+                     </div>
+                      <div class="item">
+                         <div class="pred pred2">
+                            <div class="icbr">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.7386 11.0578C7.47043 10.8141 7.06084 10.8141 6.79267 11.0578L0.230166 17.0238C-0.0571775 17.285 -0.078365 17.7297 0.182869 18.017C0.444057 18.3043 0.88876 18.3254 1.1761 18.0643L1.40626 17.8551V23.2969C1.40626 23.6852 1.72107 24 2.10939 24H12.4219C12.8102 24 13.125 23.6852 13.125 23.2969V17.8551L13.3552 18.0643C13.4899 18.1868 13.6592 18.2472 13.8279 18.2472C14.0191 18.2472 14.2097 18.1696 14.3484 18.017C14.6096 17.7297 14.5884 17.285 14.3011 17.0238L7.7386 11.0578ZM7.96876 22.5937H6.56251V19.7812H7.96876V22.5937ZM11.7188 22.5937H9.37501V19.0781C9.37501 18.6898 9.0602 18.375 8.67188 18.375H5.85939C5.47107 18.375 5.15626 18.6898 5.15626 19.0781V22.5937H2.81251V16.5767L7.26564 12.5284L11.7188 16.5767V22.5937Z" fill="white"/>
+<path d="M5.85938 16.2656C5.85938 16.6539 6.17419 16.9688 6.5625 16.9688H7.96875C8.35706 16.9688 8.67188 16.6539 8.67188 16.2656C8.67188 15.8773 8.35706 15.5625 7.96875 15.5625H6.5625C6.17419 15.5625 5.85938 15.8773 5.85938 16.2656Z" fill="white"/>
+<path d="M9.65162 7.142C9.91281 7.4293 10.3575 7.45049 10.6449 7.1893L10.875 6.98005V12.4219C10.875 12.8102 11.1898 13.125 11.5781 13.125H21.8906C22.2789 13.125 22.5938 12.8102 22.5938 12.4219V6.98005L22.8239 7.1893C22.9586 7.31179 23.1279 7.37216 23.2966 7.37216C23.4879 7.37216 23.6784 7.29463 23.8172 7.142C24.0784 6.85466 24.0572 6.40996 23.7699 6.14877L17.2074 0.182848C16.9392 -0.0609492 16.5296 -0.0609492 16.2614 0.182848L9.69892 6.14877C9.41157 6.41 9.39038 6.85466 9.65162 7.142ZM17.4375 11.7187H16.0313V8.90624H17.4375V11.7187ZM16.7344 1.65336L21.1875 5.70168V11.7187H18.8438V8.20311C18.8438 7.8148 18.5289 7.49999 18.1406 7.49999H15.3281C14.9398 7.49999 14.625 7.8148 14.625 8.20311V11.7187H12.2813V5.70168L16.7344 1.65336Z" fill="white"/>
+<path d="M16.0312 6.09375H17.4375C17.8258 6.09375 18.1406 5.77894 18.1406 5.39062C18.1406 5.00231 17.8258 4.6875 17.4375 4.6875H16.0312C15.6429 4.6875 15.3281 5.00231 15.3281 5.39062C15.3281 5.77894 15.6429 6.09375 16.0312 6.09375Z" fill="white"/>
+<path d="M23.7941 16.7059L21.9191 14.8309C21.6445 14.5564 21.1993 14.5564 20.9247 14.8309L19.0497 16.7059C18.7751 16.9805 18.7751 17.4257 19.0497 17.7003C19.3243 17.9749 19.7695 17.9749 20.0441 17.7003L20.7188 17.0256V21.4219C20.7188 22.068 20.193 22.5937 19.5469 22.5937H15.3281C14.9398 22.5937 14.625 22.9085 14.625 23.2969C14.625 23.6852 14.9398 24 15.3281 24H19.5469C20.9685 24 22.125 22.8434 22.125 21.4219V17.0256L22.7997 17.7003C22.937 17.8376 23.1169 17.9062 23.2969 17.9062C23.4768 17.9062 23.6568 17.8376 23.794 17.7003C24.0686 17.4257 24.0686 16.9805 23.7941 16.7059Z" fill="white"/>
+<path d="M2.08099 11.5128C2.21824 11.6501 2.3982 11.7188 2.57815 11.7188C2.7581 11.7188 2.93806 11.6501 3.0753 11.5128L4.9503 9.63778C5.2249 9.36319 5.2249 8.91802 4.9503 8.64342C4.67576 8.36883 4.23054 8.36883 3.95595 8.64342L3.28127 9.31814V2.57812C3.28127 1.93195 3.80698 1.40625 4.45315 1.40625H11.9531C12.3415 1.40625 12.6563 1.09144 12.6563 0.703125C12.6563 0.314812 12.3415 0 11.9531 0H4.45315C3.03157 0 1.87502 1.15655 1.87502 2.57812V9.31814L1.2003 8.64347C0.925758 8.36887 0.480539 8.36887 0.205945 8.64347C-0.0686484 8.91806 -0.0686484 9.36323 0.205945 9.63783L2.08099 11.5128Z" fill="white"/>
+</svg>
+<div class="str54"></div>
+                            </div>
+                             <img src="{% static 'theme/img/1/young-couple-in-new-apartment-with-small-dog 1.png' %}" class="img-fluid trans" alt="">
+
+                             <div class="opis opis21">
+
+                                 <h3>Переезд</h3>
+                                <p>Оказываем комплекс услуг от подбора жилья до транспортировки имущества</p>
+                             </div>
+                         </div>
+                     </div>
+                      <div class="item">
+                         <div class="pred pred2">
+                            <div class="icbr">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.7386 11.0578C7.47043 10.8141 7.06084 10.8141 6.79267 11.0578L0.230166 17.0238C-0.0571775 17.285 -0.078365 17.7297 0.182869 18.017C0.444057 18.3043 0.88876 18.3254 1.1761 18.0643L1.40626 17.8551V23.2969C1.40626 23.6852 1.72107 24 2.10939 24H12.4219C12.8102 24 13.125 23.6852 13.125 23.2969V17.8551L13.3552 18.0643C13.4899 18.1868 13.6592 18.2472 13.8279 18.2472C14.0191 18.2472 14.2097 18.1696 14.3484 18.017C14.6096 17.7297 14.5884 17.285 14.3011 17.0238L7.7386 11.0578ZM7.96876 22.5937H6.56251V19.7812H7.96876V22.5937ZM11.7188 22.5937H9.37501V19.0781C9.37501 18.6898 9.0602 18.375 8.67188 18.375H5.85939C5.47107 18.375 5.15626 18.6898 5.15626 19.0781V22.5937H2.81251V16.5767L7.26564 12.5284L11.7188 16.5767V22.5937Z" fill="white"/>
+<path d="M5.85938 16.2656C5.85938 16.6539 6.17419 16.9688 6.5625 16.9688H7.96875C8.35706 16.9688 8.67188 16.6539 8.67188 16.2656C8.67188 15.8773 8.35706 15.5625 7.96875 15.5625H6.5625C6.17419 15.5625 5.85938 15.8773 5.85938 16.2656Z" fill="white"/>
+<path d="M9.65162 7.142C9.91281 7.4293 10.3575 7.45049 10.6449 7.1893L10.875 6.98005V12.4219C10.875 12.8102 11.1898 13.125 11.5781 13.125H21.8906C22.2789 13.125 22.5938 12.8102 22.5938 12.4219V6.98005L22.8239 7.1893C22.9586 7.31179 23.1279 7.37216 23.2966 7.37216C23.4879 7.37216 23.6784 7.29463 23.8172 7.142C24.0784 6.85466 24.0572 6.40996 23.7699 6.14877L17.2074 0.182848C16.9392 -0.0609492 16.5296 -0.0609492 16.2614 0.182848L9.69892 6.14877C9.41157 6.41 9.39038 6.85466 9.65162 7.142ZM17.4375 11.7187H16.0313V8.90624H17.4375V11.7187ZM16.7344 1.65336L21.1875 5.70168V11.7187H18.8438V8.20311C18.8438 7.8148 18.5289 7.49999 18.1406 7.49999H15.3281C14.9398 7.49999 14.625 7.8148 14.625 8.20311V11.7187H12.2813V5.70168L16.7344 1.65336Z" fill="white"/>
+<path d="M16.0312 6.09375H17.4375C17.8258 6.09375 18.1406 5.77894 18.1406 5.39062C18.1406 5.00231 17.8258 4.6875 17.4375 4.6875H16.0312C15.6429 4.6875 15.3281 5.00231 15.3281 5.39062C15.3281 5.77894 15.6429 6.09375 16.0312 6.09375Z" fill="white"/>
+<path d="M23.7941 16.7059L21.9191 14.8309C21.6445 14.5564 21.1993 14.5564 20.9247 14.8309L19.0497 16.7059C18.7751 16.9805 18.7751 17.4257 19.0497 17.7003C19.3243 17.9749 19.7695 17.9749 20.0441 17.7003L20.7188 17.0256V21.4219C20.7188 22.068 20.193 22.5937 19.5469 22.5937H15.3281C14.9398 22.5937 14.625 22.9085 14.625 23.2969C14.625 23.6852 14.9398 24 15.3281 24H19.5469C20.9685 24 22.125 22.8434 22.125 21.4219V17.0256L22.7997 17.7003C22.937 17.8376 23.1169 17.9062 23.2969 17.9062C23.4768 17.9062 23.6568 17.8376 23.794 17.7003C24.0686 17.4257 24.0686 16.9805 23.7941 16.7059Z" fill="white"/>
+<path d="M2.08099 11.5128C2.21824 11.6501 2.3982 11.7188 2.57815 11.7188C2.7581 11.7188 2.93806 11.6501 3.0753 11.5128L4.9503 9.63778C5.2249 9.36319 5.2249 8.91802 4.9503 8.64342C4.67576 8.36883 4.23054 8.36883 3.95595 8.64342L3.28127 9.31814V2.57812C3.28127 1.93195 3.80698 1.40625 4.45315 1.40625H11.9531C12.3415 1.40625 12.6563 1.09144 12.6563 0.703125C12.6563 0.314812 12.3415 0 11.9531 0H4.45315C3.03157 0 1.87502 1.15655 1.87502 2.57812V9.31814L1.2003 8.64347C0.925758 8.36887 0.480539 8.36887 0.205945 8.64347C-0.0686484 8.91806 -0.0686484 9.36323 0.205945 9.63783L2.08099 11.5128Z" fill="white"/>
+</svg>
+<div class="str54"></div>
+                            </div>
+                             <img src="{% static 'theme/img/1/2.png' %}" class="img-fluid trans" alt="">
+
+                             <div class="opis opis21">
+
+                                 <h3>Перепланировки</h3>
+                                <p>Ваша задача только создавать уют, остальное мы сделаем за вас!</p>
+                             </div>
+                         </div>
+                     </div>
+                      <div class="item">
+                         <div class="pred pred2">
+                            <div class="icbr">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.7386 11.0578C7.47043 10.8141 7.06084 10.8141 6.79267 11.0578L0.230166 17.0238C-0.0571775 17.285 -0.078365 17.7297 0.182869 18.017C0.444057 18.3043 0.88876 18.3254 1.1761 18.0643L1.40626 17.8551V23.2969C1.40626 23.6852 1.72107 24 2.10939 24H12.4219C12.8102 24 13.125 23.6852 13.125 23.2969V17.8551L13.3552 18.0643C13.4899 18.1868 13.6592 18.2472 13.8279 18.2472C14.0191 18.2472 14.2097 18.1696 14.3484 18.017C14.6096 17.7297 14.5884 17.285 14.3011 17.0238L7.7386 11.0578ZM7.96876 22.5937H6.56251V19.7812H7.96876V22.5937ZM11.7188 22.5937H9.37501V19.0781C9.37501 18.6898 9.0602 18.375 8.67188 18.375H5.85939C5.47107 18.375 5.15626 18.6898 5.15626 19.0781V22.5937H2.81251V16.5767L7.26564 12.5284L11.7188 16.5767V22.5937Z" fill="white"/>
+<path d="M5.85938 16.2656C5.85938 16.6539 6.17419 16.9688 6.5625 16.9688H7.96875C8.35706 16.9688 8.67188 16.6539 8.67188 16.2656C8.67188 15.8773 8.35706 15.5625 7.96875 15.5625H6.5625C6.17419 15.5625 5.85938 15.8773 5.85938 16.2656Z" fill="white"/>
+<path d="M9.65162 7.142C9.91281 7.4293 10.3575 7.45049 10.6449 7.1893L10.875 6.98005V12.4219C10.875 12.8102 11.1898 13.125 11.5781 13.125H21.8906C22.2789 13.125 22.5938 12.8102 22.5938 12.4219V6.98005L22.8239 7.1893C22.9586 7.31179 23.1279 7.37216 23.2966 7.37216C23.4879 7.37216 23.6784 7.29463 23.8172 7.142C24.0784 6.85466 24.0572 6.40996 23.7699 6.14877L17.2074 0.182848C16.9392 -0.0609492 16.5296 -0.0609492 16.2614 0.182848L9.69892 6.14877C9.41157 6.41 9.39038 6.85466 9.65162 7.142ZM17.4375 11.7187H16.0313V8.90624H17.4375V11.7187ZM16.7344 1.65336L21.1875 5.70168V11.7187H18.8438V8.20311C18.8438 7.8148 18.5289 7.49999 18.1406 7.49999H15.3281C14.9398 7.49999 14.625 7.8148 14.625 8.20311V11.7187H12.2813V5.70168L16.7344 1.65336Z" fill="white"/>
+<path d="M16.0312 6.09375H17.4375C17.8258 6.09375 18.1406 5.77894 18.1406 5.39062C18.1406 5.00231 17.8258 4.6875 17.4375 4.6875H16.0312C15.6429 4.6875 15.3281 5.00231 15.3281 5.39062C15.3281 5.77894 15.6429 6.09375 16.0312 6.09375Z" fill="white"/>
+<path d="M23.7941 16.7059L21.9191 14.8309C21.6445 14.5564 21.1993 14.5564 20.9247 14.8309L19.0497 16.7059C18.7751 16.9805 18.7751 17.4257 19.0497 17.7003C19.3243 17.9749 19.7695 17.9749 20.0441 17.7003L20.7188 17.0256V21.4219C20.7188 22.068 20.193 22.5937 19.5469 22.5937H15.3281C14.9398 22.5937 14.625 22.9085 14.625 23.2969C14.625 23.6852 14.9398 24 15.3281 24H19.5469C20.9685 24 22.125 22.8434 22.125 21.4219V17.0256L22.7997 17.7003C22.937 17.8376 23.1169 17.9062 23.2969 17.9062C23.4768 17.9062 23.6568 17.8376 23.794 17.7003C24.0686 17.4257 24.0686 16.9805 23.7941 16.7059Z" fill="white"/>
+<path d="M2.08099 11.5128C2.21824 11.6501 2.3982 11.7188 2.57815 11.7188C2.7581 11.7188 2.93806 11.6501 3.0753 11.5128L4.9503 9.63778C5.2249 9.36319 5.2249 8.91802 4.9503 8.64342C4.67576 8.36883 4.23054 8.36883 3.95595 8.64342L3.28127 9.31814V2.57812C3.28127 1.93195 3.80698 1.40625 4.45315 1.40625H11.9531C12.3415 1.40625 12.6563 1.09144 12.6563 0.703125C12.6563 0.314812 12.3415 0 11.9531 0H4.45315C3.03157 0 1.87502 1.15655 1.87502 2.57812V9.31814L1.2003 8.64347C0.925758 8.36887 0.480539 8.36887 0.205945 8.64347C-0.0686484 8.91806 -0.0686484 9.36323 0.205945 9.63783L2.08099 11.5128Z" fill="white"/>
+</svg>
+<div class="str54"></div>
+                            </div>
+                             <img src="{% static 'theme/img/1/3.png' %}" class="img-fluid trans" alt="">
+
+                             <div class="opis opis21">
+
+                                 <h3>Страхование</h3>
+                                <p>Предлагаем страхование на выгодных условиях от наших партнеров-страховых компаний</p>
+                             </div>
+                         </div>
+                     </div>
+                      <div class="item">
+                         <div class="pred pred2">
+                            <div class="icbr">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.7386 11.0578C7.47043 10.8141 7.06084 10.8141 6.79267 11.0578L0.230166 17.0238C-0.0571775 17.285 -0.078365 17.7297 0.182869 18.017C0.444057 18.3043 0.88876 18.3254 1.1761 18.0643L1.40626 17.8551V23.2969C1.40626 23.6852 1.72107 24 2.10939 24H12.4219C12.8102 24 13.125 23.6852 13.125 23.2969V17.8551L13.3552 18.0643C13.4899 18.1868 13.6592 18.2472 13.8279 18.2472C14.0191 18.2472 14.2097 18.1696 14.3484 18.017C14.6096 17.7297 14.5884 17.285 14.3011 17.0238L7.7386 11.0578ZM7.96876 22.5937H6.56251V19.7812H7.96876V22.5937ZM11.7188 22.5937H9.37501V19.0781C9.37501 18.6898 9.0602 18.375 8.67188 18.375H5.85939C5.47107 18.375 5.15626 18.6898 5.15626 19.0781V22.5937H2.81251V16.5767L7.26564 12.5284L11.7188 16.5767V22.5937Z" fill="white"/>
+<path d="M5.85938 16.2656C5.85938 16.6539 6.17419 16.9688 6.5625 16.9688H7.96875C8.35706 16.9688 8.67188 16.6539 8.67188 16.2656C8.67188 15.8773 8.35706 15.5625 7.96875 15.5625H6.5625C6.17419 15.5625 5.85938 15.8773 5.85938 16.2656Z" fill="white"/>
+<path d="M9.65162 7.142C9.91281 7.4293 10.3575 7.45049 10.6449 7.1893L10.875 6.98005V12.4219C10.875 12.8102 11.1898 13.125 11.5781 13.125H21.8906C22.2789 13.125 22.5938 12.8102 22.5938 12.4219V6.98005L22.8239 7.1893C22.9586 7.31179 23.1279 7.37216 23.2966 7.37216C23.4879 7.37216 23.6784 7.29463 23.8172 7.142C24.0784 6.85466 24.0572 6.40996 23.7699 6.14877L17.2074 0.182848C16.9392 -0.0609492 16.5296 -0.0609492 16.2614 0.182848L9.69892 6.14877C9.41157 6.41 9.39038 6.85466 9.65162 7.142ZM17.4375 11.7187H16.0313V8.90624H17.4375V11.7187ZM16.7344 1.65336L21.1875 5.70168V11.7187H18.8438V8.20311C18.8438 7.8148 18.5289 7.49999 18.1406 7.49999H15.3281C14.9398 7.49999 14.625 7.8148 14.625 8.20311V11.7187H12.2813V5.70168L16.7344 1.65336Z" fill="white"/>
+<path d="M16.0312 6.09375H17.4375C17.8258 6.09375 18.1406 5.77894 18.1406 5.39062C18.1406 5.00231 17.8258 4.6875 17.4375 4.6875H16.0312C15.6429 4.6875 15.3281 5.00231 15.3281 5.39062C15.3281 5.77894 15.6429 6.09375 16.0312 6.09375Z" fill="white"/>
+<path d="M23.7941 16.7059L21.9191 14.8309C21.6445 14.5564 21.1993 14.5564 20.9247 14.8309L19.0497 16.7059C18.7751 16.9805 18.7751 17.4257 19.0497 17.7003C19.3243 17.9749 19.7695 17.9749 20.0441 17.7003L20.7188 17.0256V21.4219C20.7188 22.068 20.193 22.5937 19.5469 22.5937H15.3281C14.9398 22.5937 14.625 22.9085 14.625 23.2969C14.625 23.6852 14.9398 24 15.3281 24H19.5469C20.9685 24 22.125 22.8434 22.125 21.4219V17.0256L22.7997 17.7003C22.937 17.8376 23.1169 17.9062 23.2969 17.9062C23.4768 17.9062 23.6568 17.8376 23.794 17.7003C24.0686 17.4257 24.0686 16.9805 23.7941 16.7059Z" fill="white"/>
+<path d="M2.08099 11.5128C2.21824 11.6501 2.3982 11.7188 2.57815 11.7188C2.7581 11.7188 2.93806 11.6501 3.0753 11.5128L4.9503 9.63778C5.2249 9.36319 5.2249 8.91802 4.9503 8.64342C4.67576 8.36883 4.23054 8.36883 3.95595 8.64342L3.28127 9.31814V2.57812C3.28127 1.93195 3.80698 1.40625 4.45315 1.40625H11.9531C12.3415 1.40625 12.6563 1.09144 12.6563 0.703125C12.6563 0.314812 12.3415 0 11.9531 0H4.45315C3.03157 0 1.87502 1.15655 1.87502 2.57812V9.31814L1.2003 8.64347C0.925758 8.36887 0.480539 8.36887 0.205945 8.64347C-0.0686484 8.91806 -0.0686484 9.36323 0.205945 9.63783L2.08099 11.5128Z" fill="white"/>
+</svg>
+<div class="str54"></div>
+                            </div>
+                             <img src="{% static 'theme/img/1/4.png' %}" class="img-fluid trans" alt="">
+
+                             <div class="opis opis21">
+
+                                 <h3>покупка/продажа</h3>
+                                <p>Мы являемся универсальными помощниками по вопросам покупки и продажи недвижимости</p>
+                             </div>
+                         </div>
+                     </div>
+                      <div class="item">
+                         <div class="pred pred2">
+                            <div class="icbr">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.7386 11.0578C7.47043 10.8141 7.06084 10.8141 6.79267 11.0578L0.230166 17.0238C-0.0571775 17.285 -0.078365 17.7297 0.182869 18.017C0.444057 18.3043 0.88876 18.3254 1.1761 18.0643L1.40626 17.8551V23.2969C1.40626 23.6852 1.72107 24 2.10939 24H12.4219C12.8102 24 13.125 23.6852 13.125 23.2969V17.8551L13.3552 18.0643C13.4899 18.1868 13.6592 18.2472 13.8279 18.2472C14.0191 18.2472 14.2097 18.1696 14.3484 18.017C14.6096 17.7297 14.5884 17.285 14.3011 17.0238L7.7386 11.0578ZM7.96876 22.5937H6.56251V19.7812H7.96876V22.5937ZM11.7188 22.5937H9.37501V19.0781C9.37501 18.6898 9.0602 18.375 8.67188 18.375H5.85939C5.47107 18.375 5.15626 18.6898 5.15626 19.0781V22.5937H2.81251V16.5767L7.26564 12.5284L11.7188 16.5767V22.5937Z" fill="white"/>
+<path d="M5.85938 16.2656C5.85938 16.6539 6.17419 16.9688 6.5625 16.9688H7.96875C8.35706 16.9688 8.67188 16.6539 8.67188 16.2656C8.67188 15.8773 8.35706 15.5625 7.96875 15.5625H6.5625C6.17419 15.5625 5.85938 15.8773 5.85938 16.2656Z" fill="white"/>
+<path d="M9.65162 7.142C9.91281 7.4293 10.3575 7.45049 10.6449 7.1893L10.875 6.98005V12.4219C10.875 12.8102 11.1898 13.125 11.5781 13.125H21.8906C22.2789 13.125 22.5938 12.8102 22.5938 12.4219V6.98005L22.8239 7.1893C22.9586 7.31179 23.1279 7.37216 23.2966 7.37216C23.4879 7.37216 23.6784 7.29463 23.8172 7.142C24.0784 6.85466 24.0572 6.40996 23.7699 6.14877L17.2074 0.182848C16.9392 -0.0609492 16.5296 -0.0609492 16.2614 0.182848L9.69892 6.14877C9.41157 6.41 9.39038 6.85466 9.65162 7.142ZM17.4375 11.7187H16.0313V8.90624H17.4375V11.7187ZM16.7344 1.65336L21.1875 5.70168V11.7187H18.8438V8.20311C18.8438 7.8148 18.5289 7.49999 18.1406 7.49999H15.3281C14.9398 7.49999 14.625 7.8148 14.625 8.20311V11.7187H12.2813V5.70168L16.7344 1.65336Z" fill="white"/>
+<path d="M16.0312 6.09375H17.4375C17.8258 6.09375 18.1406 5.77894 18.1406 5.39062C18.1406 5.00231 17.8258 4.6875 17.4375 4.6875H16.0312C15.6429 4.6875 15.3281 5.00231 15.3281 5.39062C15.3281 5.77894 15.6429 6.09375 16.0312 6.09375Z" fill="white"/>
+<path d="M23.7941 16.7059L21.9191 14.8309C21.6445 14.5564 21.1993 14.5564 20.9247 14.8309L19.0497 16.7059C18.7751 16.9805 18.7751 17.4257 19.0497 17.7003C19.3243 17.9749 19.7695 17.9749 20.0441 17.7003L20.7188 17.0256V21.4219C20.7188 22.068 20.193 22.5937 19.5469 22.5937H15.3281C14.9398 22.5937 14.625 22.9085 14.625 23.2969C14.625 23.6852 14.9398 24 15.3281 24H19.5469C20.9685 24 22.125 22.8434 22.125 21.4219V17.0256L22.7997 17.7003C22.937 17.8376 23.1169 17.9062 23.2969 17.9062C23.4768 17.9062 23.6568 17.8376 23.794 17.7003C24.0686 17.4257 24.0686 16.9805 23.7941 16.7059Z" fill="white"/>
+<path d="M2.08099 11.5128C2.21824 11.6501 2.3982 11.7188 2.57815 11.7188C2.7581 11.7188 2.93806 11.6501 3.0753 11.5128L4.9503 9.63778C5.2249 9.36319 5.2249 8.91802 4.9503 8.64342C4.67576 8.36883 4.23054 8.36883 3.95595 8.64342L3.28127 9.31814V2.57812C3.28127 1.93195 3.80698 1.40625 4.45315 1.40625H11.9531C12.3415 1.40625 12.6563 1.09144 12.6563 0.703125C12.6563 0.314812 12.3415 0 11.9531 0H4.45315C3.03157 0 1.87502 1.15655 1.87502 2.57812V9.31814L1.2003 8.64347C0.925758 8.36887 0.480539 8.36887 0.205945 8.64347C-0.0686484 8.91806 -0.0686484 9.36323 0.205945 9.63783L2.08099 11.5128Z" fill="white"/>
+</svg>
+<div class="str54"></div>
+                            </div>
+                             <img src="{% static 'theme/img/1/5.png' %}" class="img-fluid trans" alt="">
+
+                             <div class="opis opis21">
+
+                                 <h3>строительство</h3>
+                                <p>Строительством и ремонтом недвижимости занимается более 15 лет</p>
+                             </div>
+                         </div>
+                     </div>
+
+                  </div>
+              </div>
+
+          </div>
+
+          <script>
+              $('.sliderpredlozh2').slick({
+   slidesToShow:6,
+  slidesToScroll: 1,
+  dots: false,
+  arrows: false,
+  centerMode: false,
+    autoplay: true,
+    infinite: true,
+    autoplaySpeed: 1500,
+  focusOnSelect: true,
+  responsive: [
+       {
+      breakpoint: 1400,
+      settings: {
+        slidesToShow: 5,
+          autoplay: true,
+    autoplaySpeed: 1500,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+       {
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 4,
+          autoplay: true,
+    autoplaySpeed: 1500,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 1000,
+      settings: {
+        slidesToShow: 3,
+          autoplay: true,
+    autoplaySpeed: 1500,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 700,
+      settings: {
+        slidesToShow: 1,
+          autoplay: true,
+    autoplaySpeed: 1500,
+        slidesToScroll: 1,
+        dots: true,
+        infinite: true,
+      }
+    }
+  ]
+});
+          </script>
 
       </div>
   </section>
